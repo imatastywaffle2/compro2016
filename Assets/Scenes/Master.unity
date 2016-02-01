@@ -85,52 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &408442610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 408442612}
-  - 114: {fileID: 408442611}
-  m_Layer: 0
-  m_Name: Level
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &408442611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 408442610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1485709454, guid: 926951d45b63c0448bc127a39128034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sceneAssetGuid: 
-  _sceneAsset: {fileID: 102900000, guid: 256a6faa3eebba84ea755a39637e1be7, type: 3}
-  _editorLoadSettings: 1
-  _editorColor: {r: 1, g: 0.5, b: 0, a: 0.125}
-  _runtimeLoadSettings: 0
-  _loadLevelAdditiveSceneName: Level
-  _loadLevelAsChild: 0
---- !u!4 &408442612
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 408442610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &791155270
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,8 +120,8 @@ MonoBehaviour:
   - {fileID: 1202527641}
   - {fileID: 1347943317}
   - {fileID: 1766194529}
-  - {fileID: 408442610}
   - {fileID: 913952128}
+  - {fileID: 1216430203}
   _sceneAssetGuid: f0597bdb1baca1b449fab7d434b58990
   _sceneAsset: {fileID: 102900000, guid: f0597bdb1baca1b449fab7d434b58990, type: 3}
   _sceneName: Master
@@ -229,7 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1202527641
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +230,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1216430203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1216430205}
+  - 114: {fileID: 1216430204}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1216430204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216430203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1485709454, guid: 926951d45b63c0448bc127a39128034b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneAssetGuid: 
+  _sceneAsset: {fileID: 102900000, guid: f54d330d871c7e940974b9057a52ea44, type: 3}
+  _editorLoadSettings: 1
+  _editorColor: {r: 0.5, g: 1, b: 0, a: 0.125}
+  _runtimeLoadSettings: 0
+  _loadLevelAdditiveSceneName: Level
+  _loadLevelAsChild: 0
+--- !u!4 &1216430205
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216430203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1347943317
 GameObject:
   m_ObjectHideFlags: 0
