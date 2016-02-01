@@ -119,7 +119,7 @@ MonoBehaviour:
   _sceneAssetGuid: 
   _sceneAsset: {fileID: 102900000, guid: b0daaa161a78cbd4fa12ec5da82557bf, type: 3}
   _sceneName: Player
-  _sceneIsCompressed: 0
+  _sceneIsCompressed: 1
 --- !u!4 &64722738
 Transform:
   m_ObjectHideFlags: 0
