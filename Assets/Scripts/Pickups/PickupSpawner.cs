@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickups : MonoBehaviour {
+public class PickupSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
