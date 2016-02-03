@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickupSpawner : MonoBehaviour {
+public class PickupSpawner : MonoBehaviour
+{
+    public GameObject Prefab;
 
-	// Use this for initialization
-	void Start () {
+    // Spawn Delay in seconds
+    public float interval = 30;
+    // Use this for initialization
+    void Start ()
+    {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
 	
-	}
 }
