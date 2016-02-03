@@ -10,8 +10,11 @@ public class PickupSpawner : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-	
-	}
-	
+        InvokeRepeating("SpawnNext", interval, interval);
+    }
+	void SpawnNext()
+    {
+        Instantiate(Prefab, transform.position, Quaternion.identity);
+    }
 	
 }
