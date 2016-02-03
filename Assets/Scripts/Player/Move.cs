@@ -10,8 +10,6 @@ public class Move : MonoBehaviour {
     float amplitude;
     float fowardspeed;
     float acceleration;
-    
-
     public Vector3 tempPosition;
 	// Use this for initialization
 	void Start ()
@@ -25,8 +23,11 @@ public class Move : MonoBehaviour {
         acceleration = GetComponent<Vehicles>().fowardAccel;
         horizontalspeed = GetComponent<Vehicles>().horizontalSpeed;
         verticalspeed = GetComponent<Vehicles>().verticalSpeed;
-        tempPosition.x += horizontalspeed;
-        tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
+        if (disabled != true & Input.GetKey("a"))
+        {
+            horizontalspeed += GetComponent<Vehicles>().horizontalAccel;
+        }
+            tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
         tempPosition.z += fowardspeed;
         transform.position = tempPosition;	
 	}
