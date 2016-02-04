@@ -20,12 +20,12 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        acceleration = GetComponent<Vehicles>().fowardAccel;
-        horizontalspeed = GetComponent<Vehicles>().horizontalSpeed;
-        verticalspeed = GetComponent<Vehicles>().verticalSpeed;
+        //acceleration = GetComponent<Vehicles>().fowardAccel;
+        //horizontalspeed = GetComponent<Vehicles>().horizontalSpeed;
+        //verticalspeed = GetComponent<Vehicles>().verticalSpeed;
         if (disabled != true & Input.GetKey("a"))
         {
-            horizontalspeed += GetComponent<Vehicles>().horizontalAccel;
+            //horizontalspeed += GetComponent<Vehicles>().horizontalAccel;
         }
             tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
         tempPosition.z += fowardspeed;
