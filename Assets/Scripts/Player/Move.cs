@@ -2,13 +2,14 @@
 using System.Collections;
 
 public class Move : MonoBehaviour {
-    bool disabled;
-    bool inMotion;
-    float horizontalspeed;
-    float verticalspeed;
+    public GameObject Vehicle;
+    bool disabled; //Unable to move
+    bool inMotion; //Is this object in motion
+    float horizontalspeed; //How fast you can move side to side
+    float verticalspeed; //How fast you can ascend or descend
     float amplitude;
-    float fowardspeed; 
-
+    float fowardspeed;
+    float acceleration;
     public Vector3 tempPosition;
 	// Use this for initialization
 	void Start ()
@@ -19,8 +20,14 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        tempPosition.x += horizontalspeed;
-        tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
+        //acceleration = GetComponent<Vehicles>().fowardAccel;
+        //horizontalspeed = GetComponent<Vehicles>().horizontalSpeed;
+        //verticalspeed = GetComponent<Vehicles>().verticalSpeed;
+        if (disabled != true & Input.GetKey("a"))
+        {
+            //horizontalspeed += GetComponent<Vehicles>().horizontalAccel;
+        }
+            tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
         tempPosition.z += fowardspeed;
         transform.position = tempPosition;	
 	}
