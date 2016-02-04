@@ -30,14 +30,6 @@ public class Vehicles : MonoBehaviour {
             horizontalSpeed = 5;
             verticalSpeed = 7;
         }
-        if (GetComponent<InputInformation>().VehicleType == 0)
-        {
-            fowardAccel = 2;
-            maxSpeed = 25;
-            recoveryTime = 6;
-            horizontalSpeed = 5;
-            verticalSpeed = 7;
-        }
 
     }
     void OnCollisionEnter(Collision co)

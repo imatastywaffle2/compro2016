@@ -53,4 +53,41 @@ public class InputInformation : MonoBehaviour
 
         }
     }
+
+    public float Forward()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            return 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            return -1;
+        }
+        return 0;
+    }
+    public float SideMovement()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            return -1;
+        }       
+        else if (Input.GetKey(KeyCode.D))
+        {
+            return 1;
+        }
+        return 0;
+    }
+    public float RotateShip()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+
+        }
+        return 0;
+    }
 }
