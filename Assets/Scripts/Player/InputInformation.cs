@@ -82,11 +82,11 @@ public class InputInformation : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            
+            return -1;
         }
         else if (Input.GetKey(KeyCode.E))
         {
-
+            return 1;
         }
         return 0;
     }
