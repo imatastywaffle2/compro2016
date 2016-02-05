@@ -110,7 +110,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263348487}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &263348489
 Behaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 1845780031}
   - {fileID: 675798586}
   - {fileID: 263348487}
-  _sceneAssetGuid: fa81009f5c66a9c448b18bfd8d67b674
+  _sceneAssetGuid: 
   _sceneAsset: {fileID: 102900000, guid: fa81009f5c66a9c448b18bfd8d67b674, type: 3}
   _sceneName: Pickups
   _sceneIsCompressed: 1
