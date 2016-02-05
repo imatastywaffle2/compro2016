@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
     public GameObject Vehicle;
-    bool disabled; //Unable to move
+    bool disabled = false; //Unable to move
     bool inMotion; //Is this object in motion
     float horizontalspeed; //How fast you can move side to side
     float verticalspeed; //How fast you can ascend or descend
-    float amplitude;
-    float fowardspeed;
+    float amplitude = 1;
+    float fowardspeed = 0;
     float acceleration;
+    float rotateSpeed = 3;
+    float tiltAngle = 30;
     public Vector3 tempPosition;
     public Vector3 direction = new Vector3(0, 0, 0);
 
@@ -30,6 +32,7 @@ public class Move : MonoBehaviour {
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
         verticalspeed = Vehicles.verticalSpeed;
+        
         if (disabled != true & Input.GetKey("a"))
         {
             horizontalspeed += Vehicles.horizontalAccel;
@@ -44,5 +47,10 @@ public class Move : MonoBehaviour {
         transform.position = tempPosition;
 
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
+        float tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
+        float tiltAroundX = Input.GetAxis("Vertical") * tiltAngle;
+        Quaternion target = Quaternion.Euler(tiltAroundX, 0, tiltAroundZ);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotateSpeed);
+        
 	}
 }
