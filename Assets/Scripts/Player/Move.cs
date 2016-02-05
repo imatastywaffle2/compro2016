@@ -15,14 +15,14 @@ public class Move : MonoBehaviour {
     public Vector3 tempPosition;
     public Vector3 direction = new Vector3(0, 0, 0);
 
-    Vehicles Vehicles;
+    Vehicle Vehicles;
     InputInformation InputInfo;
 
 	// Use this for initialization
 	void Start ()
     {
         tempPosition = transform.position;
-        Vehicles = GetComponent<Vehicles>();
+        Vehicles = GetComponent<Vehicle>();
         InputInfo = GetComponent<InputInformation>();
 	}
 	

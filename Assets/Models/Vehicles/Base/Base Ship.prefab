@@ -13,6 +13,7 @@ GameObject:
   - 33: {fileID: 3397038}
   - 114: {fileID: 11425326}
   - 64: {fileID: 6448508}
+  - 54: {fileID: 5494876}
   m_Layer: 0
   m_Name: Left Engine
   m_TagString: Untagged
@@ -33,6 +34,7 @@ GameObject:
   - 33: {fileID: 3317484}
   - 114: {fileID: 11424728}
   - 64: {fileID: 6450988}
+  - 54: {fileID: 5493524}
   m_Layer: 0
   m_Name: Right Engine
   m_TagString: Untagged
@@ -53,6 +55,7 @@ GameObject:
   - 114: {fileID: 11492196}
   - 114: {fileID: 11437192}
   - 64: {fileID: 6445486}
+  - 54: {fileID: 5412566}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -73,6 +76,7 @@ GameObject:
   - 33: {fileID: 3342848}
   - 114: {fileID: 11476622}
   - 64: {fileID: 6445098}
+  - 54: {fileID: 5402574}
   m_Layer: 0
   m_Name: Right Wing Conservative
   m_TagString: Untagged
@@ -93,6 +97,7 @@ GameObject:
   - 33: {fileID: 3378124}
   - 114: {fileID: 11470220}
   - 64: {fileID: 6467568}
+  - 54: {fileID: 5478998}
   m_Layer: 0
   m_Name: Right Blaster
   m_TagString: Untagged
@@ -113,6 +118,7 @@ GameObject:
   - 33: {fileID: 3317962}
   - 114: {fileID: 11468992}
   - 64: {fileID: 6400332}
+  - 54: {fileID: 5465468}
   m_Layer: 0
   m_Name: Left Wing Liberal
   m_TagString: Untagged
@@ -133,6 +139,7 @@ GameObject:
   - 33: {fileID: 3343458}
   - 114: {fileID: 11498584}
   - 64: {fileID: 6475310}
+  - 54: {fileID: 5476638}
   m_Layer: 0
   m_Name: Right Fin
   m_TagString: Untagged
@@ -148,6 +155,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485390}
+  - 114: {fileID: 11439668}
+  - 114: {fileID: 11490982}
+  - 114: {fileID: 11415136}
+  - 54: {fileID: 5415124}
+  - 64: {fileID: 6479578}
   m_Layer: 0
   m_Name: Base Ship
   m_TagString: Untagged
@@ -168,6 +180,7 @@ GameObject:
   - 33: {fileID: 3360642}
   - 114: {fileID: 11440624}
   - 64: {fileID: 6409804}
+  - 54: {fileID: 5474408}
   m_Layer: 0
   m_Name: Left Blaster
   m_TagString: Untagged
@@ -188,6 +201,7 @@ GameObject:
   - 33: {fileID: 3356066}
   - 114: {fileID: 11455996}
   - 64: {fileID: 6438334}
+  - 54: {fileID: 5465932}
   m_Layer: 0
   m_Name: Left Fin
   m_TagString: Untagged
@@ -621,6 +635,156 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108906}
   m_Mesh: {fileID: 0}
+--- !u!54 &5402574
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148432}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5412566
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129164}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5415124
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5465468
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163396}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5465932
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194970}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5474408
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185240}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5476638
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173828}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5478998
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151950}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5493524
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121224}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5494876
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108906}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &6400332
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -631,7 +795,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6409804
 MeshCollider:
@@ -643,7 +807,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6438334
 MeshCollider:
@@ -655,7 +819,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6445098
 MeshCollider:
@@ -667,7 +831,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6445486
 MeshCollider:
@@ -679,7 +843,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6448508
 MeshCollider:
@@ -691,7 +855,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6450988
 MeshCollider:
@@ -703,7 +867,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6467568
 MeshCollider:
@@ -715,7 +879,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!64 &6475310
 MeshCollider:
@@ -723,6 +887,18 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 0}
+--- !u!64 &6479578
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -741,6 +917,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &11415136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3a4f3a5a99b724192888c0e351d776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VehicleType: 0
+  VehiclePrefab: {fileID: 485390}
 --- !u!114 &11415714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4318,6 +4507,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &11439668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0a067923f6aa841b2a3cdde5d0d979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vehicle: {fileID: 176634}
+  tempPosition: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &11440624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6455,6 +6658,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &11490982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced1cbe139a1b02418a02162ce44ca1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fowardAccel: 0
+  maxSpeed: 0
+  recoveryTime: 0
+  horizontalSpeed: 0
+  verticalSpeed: 0
+  horizontalAccel: 0
+  verticalAccel: 0
+  maxHorizontalSpeed: 0
+  maxVerticalSpeed: 0
 --- !u!114 &11492196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6774,7 +6997,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Vehicle
+      value: 
+      objectReference: {fileID: 176634}
+    - target: {fileID: 0}
+      propertyPath: VehiclePrefab
+      value: 
+      objectReference: {fileID: 485390}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176634}

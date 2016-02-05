@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Vehicles : MonoBehaviour {
+public class Vehicle : MonoBehaviour {
     private bool speedBoost;
     private int ItemPickup;
     public float fowardAccel;
@@ -22,7 +22,7 @@ public class Vehicles : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(GetComponent<InputInformation>().VehicleType == 1)
+        if(GetComponent<InputInformation>().VehicleType == 0)
         {
             fowardAccel = 3;
             maxSpeed = 20;
