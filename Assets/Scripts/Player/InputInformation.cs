@@ -6,6 +6,8 @@ public class InputInformation : MonoBehaviour
     private bool VehicleSpawned = false;
     private bool VehicleChosen = false;
     public int VehicleType = 0;
+    private int VehicleCount = 0;
+    public Transform VehiclePrefab;
     
 
     // Use this for initialization
@@ -48,9 +50,14 @@ public class InputInformation : MonoBehaviour
         {
             VehicleChosen = false;
         }
-        if (VehicleChosen = true && VehicleSpawned != true)
+        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0)
         {
-
+            VehicleCount++;
+            if (VehicleCount == 1)
+            {
+                VehicleSpawned = true;
+                Instantiate(VehiclePrefab);
+            }           
         }
     }
 
