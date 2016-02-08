@@ -12,6 +12,7 @@ public class Move : MonoBehaviour {
     float acceleration;
     float rotateSpeed = 3;
     float tiltAngle = 30;
+    float decelleration = 1;
     public Vector3 tempPosition;
     public Vector3 direction = new Vector3(0, 0, 0);
 
@@ -21,6 +22,7 @@ public class Move : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        
         tempPosition = transform.position;
         Vehicles = GetComponent<Vehicle>();
         InputInfo = GetComponent<InputInformation>();
@@ -33,13 +35,17 @@ public class Move : MonoBehaviour {
         horizontalspeed = Vehicles.horizontalSpeed;
         verticalspeed = Vehicles.verticalSpeed;
         
-        if (disabled != true & Input.GetKey("a"))
+        if (disabled != true && Input.GetKey("a") && horizontalspeed <= Vehicles.maxSpeed)
         {
             horizontalspeed += Vehicles.horizontalAccel;
         }
-        if (disabled != true & Input.GetKey("d"))
+        if (disabled != true & Input.GetKey("d") && verticalspeed <= Vehicles.maxSpeed)
         {
             horizontalspeed -= Vehicles.horizontalAccel;
+        }
+        else if(horizontalspeed >= Vehicles.minimumSpeed)
+        {
+            horizontalspeed -= decelleration;
         }
         tempPosition.x += horizontalspeed;
         tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;

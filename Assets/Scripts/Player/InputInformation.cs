@@ -13,10 +13,6 @@ public class InputInformation : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-    }
-    // Update is called once per frame
-    void Update()
-    {
         if (VehicleChosen == false)
         {
             if (Input.GetKeyDown("]"))
@@ -50,51 +46,56 @@ public class InputInformation : MonoBehaviour
         {
             VehicleChosen = false;
         }
-        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0)
+        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0 && gameObject.name == "VehicleSpawn")
         {
-            VehicleCount++;
-            if (VehicleCount == 1)
-            {
                 VehicleSpawned = true;
-                Instantiate(VehiclePrefab);
-            }           
+                Instantiate(VehiclePrefab);       
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public float Forward()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            return 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            return -1;
-        }
-        return 0;
+        if(GetComponentInParent<Vehicle>().name == "VehiclePrefab")
+            if (Input.GetKey(KeyCode.W))
+            {
+                return 1;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                return -1;
+            }
+            return 0;
     }
     public float SideMovement()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            return -1;
-        }       
-        else if (Input.GetKey(KeyCode.D))
-        {
-            return 1;
-        }
-        return 0;
+        if (GetComponentInParent<Vehicle>().name == "VehiclePrefab")
+            if (Input.GetKey(KeyCode.A))
+            {
+                return -1;
+            }       
+            else if (Input.GetKey(KeyCode.D))
+            {
+                return 1;
+            }
+            return 0;
     }
     public float RotateShip()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            return -1;
-        }
-        else if (Input.GetKey(KeyCode.E))
-        {
-            return 1;
-        }
-        return 0;
+        if (GetComponentInParent<Vehicle>().name == "Vehicle")
+            if (Input.GetKey(KeyCode.Q))
+            {
+                return -1;
+            }
+            else if (Input.GetKey(KeyCode.E))
+            {
+                return 1;
+            }
+            return 0;
     }
+    
 }

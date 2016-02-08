@@ -11,8 +11,8 @@ public class Vehicle : MonoBehaviour {
     public float verticalSpeed;
     public float horizontalAccel;
     public float verticalAccel;
-    public float maxHorizontalSpeed;
-    public float maxVerticalSpeed;
+    public float minimumSpeed;
+    
 
     // Use this for initialization
     void Start ()
@@ -29,6 +29,9 @@ public class Vehicle : MonoBehaviour {
             recoveryTime = 4.5;
             horizontalSpeed = 5;
             verticalSpeed = 7;
+            horizontalAccel = 1;
+            verticalAccel = 1;
+            minimumSpeed = 5;
         }
 
     }
