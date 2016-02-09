@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
     private bool speedBoost;
-    private int ItemPickup;
+    public Pickup ItemPickup;
     public float fowardAccel;
     public float maxSpeed;
     public double recoveryTime;
@@ -37,9 +37,12 @@ public class Vehicle : MonoBehaviour {
     }
     void OnCollisionEnter(Collision co)
     {
-        if(co.gameObject.name == "PickUp")
+        if(co.gameObject.tag == "PickUp")
         {
-            //Fill with Code for getting item to use
+            GameObject item = (GameObject)Instantiate(co.gameObject.GetComponent<PickupBox>().PickupType, transform.position, Quaternion.identity);
+            item.transform.SetParent(transform);
+            ItemPickup = item.GetComponent<Pickup>();
+
         }
     }
 }
