@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PickupBox : MonoBehaviour
 {
-    GameObject PickupType;
+   public GameObject PickupType;
 
 
     void OnTriggerEnter(Collider other)
@@ -13,7 +13,13 @@ public class PickupBox : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //public virtual int Next
+
+
+
+
+    }
+
+        //public int Next
         //{
         //get
         // {
@@ -23,7 +29,4 @@ public class PickupBox : MonoBehaviour
         //  {
 
         //    }
-
-    }
-
 }
