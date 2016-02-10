@@ -5,12 +5,14 @@ public class UISCript : MonoBehaviour {
 
     public GameObject Ship;
     
-	// Use this for initialization
+    //how do i make a script that will start
+    //a new scene that you could choose your ship in?
+    //thanks, Seth
+	
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	    
 	}
