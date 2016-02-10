@@ -4,12 +4,14 @@ using System.Collections;
 public class Gate : MonoBehaviour {
 
 
-	void Start () {
+	void Start ()
+    {
 	
 	}
 	
 
-	void Update () {
+	void Update ()
+    {
 	
 	}
 }
