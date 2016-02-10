@@ -53,16 +53,11 @@ public class Move : MonoBehaviour {
         {
             fowardspeed += acceleration;
         }
-            tempPosition.x += horizontalspeed;
+        tempPosition.x += horizontalspeed;
         tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
         tempPosition.z += fowardspeed;
         transform.position = tempPosition;
-
+        GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
-        float tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
-        float tiltAroundX = Input.GetAxis("Vertical") * tiltAngle;
-        Quaternion target = Quaternion.Euler(tiltAroundX, 0, tiltAroundZ);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * rotateSpeed);
-        
 	}
 }

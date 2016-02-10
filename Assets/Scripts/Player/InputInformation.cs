@@ -62,8 +62,6 @@ public class InputInformation : MonoBehaviour
 
     public float Forward()
     {
-        if (VehicleName == "Player")
-        {
             if (Input.GetKey(KeyCode.W))
             {
                 return 1;
@@ -72,13 +70,11 @@ public class InputInformation : MonoBehaviour
             {
                 return -1;
             }   
-        }
+        
         return 0;
     }
     public float SideMovement()
     {
-        if (VehicleName == "Player")
-        {
             if (Input.GetKey(KeyCode.A))
             {
                 return -1;
@@ -87,13 +83,11 @@ public class InputInformation : MonoBehaviour
             {
                 return 1;
             }
-        }
+        
         return 0;
     }
     public float RotateShip()
     {
-        if (VehicleName == "Player")
-        {
             if (Input.GetKey(KeyCode.Q))
             {
                 return -1;
@@ -102,7 +96,7 @@ public class InputInformation : MonoBehaviour
             {
                 return 1;
             }           
-        }
+        
         return 0;
     }
     
