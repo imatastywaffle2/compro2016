@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
     public GameObject Vehicle;
-    bool disabled = false; //Unable to move
     bool inMotion; //Is this object in motion
     float horizontalspeed; //How fast you can move side to side
     float verticalspeed; //How fast you can ascend or descend
@@ -14,7 +13,6 @@ public class Move : MonoBehaviour {
     float tiltAngle = 30;
     float decelleration = 1;
     public Vector3 tempPosition;
-    public Vector3 direction = new Vector3(0, 0, 0);
 
     Vehicle Vehicles;
     InputInformation InputInfo;
@@ -35,19 +33,27 @@ public class Move : MonoBehaviour {
         horizontalspeed = Vehicles.horizontalSpeed;
         verticalspeed = Vehicles.verticalSpeed;
         
-        if (disabled != true && Input.GetKey("a") && horizontalspeed <= Vehicles.maxSpeed)
+        if (Input.GetKey(KeyCode.W) && horizontalspeed <= Vehicles.maxSpeed)
         {
             horizontalspeed += Vehicles.horizontalAccel;
         }
-        if (disabled != true & Input.GetKey("d") && verticalspeed <= Vehicles.maxSpeed)
+        else if (horizontalspeed > 0)
+        {
+                horizontalspeed -= decelleration;
+        }
+        if (Input.GetKey(KeyCode.S) && horizontalspeed <= Vehicles.maxSpeed)
         {
             horizontalspeed -= Vehicles.horizontalAccel;
         }
-        else if(horizontalspeed >= Vehicles.minimumSpeed)
+        else if (horizontalspeed < 0)
         {
-            horizontalspeed -= decelleration;
+            horizontalspeed += decelleration;
         }
-        tempPosition.x += horizontalspeed;
+        if (Input.GetKey(KeyCode.A) && fowardspeed <= Vehicles.maxSpeed)
+        {
+            fowardspeed += acceleration;
+        }
+            tempPosition.x += horizontalspeed;
         tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
         tempPosition.z += fowardspeed;
         transform.position = tempPosition;
