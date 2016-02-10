@@ -12,6 +12,7 @@ public class Vehicle : MonoBehaviour {
     public float horizontalAccel;
     public float verticalAccel;
     public float minimumSpeed;
+    public string VehicleName = "Player";
     
 
     // Use this for initialization
