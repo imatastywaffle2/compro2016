@@ -32,31 +32,8 @@ public class Move : MonoBehaviour {
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
         verticalspeed = Vehicles.verticalSpeed;
-        
-        if (Input.GetKey(KeyCode.W) && horizontalspeed <= Vehicles.maxSpeed)
-        {
-            horizontalspeed += Vehicles.horizontalAccel;
-        }
-        else if (horizontalspeed > 0)
-        {
-                horizontalspeed -= decelleration;
-        }
-        if (Input.GetKey(KeyCode.S) && horizontalspeed <= Vehicles.maxSpeed)
-        {
-            horizontalspeed -= Vehicles.horizontalAccel;
-        }
-        else if (horizontalspeed < 0)
-        {
-            horizontalspeed += decelleration;
-        }
-        if (Input.GetKey(KeyCode.A) && fowardspeed <= Vehicles.maxSpeed)
-        {
-            fowardspeed += acceleration;
-        }
-        tempPosition.x += horizontalspeed;
-        tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalspeed) * amplitude;
-        tempPosition.z += fowardspeed;
-        transform.position = tempPosition;
+
+
         GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
 	}

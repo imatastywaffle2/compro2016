@@ -9,7 +9,7 @@ public class InputInformation : MonoBehaviour
     private int VehicleCount = 0;
     public Transform VehiclePrefab;
     private string VehicleName = "Player";
-    
+
 
     // Use this for initialization
     void Start()
@@ -49,8 +49,8 @@ public class InputInformation : MonoBehaviour
         }
         if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0 && gameObject.name == "VehicleSpawn")
         {
-                VehicleSpawned = true;
-                Instantiate(VehiclePrefab);
+            VehicleSpawned = true;
+            Instantiate(VehiclePrefab);
         }
     }
     void Update()
@@ -62,42 +62,42 @@ public class InputInformation : MonoBehaviour
 
     public float Forward()
     {
-            if (Input.GetKey(KeyCode.W))
-            {
-                return 1;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                return -1;
-            }   
-        
-        return 0;
+        if (Input.GetKey(KeyCode.W))
+        {
+            return 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            return -1;
+        }
+        else
+            return 0;
     }
     public float SideMovement()
     {
-            if (Input.GetKey(KeyCode.A))
-            {
-                return -1;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                return 1;
-            }
-        
+        if (Input.GetKey(KeyCode.A))
+        {
+            return -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            return 1;
+        }
+
         return 0;
     }
     public float RotateShip()
     {
-            if (Input.GetKey(KeyCode.Q))
-            {
-                return -1;
-            }
-            else if (Input.GetKey(KeyCode.E))
-            {
-                return 1;
-            }           
-        
+        if (Input.GetKey(KeyCode.Q))
+        {
+            return -1;
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            return 1;
+        }
+
         return 0;
     }
-    
+
 }
