@@ -7,7 +7,6 @@ public class Move : MonoBehaviour {
     float horizontalspeed; //How fast you can move side to side
     float verticalspeed; //How fast you can ascend or descend
     float amplitude = 1;
-    float fowardspeed = 0;
     float acceleration;
     float rotateSpeed = 3;
     float tiltAngle = 30;
