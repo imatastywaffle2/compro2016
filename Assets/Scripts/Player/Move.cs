@@ -5,12 +5,9 @@ public class Move : MonoBehaviour {
     public GameObject Vehicle;
     bool inMotion; //Is this object in motion
     float horizontalspeed; //How fast you can move side to side
-    float verticalspeed; //How fast you can ascend or descend
-    float amplitude = 1;
     float acceleration;
-    float rotateSpeed = 3;
+    float rotateSpeed = 1.01f;
     float tiltAngle = 30;
-    float decelleration = 1;
     public Vector3 tempPosition;
 
     Vehicle Vehicles;
@@ -30,10 +27,10 @@ public class Move : MonoBehaviour {
     {
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
-        verticalspeed = Vehicles.verticalSpeed;
 
 
         GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
+        GetComponent<Rigidbody>().MoveRotation()
 	}
 }
