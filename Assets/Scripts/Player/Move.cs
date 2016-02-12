@@ -28,9 +28,6 @@ public class Move : MonoBehaviour {
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
 
-
-        GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
-        GetComponent<Rigidbody>().MoveRotation()
 	}
 }
