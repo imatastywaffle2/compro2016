@@ -7,7 +7,7 @@ public class Vehicle : MonoBehaviour {
     public float fowardAccel = 3;
     public float maxSpeed = 20;
     public double recoveryTime = 4.5;
-    public float horizontalSpeed = 5;
+    public float horizontalSpeed;
     public float verticalSpeed = 7;
     public float horizontalAccel = 1;
     public float verticalAccel = 1;
@@ -22,7 +22,6 @@ public class Vehicle : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
     }
     void OnCollisionEnter(Collision co)
     {
