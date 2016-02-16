@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Vehicles : MonoBehaviour {
+public class Vehicle : MonoBehaviour {
     private bool speedBoost;
-    private int ItemPickup;
-    public float fowardAccel;
-    public float maxSpeed;
-    public double recoveryTime;
+    public Pickup ItemPickup;
+    public float fowardAccel = 3;
+    public float maxSpeed = 20;
+    public double recoveryTime = 4.5;
     public float horizontalSpeed;
-    public float verticalSpeed;
-    public float horizontalAccel;
-    public float verticalAccel;
-    public float maxHorizontalSpeed;
-    public float maxVerticalSpeed;
+    public float verticalSpeed = 7;
+    public float horizontalAccel = 1;
+    public float verticalAccel = 1;
+    public float minimumSpeed = 5;
+    
 
     // Use this for initialization
     void Start ()
@@ -22,21 +22,14 @@ public class Vehicles : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(GetComponent<InputInformation>().VehicleType == 1)
-        {
-            fowardAccel = 3;
-            maxSpeed = 20;
-            recoveryTime = 4.5;
-            horizontalSpeed = 5;
-            verticalSpeed = 7;
-        }
-
     }
     void OnCollisionEnter(Collision co)
     {
-        if(co.gameObject.name == "PickUp")
+        if(co.gameObject.tag == "PickUp")
         {
-            //Fill with Code for getting item to use
+            GameObject item = (GameObject)Instantiate(co.gameObject.GetComponent<PickupBox>().PickupType, transform.position, Quaternion.identity);
+            item.transform.SetParent(transform);
+            ItemPickup = item.GetComponent<Pickup>();
         }
     }
 }

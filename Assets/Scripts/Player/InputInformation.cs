@@ -6,14 +6,13 @@ public class InputInformation : MonoBehaviour
     private bool VehicleSpawned = false;
     private bool VehicleChosen = false;
     public int VehicleType = 0;
-    
+    private int VehicleCount = 0;
+    public Transform VehiclePrefab;
+    private string VehicleName = "Player";
+
 
     // Use this for initialization
     void Start()
-    {
-    }
-    // Update is called once per frame
-    void Update()
     {
         if (VehicleChosen == false)
         {
@@ -48,10 +47,17 @@ public class InputInformation : MonoBehaviour
         {
             VehicleChosen = false;
         }
-        if (VehicleChosen = true && VehicleSpawned != true)
+        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0 && gameObject.name == "VehicleSpawn")
         {
-
+            VehicleSpawned = true;
+            Instantiate(VehiclePrefab);
         }
+    }
+    void Update()
+    {
+        Forward();
+        SideMovement();
+        RotateShip();
     }
 
     public float Forward()
@@ -64,18 +70,20 @@ public class InputInformation : MonoBehaviour
         {
             return -1;
         }
-        return 0;
+        else
+            return 0;
     }
     public float SideMovement()
     {
         if (Input.GetKey(KeyCode.A))
         {
             return -1;
-        }       
+        }
         else if (Input.GetKey(KeyCode.D))
         {
             return 1;
         }
+
         return 0;
     }
     public float RotateShip()
@@ -88,6 +96,8 @@ public class InputInformation : MonoBehaviour
         {
             return 1;
         }
+
         return 0;
     }
+
 }
