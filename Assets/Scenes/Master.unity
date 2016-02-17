@@ -116,6 +116,7 @@ MonoBehaviour:
   _crossSceneReferences: []
   _topLevelGameObjs:
   - {fileID: 791155270}
+  - {fileID: 970127822}
   - {fileID: 1410844963}
   - {fileID: 1202527641}
   - {fileID: 1347943317}
@@ -183,7 +184,47 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!1 &970127822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 970127824}
+  - 114: {fileID: 970127823}
+  m_Layer: 0
+  m_Name: Scripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &970127823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970127822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a361e771001d14bbf0ffa4f90e2a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IdleCam: IdleCam
+--- !u!4 &970127824
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970127822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.523735, y: -62.48162, z: 73.22579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1202527641
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1216430203
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1347943317
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1410844963
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,9 +375,10 @@ GameObject:
   - 124: {fileID: 1410844966}
   - 92: {fileID: 1410844965}
   - 81: {fileID: 1410844964}
+  - 45: {fileID: 1410844969}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: IdleCam
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,11 +445,19 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1410844963}
   m_LocalRotation: {x: 0, y: 0.7132505, z: 0, w: 0.7009092}
-  m_LocalPosition: {x: -2.81, y: 0.13, z: -0.79}
+  m_LocalPosition: {x: -128.91, y: -66, z: 1.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
+--- !u!45 &1410844969
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410844963}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 005cfd9880d8b2348ae6ca115c41f70d, type: 2}
 --- !u!1 &1766194529
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,4 +503,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
