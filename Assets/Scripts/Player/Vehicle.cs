@@ -17,7 +17,7 @@ public class Vehicle : MonoBehaviour {
 
     // Use this for initialization
     void Start ()
-    {
+    {	
         VehicleNumber = GetComponent<VehicleSpawning>().VehicleCount;	
 	}
 	// Update is called once per frame
