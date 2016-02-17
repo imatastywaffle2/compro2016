@@ -427,7 +427,7 @@ MonoBehaviour:
   - {fileID: 1904217358}
   - {fileID: 1217536663}
   - {fileID: 361517284}
-  _sceneAssetGuid: 5564584d6774f1f48b81ae1ad9d12b26
+  _sceneAssetGuid: 
   _sceneAsset: {fileID: 102900000, guid: 5564584d6774f1f48b81ae1ad9d12b26, type: 3}
   _sceneName: Background
   _sceneIsCompressed: 1
