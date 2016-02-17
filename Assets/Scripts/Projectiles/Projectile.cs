@@ -14,17 +14,19 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-    //if (trackTarget)
-      if (target)
+        if (trackTarget)
         {
-            transform.LookAt(target.position);
-            // Fly towards the target        
-            
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
-        }
-        else {
-            // Otherwise destroy self
-            Destroy(gameObject);
+            if (target)
+            {
+                transform.LookAt(target.position);
+                // Fly towards the target        
+
+                GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            }
+            else {
+                // Otherwise destroy self
+                Destroy(gameObject);
+            }
         }
     }
 
