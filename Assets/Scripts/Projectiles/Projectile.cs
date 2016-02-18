@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
 
     public bool trackTarget;
+    public float stunDuration = 2;
 
     // Speed
     public float speed = 5;
@@ -14,17 +15,19 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-    //if (trackTarget)
-      if (target)
+        if (trackTarget)
         {
-            transform.LookAt(target.position);
-            // Fly towards the target        
-            
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
-        }
-        else {
-            // Otherwise destroy self
-            Destroy(gameObject);
+            if (target)
+            {
+                transform.LookAt(target.position);
+                // Fly towards the target        
+
+                GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            }
+            else {
+                // Otherwise destroy self
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -32,6 +35,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Move>().stunDuration = stunDuration;
             Destroy(gameObject);
         }
     }
