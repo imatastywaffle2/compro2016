@@ -3,7 +3,6 @@ using System.Collections;
 
 public class UISCript : MonoBehaviour {
 
-    public GameObject Ship;
     
     
 	
@@ -12,6 +11,7 @@ public class UISCript : MonoBehaviour {
 	}
 	
 	void Update () {
-	    
+
+        }
 	}
-}
+

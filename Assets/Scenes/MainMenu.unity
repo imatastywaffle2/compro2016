@@ -96,7 +96,6 @@ GameObject:
   - 20: {fileID: 214339382}
   - 124: {fileID: 214339381}
   - 92: {fileID: 214339380}
-  - 81: {fileID: 214339379}
   m_Layer: 0
   m_Name: Main Menu Camera
   m_TagString: Untagged
@@ -104,13 +103,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &214339379
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 214339378}
-  m_Enabled: 1
 --- !u!92 &214339380
 Behaviour:
   m_ObjectHideFlags: 0
@@ -133,8 +125,8 @@ Camera:
   m_GameObject: {fileID: 214339378}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -143,7 +135,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 32.06919
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -166,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214339378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 360.6263, y: 252.70955, z: -429}
+  m_LocalPosition: {x: 388, y: 254, z: -911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -184,7 +176,7 @@ GameObject:
   - 114: {fileID: 522475992}
   - 114: {fileID: 522475996}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +235,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &522475995
 RectTransform:
@@ -817,7 +809,7 @@ GameObject:
   - 114: {fileID: 1267015921}
   - 114: {fileID: 1267015920}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Fast Ship Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1276,7 +1268,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1671492924
 RectTransform:
@@ -1395,7 +1387,7 @@ RectTransform:
   m_GameObject: {fileID: 1982843482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1671492924}
   m_RootOrder: 0
@@ -1521,7 +1513,6 @@ GameObject:
   - 20: {fileID: 2070159164}
   - 124: {fileID: 2070159163}
   - 92: {fileID: 2070159162}
-  - 81: {fileID: 2070159161}
   m_Layer: 0
   m_Name: Ship Menu Camera
   m_TagString: Untagged
@@ -1529,13 +1520,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2070159161
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2070159160}
-  m_Enabled: 1
 --- !u!92 &2070159162
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1552,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 48.007717
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1591,7 +1575,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070159160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405, y: 277.32202, z: -2165.8}
+  m_LocalPosition: {x: 405, y: 277.32202, z: -2396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
