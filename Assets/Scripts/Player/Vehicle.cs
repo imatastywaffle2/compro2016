@@ -24,6 +24,7 @@ public class Vehicle : MonoBehaviour {
 	void Update ()
     {
     }
+
     void OnCollisionEnter(Collision co)
     {
         if(co.gameObject.tag == "PickUp")
