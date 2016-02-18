@@ -11,14 +11,12 @@ public class Vehicle : MonoBehaviour {
     public float verticalSpeed = 7;
     public float horizontalAccel = 1;
     public float verticalAccel = 1;
-    public float minimumSpeed = 5;
-    public int VehicleNumber;
-    
+    public float minimumSpeed = 5; 
+  
 
     // Use this for initialization
     void Start ()
-    {	
-        VehicleNumber = GetComponent<VehicleSpawning>().VehicleCount;	
+    {
 	}
 	// Update is called once per frame
 	void Update ()

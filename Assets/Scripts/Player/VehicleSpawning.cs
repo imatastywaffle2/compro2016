@@ -8,45 +8,15 @@ public class VehicleSpawning : MonoBehaviour {
     public int VehicleType = 0;
     public int VehicleCount = 0;
 
+    public Transform LocalPlayers;
+
+
     void Start()
     {
-        if (VehicleChosen == false)
-        {
-            if (Input.GetKeyDown("]"))
-            {
-                if (VehicleType == 0)
-                {
-                    VehicleType++;
-                }
-                else if (VehicleType == 1)
-                {
-                    VehicleType--;
-                }
-            }
-            if (Input.GetKeyDown("["))
-            {
-                if (VehicleType == 0)
-                {
-                    VehicleType--;
-                }
-                else if (VehicleType == 1)
-                {
-                    VehicleType++;
-                }
-            }
-        }
-        if (Input.GetKeyDown("o"))
-        {
-            VehicleChosen = true;
-        }
-        if (Input.GetKeyDown("/"))
-        {
-            VehicleChosen = false;
-        }
-        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0 && gameObject.name == "VehicleSpawn")
-        {
-            VehicleSpawned = true;
-            Instantiate(VehiclePrefab);
-        }
+      
+        VehicleSpawned = true;
+        Transform player = (Transform)Instantiate(VehiclePrefab);
+        player.SetParent(LocalPlayers);
+        
     }
 }
