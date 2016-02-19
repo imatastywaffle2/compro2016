@@ -2,18 +2,16 @@
 using System.Collections;
 
 public class CameraPicker : MonoBehaviour {
-    public string IdleCam;
+    public string ActiveCam;
 
 	// Use this for initialization
 	void Start () {
-        setMainCamera(IdleCam);
+        setMainCamera(ActiveCam);
 	}
-
-
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
     private void setMainCamera(string cameraName)

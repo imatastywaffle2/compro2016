@@ -5,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
 
     public bool trackTarget;
+    public float stunDuration = 2;
 
     // Speed
     public float speed = 5;
@@ -34,6 +35,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Move>().stunDuration = stunDuration;
             Destroy(gameObject);
         }
     }
