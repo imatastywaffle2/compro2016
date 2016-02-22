@@ -246,6 +246,7 @@ GameObject:
   - 33: {fileID: 487273530}
   - 135: {fileID: 487273529}
   - 23: {fileID: 487273528}
+  - 122: {fileID: 487273532}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -310,6 +311,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!122 &487273532
+Halo:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487273527}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4288472829
+  m_Size: 10000
 --- !u!1 &540587980
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +439,7 @@ MonoBehaviour:
   - {fileID: 1904217358}
   - {fileID: 1217536663}
   - {fileID: 361517284}
-  _sceneAssetGuid: 
+  _sceneAssetGuid: 5564584d6774f1f48b81ae1ad9d12b26
   _sceneAsset: {fileID: 102900000, guid: 5564584d6774f1f48b81ae1ad9d12b26, type: 3}
   _sceneName: Background
   _sceneIsCompressed: 1
