@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11439190}
   - 114: {fileID: 11457404}
   - 54: {fileID: 5434980}
+  - 65: {fileID: 6553084}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -184,6 +185,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6553084
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &8161948
 AudioListener:
   m_ObjectHideFlags: 1
@@ -242,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vehicle: {fileID: 129952}
   tempPosition: {x: 0, y: 0, z: 0}
+  stunDuration: 0
 --- !u!124 &12411080
 Behaviour:
   m_ObjectHideFlags: 1
