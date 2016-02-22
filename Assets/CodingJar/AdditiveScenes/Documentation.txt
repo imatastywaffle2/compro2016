@@ -3,7 +3,8 @@ Copyright: Coding Jar Studios 2015
 
 !!! Unity 5.3 USERS READ THIS !!!
 Unity 5.3.1 will be required for multi-scene support (you must upgrade from 5.3.0).  The save system is now more stable and saves scenes in Unity 5.x compressed format.
-Version 1.93 will be the last version of this plug-in in its current form.  Check the forums for how to upgrade to the next version in early 2016.
+Unity 5.3.2 will break support for using AAS.  There is an UPGRADE PATH available to Advanced Multi-Scene (the new plug-in).  It will either be free or cheap, please refer 
+to the forums.  Version 1.94 or later is an easy-upgrade path for Advanced Multi-Scene.
 
 !!! Unity 5.2 USERS READ THIS !!!
 Unity 5.2.0 was a mess and was incompatible with AAS.  It has since been patched and any version after 5.2.0 (e.g. 5.2.0p2) will be required to run AAS.
@@ -13,7 +14,9 @@ There is a menu item at the top of the editor ("Coding Jar") which will use Unit
 the limited testing I've done shows this feature is not ready for prime time.  If your game relies on multi-scene lightmap baking, you are in a tough spot
 at the moment since Unity 5.2 promises this feature for fails to deliver an adequate solution.  You may wish to delay a public release of your game until Unity 5.3 (December).
 
-!!! Unity 4 USERS READ THIS !!!
+Update: Advanced Multi-Scene works correctly with 5.3+, please upgrade your project to Advanced Multi-Scene.
+
+!!! Unity 4.x USERS READ THIS !!!
 "CheckConsistency: Transform cannot be loaded"  ---- What Does it Mean?
 You can safely ignore this error.  This error is produced by Unity when attempting to load a SubScene; it's spurious.  This error message does not occur in Unity 5.x.
 
@@ -24,6 +27,9 @@ Video:  https://www.youtube.com/watch?v=nnUoDs19WOQ
 
 Updates
 -------
+Version 1.94
+- Namespace changes to facilitate easy upgrade path to Advanced Multi-Scene.
+
 Version 1.93
 - Saving now uses multi-scene editing support in 5.3 or higher.  The result is all saved scenes are now compressed and do not shuffle GameObject ids as much as previous releases.
 - Support for Unity 4.7.
