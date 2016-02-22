@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9e0f0d548ea6b4fb0812a67fb27133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehiclePrefab: {fileID: 473586, guid: 7d1ec7299bb931d4a94382c3399bca43, type: 2}
+  VehiclePrefab: {fileID: 443362, guid: ad134a38e1bdf0045a6ff97a11f12a14, type: 2}
   VehicleType: 0
   VehicleCount: 0
   LocalPlayers: {fileID: 2055794093}
@@ -273,7 +273,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1457903265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
