@@ -4,6 +4,7 @@ using System.Collections;
 public class PickupBox : MonoBehaviour
 {
    public GameObject PickupType;
+    public GameObject[] PickupPrefabs;
 
 
     void OnTriggerEnter(Collider other)

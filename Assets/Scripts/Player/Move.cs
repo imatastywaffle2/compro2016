@@ -10,6 +10,8 @@ public class Move : MonoBehaviour {
     float tiltAngle = 30;
     public Vector3 tempPosition;
 
+    public float stunDuration = 0;
+
     Vehicle Vehicles;
     InputInformation InputInfo;
 
@@ -27,10 +29,12 @@ public class Move : MonoBehaviour {
     {
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
-
-
-        GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+        if (stunDuration <= 0)
+        {
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
-        GetComponent<Rigidbody>().MoveRotation()
+        GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+	}
+        else
+            stunDuration -= Time.deltaTime;
 	}
 }

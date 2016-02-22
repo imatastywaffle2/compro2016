@@ -3,56 +3,9 @@ using System.Collections;
 
 public class InputInformation : MonoBehaviour
 {
-    private bool VehicleSpawned = false;
-    private bool VehicleChosen = false;
-    public int VehicleType = 0;
-    private int VehicleCount = 0;
-    public Transform VehiclePrefab;
-    private string VehicleName = "Player";
 
 
     // Use this for initialization
-    void Start()
-    {
-        if (VehicleChosen == false)
-        {
-            if (Input.GetKeyDown("]"))
-            {
-                if (VehicleType == 0)
-                {
-                    VehicleType++;
-                }
-                else if (VehicleType == 1)
-                {
-                    VehicleType--;
-                }
-            }
-            if (Input.GetKeyDown("["))
-            {
-                if (VehicleType == 0)
-                {
-                    VehicleType--;
-                }
-                else if (VehicleType == 1)
-                {
-                    VehicleType++;
-                }
-            }
-        }
-        if (Input.GetKeyDown("o"))
-        {
-            VehicleChosen = true;
-        }
-        if (Input.GetKeyDown("/"))
-        {
-            VehicleChosen = false;
-        }
-        if (VehicleChosen = true && VehicleSpawned != true && VehicleCount == 0 && gameObject.name == "VehicleSpawn")
-        {
-            VehicleSpawned = true;
-            Instantiate(VehiclePrefab);
-        }
-    }
     void Update()
     {
         Forward();
