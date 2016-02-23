@@ -213,10 +213,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3db6264df3be2c94084b0865896063f0, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &666075459 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 174896, guid: 3db6264df3be2c94084b0865896063f0, type: 2}
-  m_PrefabInternal: {fileID: 666075458}
 --- !u!1 &675798586
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,53 +316,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!1 &1845780031
+--- !u!1 &1830145471
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1845780033}
-  - 114: {fileID: 1845780032}
+  - 4: {fileID: 1830145474}
+  - 114: {fileID: 1830145473}
+  - 114: {fileID: 1830145472}
   m_Layer: 0
-  m_Name: '! CodingJar.AdditiveScenes.SceneData'
+  m_Name: '! AmsMultiSceneSetup'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1845780032
+--- !u!114 &1830145472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1845780031}
+  m_GameObject: {fileID: 1830145471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 750558685, guid: 926951d45b63c0448bc127a39128034b, type: 3}
+  m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueObjects: []
   _crossSceneReferences: []
-  _topLevelGameObjs:
-  - {fileID: 1845780031}
-  - {fileID: 675798586}
-  - {fileID: 2138930617}
-  - {fileID: 666075459}
-  - {fileID: 2106492673}
-  - {fileID: 263348487}
-  - {fileID: 1803126306}
-  _sceneAssetGuid: fa81009f5c66a9c448b18bfd8d67b674
-  _sceneAsset: {fileID: 102900000, guid: fa81009f5c66a9c448b18bfd8d67b674, type: 3}
-  _sceneName: Pickups
-  _sceneIsCompressed: 1
---- !u!4 &1845780033
+  _realSceneRootsForPostBuild: []
+--- !u!114 &1830145473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isMainScene: 0
+  _sceneSetup: []
+  _thisScenePath: Assets/Scenes/Pickups.unity
+--- !u!4 &1830145474
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1845780031}
+  m_GameObject: {fileID: 1830145471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -415,10 +414,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ff531a2dc634ff4a8e0a29f7860e1bc, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2106492673 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 193196, guid: 7ff531a2dc634ff4a8e0a29f7860e1bc, type: 2}
-  m_PrefabInternal: {fileID: 2106492672}
 --- !u!1001 &2138930616
 Prefab:
   m_ObjectHideFlags: 0
@@ -461,7 +456,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6b7c4fe7a7335d469374c86b313f4c4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2138930617 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 139326, guid: e6b7c4fe7a7335d469374c86b313f4c4, type: 2}
-  m_PrefabInternal: {fileID: 2138930616}

@@ -85,56 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &64722736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 64722738}
-  - 114: {fileID: 64722737}
-  m_Layer: 0
-  m_Name: '! CodingJar.AdditiveScenes.SceneData'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &64722737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 64722736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 750558685, guid: 926951d45b63c0448bc127a39128034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uniqueObjects: []
-  _crossSceneReferences: []
-  _topLevelGameObjs:
-  - {fileID: 64722736}
-  - {fileID: 1457903265}
-  - {fileID: 2055794092}
-  - {fileID: 401106664}
-  _sceneAssetGuid: 
-  _sceneAsset: {fileID: 102900000, guid: b0daaa161a78cbd4fa12ec5da82557bf, type: 3}
-  _sceneName: Player
-  _sceneIsCompressed: 1
---- !u!4 &64722738
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 64722736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &401106664
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401106664}
   m_LocalRotation: {x: -0.3896231, y: -0.45186508, z: -0.7820556, w: -0.18000238}
-  m_LocalPosition: {x: -135.21266, y: -152.60599, z: -120.84589}
+  m_LocalPosition: {x: -408.1, y: -410.2, z: -141.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -262,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9e0f0d548ea6b4fb0812a67fb27133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehiclePrefab: {fileID: 473586, guid: 7d1ec7299bb931d4a94382c3399bca43, type: 2}
+  VehiclePrefab: {fileID: 492524, guid: 9df203fea917fc04eabef0e66606a8d7, type: 2}
   VehicleType: 0
   VehicleCount: 0
   LocalPlayers: {fileID: 2055794093}
@@ -273,11 +223,67 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1457903265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &1830145471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1830145474}
+  - 114: {fileID: 1830145473}
+  - 114: {fileID: 1830145472}
+  m_Layer: 0
+  m_Name: '! AmsMultiSceneSetup'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1830145472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crossSceneReferences: []
+  _realSceneRootsForPostBuild: []
+--- !u!114 &1830145473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isMainScene: 0
+  _sceneSetup: []
+  _thisScenePath: Assets/Scenes/Player.unity
+--- !u!4 &1830145474
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &2055794092
 GameObject:
   m_ObjectHideFlags: 0
