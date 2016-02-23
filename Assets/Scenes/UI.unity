@@ -85,54 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &277357752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 277357754}
-  - 114: {fileID: 277357753}
-  m_Layer: 0
-  m_Name: '! CodingJar.AdditiveScenes.SceneData'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &277357753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 277357752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 750558685, guid: 926951d45b63c0448bc127a39128034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uniqueObjects: []
-  _crossSceneReferences: []
-  _topLevelGameObjs:
-  - {fileID: 277357752}
-  - {fileID: 909581173}
-  _sceneAssetGuid: 09946cafaacd674489afff344d91d2cd
-  _sceneAsset: {fileID: 102900000, guid: 09946cafaacd674489afff344d91d2cd, type: 3}
-  _sceneName: UI
-  _sceneIsCompressed: 1
---- !u!4 &277357754
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 277357752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &653267452
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +569,62 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1674530712}
+--- !u!1 &1830145471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1830145474}
+  - 114: {fileID: 1830145473}
+  - 114: {fileID: 1830145472}
+  m_Layer: 0
+  m_Name: '! AmsMultiSceneSetup'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1830145472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crossSceneReferences: []
+  _realSceneRootsForPostBuild: []
+--- !u!114 &1830145473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isMainScene: 0
+  _sceneSetup: []
+  _thisScenePath: Assets/Scenes/UI.unity
+--- !u!4 &1830145474
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830145471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1880626011
 GameObject:
   m_ObjectHideFlags: 0
