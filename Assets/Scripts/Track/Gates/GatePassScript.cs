@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GatePassScript : MonoBehaviour
 {
-    List<Vehicle> PlayersPassed = new List< Vehicle>();
+    List<Player> PlayersPassed = new List< Player>();
 
 	void Start ()
     {
@@ -20,7 +20,8 @@ public class GatePassScript : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-
+            if (!PlayersPassed.Contains(col.gameObject.GetComponent<Player>()))
+                PlayersPassed.Add(col.gameObject.GetComponent<Player>());
         }
     }
 
