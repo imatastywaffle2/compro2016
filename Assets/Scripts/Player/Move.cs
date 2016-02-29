@@ -6,9 +6,10 @@ public class Move : MonoBehaviour {
     bool inMotion; //Is this object in motion
     float horizontalspeed; //How fast you can move side to side
     float acceleration;
-    float rotateSpeed = 1.01f;
-    float tiltAngle = 30;
+    float rotateSpeed = 1.2f;
+    //float tiltAngle = 5; maybe use later
     public Vector3 tempPosition;
+    private Vector3 mousePosition;
 
     public float stunDuration = 0;
 
@@ -33,8 +34,9 @@ public class Move : MonoBehaviour {
         {
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
         GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-        transform.RotateAround(Vector3.zero, Vector3.right, 20 * InputInfo.RotateShip());
-	}
+        transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
         else
             stunDuration -= Time.deltaTime;
 	}
