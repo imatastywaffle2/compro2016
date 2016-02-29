@@ -11,18 +11,17 @@ public class VehicleSpawning : MonoBehaviour {
 
 
     void Start()
-    {        
+    {
+        SpawnPlayer();
     }
     void Update()
     {
         
     }
     void FixedUpdate()
-    {
-        if (players.Count <= VehicleCount + 1)
-        {
-            SpawnPlayer();
-        }
+    {     
+        
+            
     }
 
     public void SpawnPlayer()
@@ -32,6 +31,7 @@ public class VehicleSpawning : MonoBehaviour {
         players.Add(player);
         player.GetComponent<Player>().playerID = Time.time + players.Count;
         player.SetParent(LocalPlayers);
+        //note to self change later to when player joins
     }
     
 }
