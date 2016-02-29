@@ -115,6 +115,7 @@ MonoBehaviour:
   VehiclePrefab: {fileID: 443362, guid: ad134a38e1bdf0045a6ff97a11f12a14, type: 2}
   VehicleType: 0
   VehicleCount: 0
+  players: []
   LocalPlayers: {fileID: 2055794093}
 --- !u!4 &1457903267
 Transform:
