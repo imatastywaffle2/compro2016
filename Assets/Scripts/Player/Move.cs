@@ -34,10 +34,10 @@ public class Move : MonoBehaviour {
         {
         GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
         GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-        transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());      
         }
         else
             stunDuration -= Time.deltaTime;
 	}
+
 }
