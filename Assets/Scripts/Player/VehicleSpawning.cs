@@ -1,22 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class VehicleSpawning : MonoBehaviour {
-    private bool VehicleSpawned = false;
-    private bool VehicleChosen = false;
     public Transform VehiclePrefab;
     public int VehicleType = 0;
     public int VehicleCount = 0;
-
+    public List<Transform> players = new List<Transform>();
     public Transform LocalPlayers;
 
 
     void Start()
+    {        
+    }
+    void Update()
     {
-      
-        VehicleSpawned = true;
-        Transform player = (Transform)Instantiate(VehiclePrefab);
-        player.SetParent(LocalPlayers);
         
     }
+    void FixedUpdate()
+    {
+        if (players.Count <= VehicleCount + 1)
+        {
+            SpawnPlayer();
+        }
+    }
+
+    public void SpawnPlayer()
+    {
+        Transform player = (Transform)Instantiate(VehiclePrefab, transform.position, Quaternion.Euler(0, 0, 0));
+        VehicleCount++;
+        players.Add(player);
+        player.GetComponent<Player>().playerID = Time.time + players.Count;
+        player.SetParent(LocalPlayers);
+    }
+    
 }
