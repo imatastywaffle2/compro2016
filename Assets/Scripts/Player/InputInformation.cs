@@ -3,7 +3,16 @@ using System.Collections;
 
 public class InputInformation : MonoBehaviour
 {
+    CursorLockMode wantedMode;
 
+    void Start()
+    {
+        wantedMode = CursorLockMode.Locked;
+        Cursor.lockState = wantedMode;
+        // Hide cursor when locking
+        Cursor.visible = (CursorLockMode.Locked != wantedMode);
+
+    }
 
     // Use this for initialization
     void Update()
@@ -11,6 +20,10 @@ public class InputInformation : MonoBehaviour
         Forward();
         SideMovement();
         RotateShip();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Cursor.lockState = wantedMode = CursorLockMode.None;
+
     }
 
     public float Forward()
@@ -51,6 +64,14 @@ public class InputInformation : MonoBehaviour
         }
 
         return 0;
+    }
+    public float AxisX()
+    {
+        return Input.GetAxis("Mouse X");
+    }
+    public float AxisY()
+    {
+        return Input.GetAxis("Mouse Y");
     }
 
 }
