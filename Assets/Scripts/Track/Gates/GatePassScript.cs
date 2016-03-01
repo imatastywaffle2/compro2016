@@ -7,11 +7,11 @@ public class GatePassScript : MonoBehaviour
     List<Player> PlayersPassed = new List< Player>();
 
     private int count;
-    public GUIText countText;
+   // public GUIText countText;
 
 	void Start ()
     {
-        count = 0;
+       // count = 0;
       //  SetCountText ();
 	}
 
@@ -27,14 +27,14 @@ public class GatePassScript : MonoBehaviour
             if (!PlayersPassed.Contains(col.gameObject.GetComponent<Player>()))
                 PlayersPassed.Add(col.gameObject.GetComponent<Player>());
 
-            count = count + 1;
+          //  count = count + 1;
            // SetCountText();
 
         }
 
         //void SetCountText ()
             {
-            countText.text = "Count: " + count.ToString();
+         //   countText.text = "Count: " + count.ToString();
         }
 
     }
