@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 320317068}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 180.1, y: -78.3, z: -4.3}
+  m_LocalPosition: {x: 259.6, y: -78.3, z: -4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 253954311}
@@ -330,6 +330,10 @@ Prefab:
     - target: {fileID: 169938, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_Name
       value: Gate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461402, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
@@ -469,6 +473,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461402, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
