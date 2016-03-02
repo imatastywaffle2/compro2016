@@ -1088,7 +1088,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 09fd6d4aa42ef814490e31a040b8de3c, type: 3}
 --- !u!64 &6470062
 MeshCollider:
@@ -1405,6 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d21e85008ba6b842b9a6babbb5f888e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayersPassed: []
 --- !u!114 &11450150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,6 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573ab0816dd4cc94a8aa47ce7ae3207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gate: {fileID: 11433442}
 --- !u!114 &11484504
 MonoBehaviour:
   m_ObjectHideFlags: 1

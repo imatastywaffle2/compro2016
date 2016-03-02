@@ -329,11 +329,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 169938, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_Name
-      value: Gate (1)
+      value: Gate 02
       objectReference: {fileID: 0}
     - target: {fileID: 6461402, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_Convex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433442, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: GateNumber
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
@@ -475,9 +479,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6461402, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
-      propertyPath: m_Convex
-      value: 0
+    - target: {fileID: 11433442, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: GateNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169938, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_Name
+      value: Gate 01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
