@@ -30,6 +30,7 @@ GameObject:
   - 114: {fileID: 11457404}
   - 54: {fileID: 5434980}
   - 65: {fileID: 6553084}
+  - 114: {fileID: 11495922}
   m_Layer: 0
   m_Name: Base
   m_TagString: Player
@@ -315,6 +316,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vehicle: {fileID: 129952}
   stunDuration: 0
+--- !u!114 &11495922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656c12f4b64fce041879bccc2567364f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  currentGate: 0
 --- !u!124 &12411080
 Behaviour:
   m_ObjectHideFlags: 1
