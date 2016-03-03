@@ -12,6 +12,8 @@ public class GateManager : MonoBehaviour
 	
 	void Update ()
     {
-	
+	    
 	}
+
+
 }
