@@ -13,6 +13,8 @@ public class Move : MonoBehaviour {
     float invertOrNot;
     float velocityZerotoOne;
 
+    
+
     public float stunDuration = 0;
 
     Vehicle Vehicles;
@@ -44,8 +46,7 @@ public class Move : MonoBehaviour {
         {
             stunDuration -= Time.deltaTime;
         }
-        Rigidbody rb = GetComponent<Rigidbody>();
-        Vector3 v3Velocity = rb.velocity;
+        
 
     }
 

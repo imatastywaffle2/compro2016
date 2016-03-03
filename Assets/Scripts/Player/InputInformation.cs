@@ -4,6 +4,8 @@ using System.Collections;
 public class InputInformation : MonoBehaviour
 {
     CursorLockMode wantedMode;
+    bool invertVert = false;
+    bool invertHorizontal = false;
 
     void Start()
     {
@@ -11,7 +13,9 @@ public class InputInformation : MonoBehaviour
         Cursor.lockState = wantedMode;
         // Hide cursor when locking
         Cursor.visible = (CursorLockMode.Locked != wantedMode);
-
+        
+        invertVert = PlayerPrefs.GetInt("InvertVert") == 1 ? true : false;
+        invertHorizontal = PlayerPrefs.GetInt("InvertHorizontal") == 1 ? true : false;
     }
 
     // Use this for initialization
@@ -67,11 +71,17 @@ public class InputInformation : MonoBehaviour
     }
     public float AxisX()
     {
-        return Input.GetAxis("Mouse X");
+        if (invertHorizontal)
+            return Input.GetAxis("Mouse X");
+        else
+            return -Input.GetAxis("Mouse X");
     }
     public float AxisY()
     {
+        if(invertVert)
         return Input.GetAxis("Mouse Y");
+        else
+            return -Input.GetAxis("Mouse Y");
     }
 
 }
