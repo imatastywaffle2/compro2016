@@ -79,9 +79,9 @@ public class InputInformation : MonoBehaviour
     public float AxisY()
     {
         if(invertVert)
-        return Input.GetAxis("Mouse Y");
-        else
             return -Input.GetAxis("Mouse Y");
+        else
+            return Input.GetAxis("Mouse Y");
     }
 
 }

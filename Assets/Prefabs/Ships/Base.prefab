@@ -72,26 +72,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &184512
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 440496}
-  - 20: {fileID: 2052742}
-  - 124: {fileID: 12411080}
-  - 92: {fileID: 9264840}
-  - 81: {fileID: 8161948}
-  - 45: {fileID: 4559860}
-  m_Layer: 0
-  m_Name: PlayerCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &420424
 Transform:
   m_ObjectHideFlags: 1
@@ -103,7 +83,7 @@ Transform:
   m_LocalScale: {x: 0.51586753, y: 0.5136482, z: 0.5136483}
   m_Children: []
   m_Father: {fileID: 492524}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &434466
 Transform:
   m_ObjectHideFlags: 1
@@ -115,19 +95,7 @@ Transform:
   m_LocalScale: {x: 0.51586753, y: 0.5136482, z: 0.5136483}
   m_Children: []
   m_Father: {fileID: 492524}
-  m_RootOrder: 2
---- !u!4 &440496
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_LocalRotation: {x: 0.13052621, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.606, z: -5.917}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 492524}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &469652
 Transform:
   m_ObjectHideFlags: 1
@@ -139,7 +107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 492524}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &492524
 Transform:
   m_ObjectHideFlags: 1
@@ -150,46 +118,11 @@ Transform:
   m_LocalPosition: {x: -10.83, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 440496}
   - {fileID: 469652}
   - {fileID: 434466}
   - {fileID: 420424}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &2052742
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 100000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!23 &2320760
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -223,14 +156,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181880}
   m_Mesh: {fileID: 4300000, guid: 04bb089af0c4c194b9251a7ae2ad2c41, type: 3}
---- !u!45 &4559860
-Skybox:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 005cfd9880d8b2348ae6ca115c41f70d, type: 2}
 --- !u!54 &5434980
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -258,20 +183,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &8161948
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_Enabled: 1
---- !u!92 &9264840
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_Enabled: 1
 --- !u!114 &11424830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,13 +240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   currentGate: 0
---- !u!124 &12411080
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184512}
-  m_Enabled: 1
 --- !u!198 &19801774
 ParticleSystem:
   m_ObjectHideFlags: 1

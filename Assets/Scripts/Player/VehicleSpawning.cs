@@ -26,6 +26,7 @@ public class VehicleSpawning : MonoBehaviour {
     {
         Transform player = (Transform)Instantiate(VehiclePrefab, transform.position, Quaternion.Euler(0, 0, 0));
         player.SetParent(LocalPlayers);
+        player.gameObject.layer = 8;
         VehicleCount++;
         players.Add(player);
         player.GetComponent<Player>().playerID = Time.time + players.Count;
