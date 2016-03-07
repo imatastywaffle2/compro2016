@@ -11,27 +11,26 @@ public class VehicleSpawning : MonoBehaviour {
 
 
     void Start()
-    {        
+    {
+        SpawnPlayer();
     }
     void Update()
     {
         
     }
     void FixedUpdate()
-    {
-        if (players.Count <= VehicleCount + 1)
-        {
-            SpawnPlayer();
-        }
+    { 
     }
 
     public void SpawnPlayer()
     {
         Transform player = (Transform)Instantiate(VehiclePrefab, transform.position, Quaternion.Euler(0, 0, 0));
+        player.SetParent(LocalPlayers);
         VehicleCount++;
         players.Add(player);
         player.GetComponent<Player>().playerID = Time.time + players.Count;
-        player.SetParent(LocalPlayers);
+        
+        //note to self change later to when player joins
     }
     
 }

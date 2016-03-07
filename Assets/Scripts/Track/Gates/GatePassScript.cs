@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GatePassScript : MonoBehaviour
 {
-    List<Player> PlayersPassed = new List< Player>();
+    public Gate gate;
+
+    private int count;
+   // public GUIText countText;
 
 	void Start ()
     {
-	
+        // count = 0;
+        //  SetCountText ();
+        
 	}
 
     void Update ()
@@ -20,9 +24,22 @@ public class GatePassScript : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            if (!PlayersPassed.Contains(col.gameObject.GetComponent<Player>()))
-                PlayersPassed.Add(col.gameObject.GetComponent<Player>());
+            Player player = col.gameObject.GetComponent<Player>();
+            if (!gate.PlayersPassed.Contains(player) && gate.GateNumber == player.currentGate + 1){
+                player.currentGate++;
+                gate.PlayersPassed.Add(player);
+
+            }
+          //  count = count + 1;
+           // SetCountText();
+
         }
+
+        //void SetCountText ()
+            {
+         //   countText.text = "Count: " + count.ToString();
+        }
+
     }
 
 }

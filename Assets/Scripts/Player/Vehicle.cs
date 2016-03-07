@@ -11,8 +11,10 @@ public class Vehicle : MonoBehaviour {
     public float verticalSpeed = 7;
     public float horizontalAccel = 1;
     public float verticalAccel = 1;
-    public float minimumSpeed = 5; 
-  
+    public float minimumSpeed = 5;
+    double mph;
+    GUIText mphDisplay;
+
 
     // Use this for initialization
     void Start ()
@@ -31,5 +33,11 @@ public class Vehicle : MonoBehaviour {
             item.transform.SetParent(transform);
             ItemPickup = item.GetComponent<Pickup>();
         }
+    }
+    void FixedUpdate()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        mph = rb.velocity.magnitude * 2.237;
+        mphDisplay.text = mph + " MPH";
     }
 }

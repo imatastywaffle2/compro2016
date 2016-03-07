@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9e0f0d548ea6b4fb0812a67fb27133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehiclePrefab: {fileID: 443362, guid: ad134a38e1bdf0045a6ff97a11f12a14, type: 2}
+  VehiclePrefab: {fileID: 492524, guid: 9df203fea917fc04eabef0e66606a8d7, type: 2}
   VehicleType: 0
   VehicleCount: 0
   players: []

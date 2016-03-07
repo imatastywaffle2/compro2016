@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 13486832ef89d454e95e52cf31add5ce
-timeCreated: 1455135293
+guid: 04bb089af0c4c194b9251a7ae2ad2c41
+timeCreated: 1456861941
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Default_Prototype
+    100002: GridBox_Default
     400000: //RootNode
-    400002: Default_Prototype
-    2300000: Default_Prototype
-    3300000: Default_Prototype
-    4300000: Default_Prototype
+    400002: GridBox_Default
+    2300000: GridBox_Default
+    3300000: GridBox_Default
+    4300000: GridBox_Default
   materials:
     importMaterials: 1
     materialName: 0
