@@ -85,10 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &26622367 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 129952, guid: 9df203fea917fc04eabef0e66606a8d7, type: 2}
-  m_PrefabInternal: {fileID: 742247872}
 --- !u!1 &361517284
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +277,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isMainScene: 1
-  _sceneSetup: []
+  _sceneSetup:
+  - scene:
+      editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
+      name: Test
+      _path: Assets/Scenes/Test.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
+      name: Player
+      _path: Assets/Scenes/Player.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: fa81009f5c66a9c448b18bfd8d67b674
+      name: Pickups
+      _path: Assets/Scenes/Pickups.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: 09946cafaacd674489afff344d91d2cd
+      name: UI
+      _path: Assets/Scenes/UI.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
+      name: Track
+      _path: Assets/Scenes/Track.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
+    loadInEditor: 1
+    loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
 --- !u!4 &449732019
 Transform:
@@ -485,27 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 750558685, guid: 926951d45b63c0448bc127a39128034b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueObjects: []
-  _crossSceneReferences: []
-  _topLevelGameObjs:
-  - {fileID: 567729605}
-  - {fileID: 26622367}
-  - {fileID: 487273527}
-  - {fileID: 406631009}
-  - {fileID: 540587980}
-  - {fileID: 969366474}
-  - {fileID: 1300825958}
-  - {fileID: 1007715735}
-  - {fileID: 1699714355}
-  - {fileID: 1539698658}
-  - {fileID: 1904217358}
-  - {fileID: 1217536663}
-  - {fileID: 361517284}
-  - {fileID: 449732016}
-  _sceneAssetGuid: 5564584d6774f1f48b81ae1ad9d12b26
-  _sceneAsset: {fileID: 102900000, guid: 5564584d6774f1f48b81ae1ad9d12b26, type: 3}
-  _sceneName: Background
-  _sceneIsCompressed: 1
 --- !u!4 &567729607
 Transform:
   m_ObjectHideFlags: 0
