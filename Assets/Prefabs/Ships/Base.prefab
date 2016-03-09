@@ -195,10 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemPickup: {fileID: 0}
-  fowardAccel: 100
+  fowardAccel: 500
   maxSpeed: 0
   recoveryTime: 0
-  horizontalSpeed: 2
+  horizontalSpeed: 150
   verticalSpeed: 0
   horizontalAccel: 0
   verticalAccel: 0
