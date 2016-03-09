@@ -39,6 +39,7 @@ public class InputInformation : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             return -0.5f;
+
         }
         else
             return 0;
@@ -47,7 +48,7 @@ public class InputInformation : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            return -1;
+            return -1;      
         }
         else if (Input.GetKey(KeyCode.E))
         {
