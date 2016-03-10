@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Pickup : MonoBehaviour {
 
-    public int velocityIncrease;
+    public float velocityIncrease;
     public bool shield;
     public Quaternion scale;
     public GameObject projectile;

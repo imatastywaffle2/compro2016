@@ -13,11 +13,6 @@ public class PickupBox : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
-
-
-
     }
 
         //public int Next
