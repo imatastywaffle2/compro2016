@@ -34,7 +34,7 @@ public class Move : MonoBehaviour {
         horizontalspeed = Vehicles.horizontalSpeed;
         if (stunDuration <= 0)
         {          
-            GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward() * Vehicles.boostSpeed);
+            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.bonusSpeed) * InputInfo.Forward());
             GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
             transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
             transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
