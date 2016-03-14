@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: b55a23229668ea643811832eb1afa781
-timeCreated: 1457638038
+guid: c5c07c81e873f7046aecdc880cf1bb93
+timeCreated: 1457978633
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: asteroid
+    100002: //RootNode
+    400000: asteroid
+    400002: //RootNode
+    2300000: asteroid
+    3300000: asteroid
+    4300000: asteroid
   materials:
     importMaterials: 1
     materialName: 0
