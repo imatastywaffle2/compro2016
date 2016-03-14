@@ -7,5 +7,5 @@ public class Pickup : MonoBehaviour {
     public bool shield;
     public Quaternion scale;
     public GameObject projectile;
-    public int timer;
+    public float timer;
 }
