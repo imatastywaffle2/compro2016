@@ -84,5 +84,14 @@ public class InputInformation : MonoBehaviour
         else
             return Input.GetAxis("Mouse Y"); //Get invert setting
     }
+    public float UsePickup()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            return 1;
+        }
+        else
+            return 0;
+    }
 
 }
