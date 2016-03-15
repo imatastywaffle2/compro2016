@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a76490ee80ee44880a5a9585fd6c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityIncrease: 15
+  velocityIncrease: 1.5
   shield: 0
   scale: {x: 0, y: 0, z: 0, w: 0}
   projectile: {fileID: 0}
