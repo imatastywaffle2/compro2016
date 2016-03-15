@@ -12,24 +12,35 @@ public class Vehicle : MonoBehaviour {
     public float horizontalAccel = 1;
     public float verticalAccel = 1;
     public float minimumSpeed = 5;
-    public float boostSpeed;
+    public float bonusSpeed;
     Pickup Pickups;
+    InputInformation Information;
 
 
     // Use this for initialization
     void Start ()
     {
         Pickups = GetComponent<Pickup>();
+        Information = GetComponent<InputInformation>();
+        bonusSpeed = 0;
     }
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (Pickups.timer > 0 && Input.GetKey(KeyCode.Space) && ItemPickup.name == "PickupVelocityIncrease")
+        if (Pickups.timer > 0 && Information.UsePickup() == 1 && ItemPickup.name == "PickupVelocityIncrease")
         {
-            Pickups.timer--;
-            boostSpeed = 1.5f;
+            UsePickup();
         }
-        else boostSpeed = 1;
+        else if (Pickups.timer <= 0)
+        {
+            bonusSpeed = 0;
+        }
+    }
+
+    void UsePickup()
+    {
+        Pickups.timer -= Time.deltaTime;
+        bonusSpeed = 150;
     }
 
     void OnCollisionEnter(Collision co)
