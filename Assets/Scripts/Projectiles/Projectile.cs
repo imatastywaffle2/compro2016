@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public float stunDuration = 2;
 
     // Speed
-    public float speed = 5;
+    public float speed = 700;
 
     // Target
     public Transform target;
@@ -35,9 +35,13 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Move>().stunDuration = stunDuration;
-            Destroy(gameObject);
+            other.gameObject.GetComponent<Vehicle>().Stun();
+            Destroy(gameObject);           
         }
+    }
+    void OnTriggerEnter(Collider otherShip)
+    {
+        //make a code for detecting a ship that isnt yourself.
     }
 
 
