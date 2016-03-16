@@ -49,7 +49,6 @@ public class Vehicle : MonoBehaviour {
         Pickups.used = true;
         bonusSpeed = Pickups.velocityIncrease;
         shieldActivated = Pickups.shield;
-        Instantiate(Pickups.projectile);
     }
     void destroyPickup()
     {
