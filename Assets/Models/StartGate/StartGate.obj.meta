@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: 9587514cb43380b46a34cc4c922611d0
-timeCreated: 1458157303
+guid: 926c4affa23654a49b5655d31eced83d
+timeCreated: 1458158404
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Default_Prototype
+    100002: //RootNode
+    400000: Default_Prototype
+    400002: //RootNode
+    2300000: Default_Prototype
+    3300000: Default_Prototype
+    4300000: Default_Prototype
   materials:
     importMaterials: 1
     materialName: 0

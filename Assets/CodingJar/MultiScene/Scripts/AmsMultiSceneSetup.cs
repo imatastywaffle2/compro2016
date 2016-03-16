@@ -85,7 +85,13 @@ namespace CodingJar.MultiScene
 		[SerializeField]	List<SceneEntry>	_sceneSetup = new List<SceneEntry>();
 		[Readonly, SerializeField]	string				_thisScenePath;
 
+		/// <summary> The co-routine that runs in play-in-editor mode that ensures our scenes are baked correctly </summary>
+		private Coroutine _waitingToBake = null;
+		private List<SceneEntry>	_bakedScenesLoading = new List<SceneEntry>();	// Currently loading or loaded
+		private List<SceneEntry>	_bakedScenesMerged = new List<SceneEntry>();	// Already merged
+
 		public static System.Action<AmsMultiSceneSetup>	OnAwake;
+		public static System.Action<AmsMultiSceneSetup>	OnDestroyed;
 		
 #if UNITY_EDITOR
 		/// <summary>
@@ -120,7 +126,7 @@ namespace CodingJar.MultiScene
 		/// </summary>
 		void Awake()
 		{
-			AmsDebug.Log( this, "{0}.Awake() (Scene {1}). Frame: {2}", GetType().Name, gameObject.scene.name, Time.frameCount );
+			AmsDebug.Log( this, "{0}.Awake() (Scene {1}). IsLoaded: {2}. Frame: {3}", GetType().Name, gameObject.scene.name, gameObject.scene.isLoaded, Time.frameCount );
 			_thisScenePath = gameObject.scene.path;
 
 			// Notify any listeners we're now awake
@@ -140,6 +146,9 @@ namespace CodingJar.MultiScene
 			// Make sure we update the settings every time we unload/load a Scene
 			EditorApplication.hierarchyWindowChanged -= OnBeforeSerialize;
 #endif
+
+			if ( OnDestroyed != null )
+				OnDestroyed( this );
 		}
 
 		/// <summary>
@@ -189,7 +198,8 @@ namespace CodingJar.MultiScene
 		/// </summary>
 		private void LoadSceneSetupAtRuntime()
 		{
-			foreach( var entry in _sceneSetup )
+			List<SceneEntry> sceneSetup = new List<SceneEntry>( _sceneSetup );
+			foreach( var entry in sceneSetup )
 			{
 				LoadEntryAtRuntime( entry );
 			}
@@ -212,24 +222,35 @@ namespace CodingJar.MultiScene
 			if ( !existingScene.IsValid() )
 				existingScene = SceneManager.GetSceneByPath(entry.scene.runtimePath);
 
-			if ( Application.isEditor )
-			{
-				if ( entry.loadMethod == LoadMethod.Baked )
-				{
-					if ( !existingScene.IsValid() )
-					{
-						AmsDebug.LogWarning( this, "Attemping to load {0} even though it's baked. It will most likely fail which is not indicative of runtime behaviour", entry.scene.name );
-						SceneManager.LoadScene( entry.scene.runtimePath, LoadSceneMode.Additive );
-						StartCoroutine( CoWaitAndBake(entry) );
-					}
-					else
-					{
-						BakeScene( entry );
-					}
+#if UNITY_EDITOR
+			// Could be we just created the scene because it's baked
+			if ( !existingScene.IsValid() )
+				existingScene = SceneManager.GetSceneByName(entry.scene.runtimePath);
 
+			if ( Application.isEditor && entry.loadMethod == LoadMethod.Baked )
+			{
+				// If we've already processed this, return early
+				if ( _bakedScenesLoading.Contains(entry) || _bakedScenesMerged.Contains(entry) )
 					return;
+
+				// We're loading this entry, don't allow this to be re-entrant
+				_bakedScenesLoading.Add(entry);
+
+				if ( !existingScene.IsValid() )
+				{
+					// This allows us to load the level even in playmode
+					EditorApplication.LoadLevelAdditiveInPlayMode( entry.scene.editorPath );
 				}
+
+				// Loading a scene can take multiple frames so we have to wait.
+				// Baking scenes can only take place when they're all loaded due to cross-scene referencing
+				if ( _waitingToBake != null )
+					StopCoroutine( _waitingToBake );
+
+				_waitingToBake = StartCoroutine( CoWaitAndBake() );
+				return;
 			}
+#endif
 
 			// If it's already loaded, return early
 			if( existingScene.IsValid() )
@@ -237,14 +258,14 @@ namespace CodingJar.MultiScene
 
 			if ( entry.loadMethod == LoadMethod.AdditiveAsync )
 			{
-				AmsDebug.Log( this, "Loading {0} Asynchronously", entry.scene.name );
+				AmsDebug.Log( this, "Loading {0} Asynchronously from {1}", entry.scene.name, gameObject.scene.name );
 				entry.asyncOp = SceneManager.LoadSceneAsync( entry.scene.runtimePath, LoadSceneMode.Additive );
 				return;
 			}
 
 			if ( entry.loadMethod == LoadMethod.Additive )
 			{
-				AmsDebug.Log( this, "Loading {0}", entry.scene.name );
+				AmsDebug.Log( this, "Loading {0} from {1}", entry.scene.name, gameObject.scene.name );
 				SceneManager.LoadScene( entry.scene.runtimePath, LoadSceneMode.Additive );
 				return;
 			}
@@ -352,63 +373,123 @@ namespace CodingJar.MultiScene
 				if ( !scene.IsValid() )
 				{
 					if ( bShouldLoad )
+					{
+						AmsDebug.Log( this, "Scene {0} is loading Scene {1} in Editor", gameObject.scene.name, entry.scene.name );
 						EditorSceneManager.OpenScene( entry.scene.editorPath, OpenSceneMode.Additive );
+					}
 					else
+					{
+						AmsDebug.Log( this, "Scene {0} is opening Scene {1} (without loading) in Editor", gameObject.scene.name, entry.scene.name );
 						EditorSceneManager.OpenScene( entry.scene.editorPath, OpenSceneMode.AdditiveWithoutLoading );
+					}
 				}
 				else if ( bShouldLoad != scene.isLoaded )
 				{
 					if ( bShouldLoad && !scene.isLoaded )
+					{
+						AmsDebug.Log( this, "Scene {0} is loading existing Scene {1} in Editor", gameObject.scene.name, entry.scene.name );
 						EditorSceneManager.OpenScene( entry.scene.editorPath, OpenSceneMode.Additive );
+					}
 					else
+					{
+						AmsDebug.Log( this, "Scene {0} is closing Scene {1} in Editor", gameObject.scene.name, entry.scene.name );
 						EditorSceneManager.CloseScene( scene, false );
+					}
 				}
 			} catch ( System.Exception ex ) {	Debug.LogException( ex, this );	}
 		}
 #endif
 
 		/// <summary>
-		/// Scene loads take a frame to complete, so we wait a frame.
+		/// Scene loads take a frame to complete, so we wait until all of the baked scenes are loaded, then we merge them.
+		/// TODO: This is to help cross-scene references but isn't quite right, because a non-baked scene can reference a baked
+		/// Object.
 		/// </summary>
-		/// <param name="entry">The scene entry</param>
-		private System.Collections.IEnumerator	CoWaitAndBake( SceneEntry entry )
+		private System.Collections.IEnumerator	CoWaitAndBake()
 		{
-			int currentFrame = Time.frameCount;
-			while ( Time.frameCount != currentFrame )
-				yield return null;
-
-			BakeScene( entry );
-		}
-
-		void BakeScene( SceneEntry entry )
-		{
-			var scene = entry.scene.scene;
-			var activeScene = SceneManager.GetActiveScene();
-			if ( scene == activeScene || scene == gameObject.scene )
-				return;
-
-			if ( entry.loadMethod != LoadMethod.Baked )
-				return;
-
-			if ( !gameObject.scene.isLoaded )
-				return;
-
-			AmsDebug.Log( this, "Merging {0} into {1}", scene.path, gameObject.scene.path );
-
-			var targetCrossRefs = AmsCrossSceneReferences.GetSceneSingleton( gameObject.scene, false );
-			if ( targetCrossRefs )
-				targetCrossRefs.ResolvePendingCrossSceneReferences();
-
-			var sourceCrossRefs = AmsCrossSceneReferences.GetSceneSingleton( entry.scene.scene, false );
-			if ( sourceCrossRefs )
+			// Ensure ALL of the Baked Scenes are loaded
+			bool bAllLoaded = false;
+			while ( !bAllLoaded )
 			{
-				sourceCrossRefs.ResolvePendingCrossSceneReferences();
-				
-				// #warning this isn't right
-				// TODO: This isn't right because we still need this as a marker for future cross-scene references
-				GameObject.Destroy( sourceCrossRefs.gameObject );
+				bAllLoaded = true;
+				foreach( var entry in _sceneSetup )
+				{
+					// For now, we wait until EVERYTHING is loaded so the cross-scene references are correct.
+					bAllLoaded = bAllLoaded && (entry.loadMethod == LoadMethod.DontLoad || entry.scene.isLoaded || _bakedScenesMerged.Contains(entry));
+				}
+
+				// We're not all loaded, wait another frame.
+				if ( !bAllLoaded )
+					yield return null;
 			}
 
+			// Give us the ability to fix-up the cross-scene references.
+			foreach( var entry in _sceneSetup )
+			{
+				// If it's Invalid, it's already baked.
+				if ( CanMerge(entry) )
+					PreMerge(entry);
+			}
+
+			// Now merge the scenes
+			foreach( var entry in _sceneSetup )
+			{
+				if ( CanMerge(entry) )
+				{
+					MergeScene(entry);
+					_bakedScenesMerged.Add( entry );
+				}
+			}
+		}
+
+		/// <summary>
+		/// Are we ready to merge in this scene entry?
+		/// </summary>
+		/// <param name="entry">The entry to merge</param>
+		/// <returns>True iff it can be merged</returns>
+		private bool CanMerge( SceneEntry entry )
+		{
+			if ( entry.loadMethod != LoadMethod.Baked )
+				return false;
+
+			var scene = entry.scene.scene;
+			if ( !scene.IsValid() )
+				return false;
+
+			var activeScene = SceneManager.GetActiveScene();
+			if ( scene == activeScene || scene == gameObject.scene )
+				return false;
+
+			if ( !gameObject.scene.isLoaded )
+				return false;
+
+			return true;
+		}
+
+		/// <summary>
+		/// 'Bakes' a scene by merging it into our scene.
+		/// </summary>
+		/// <param name="entry">The entry to bake</param>
+		private void PreMerge( SceneEntry entry )
+		{
+			var scene = entry.scene.scene;
+
+			// This is a last chance before that scene gets destroyed.
+			var crossSceneRefs = AmsCrossSceneReferences.GetSceneSingleton( scene, false );
+			if ( crossSceneRefs )
+				crossSceneRefs.ResolvePendingCrossSceneReferences();
+		}
+
+		private void MergeScene( SceneEntry entry )
+		{
+			var scene = entry.scene.scene;
+
+			// Make sure there is only ever one AmsMultiSceneSetup in a given scene
+			var sourceSetup = GameObjectEx.GetSceneSingleton< AmsMultiSceneSetup >( scene, false );				
+			if ( sourceSetup )
+				GameObject.Destroy( sourceSetup.gameObject );
+
+			AmsDebug.Log( this, "Merging {0} into {1}", scene.path, gameObject.scene.path );
 			SceneManager.MergeScenes( scene, gameObject.scene );
 		}
 	}
