@@ -15,16 +15,16 @@ public class PickupSpawner : MonoBehaviour
         //if something to make it not spawn if one is already there
         InvokeRepeating("SpawnNext", interval, interval);
     }
-	void SpawnNext()
+    void SpawnNext()
     {
         int randomNumber = Random.Range(0, 3);
-        if(SpawnedPickup == null)
-            SpawnedPickup = (GameObject)Instantiate(Prefab[randomNumber], transform.position, Quaternion.identity);
+        if (SpawnedPickup == null)
+        {
+                SpawnedPickup = (GameObject)Instantiate(Prefab[randomNumber], transform.position, Quaternion.identity);
+        }
     }
     void Update()
-    {
-
-      
+    { 
     }
 	
 }

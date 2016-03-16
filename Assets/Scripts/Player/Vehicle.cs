@@ -12,15 +12,47 @@ public class Vehicle : MonoBehaviour {
     public float horizontalAccel = 1;
     public float verticalAccel = 1;
     public float minimumSpeed = 5;
+    public bool shieldActivated;
+    public float bonusSpeed;
+    public float vehicleStun;
+    Pickup Pickups;
+    InputInformation Information;
 
 
     // Use this for initialization
     void Start ()
     {
-	}
+        Pickups = GetComponent<Pickup>();
+        Information = GetComponent<InputInformation>();
+        bonusSpeed = 0;
+    }
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
+        if (Pickups && !Pickups.used && Information.UsePickup() == 1)
+        {
+            UsePickup();         
+        }
+        else if (Pickups && Pickups.used && Pickups.timer <= 0 || !shieldActivated)
+        {
+            destroyPickup();   
+        }
+        else
+        {
+            bonusSpeed = 0;
+            shieldActivated = false;          
+        }
+    }
+
+    void UsePickup()
+    {
+        Pickups.used = true;
+        bonusSpeed = Pickups.velocityIncrease;
+        shieldActivated = Pickups.shield;
+    }
+    void destroyPickup()
+    {
+        Destroy(ItemPickup.gameObject);
     }
 
     void OnCollisionEnter(Collision co)
@@ -31,5 +63,15 @@ public class Vehicle : MonoBehaviour {
             item.transform.SetParent(transform);
             ItemPickup = item.GetComponent<Pickup>();
         }
+        
+    }
+    public void Stun()
+    {
+        if (!shieldActivated)
+        {
+            vehicleStun = 2;
+        }
+        else
+            vehicleStun = 0;       
     }
 }

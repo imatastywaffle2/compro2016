@@ -12,17 +12,17 @@ public class Move : MonoBehaviour {
     private Vector3 mousePosition;
     float invertOrNot;
     float velocityZerotoOne;
-    public ParticleSystem[] engines;   
-    public float stunDuration = 0;
+    public ParticleSystem[] engines;
     Vehicle Vehicles;
+    public float stunDuration;
     InputInformation InputInfo;
+
 
     // Use this for initialization
     void Start ()
     {
         Vehicles = GetComponent<Vehicle>();
         InputInfo = GetComponent<InputInformation>();
-
 
     }
 	
@@ -32,9 +32,10 @@ public class Move : MonoBehaviour {
         
         acceleration = Vehicles.fowardAccel;
         horizontalspeed = Vehicles.horizontalSpeed;
+        stunDuration = Vehicles.vehicleStun;
         if (stunDuration <= 0)
-        {
-            GetComponent<Rigidbody>().AddForce(transform.forward * acceleration * InputInfo.Forward());
+        {          
+            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.bonusSpeed) * InputInfo.Forward());
             GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
             transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
             transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
