@@ -33,13 +33,14 @@ public class Vehicle : MonoBehaviour {
         {
             UsePickup();         
         }
-        else if (Pickups && Pickups.used && Pickups.timer <= 0)
+        else if (Pickups && Pickups.used && Pickups.timer <= 0 || !shieldActivated)
         {
             destroyPickup();   
         }
         else
         {
             bonusSpeed = 0;
+            shieldActivated = false;          
         }
     }
 
@@ -48,6 +49,7 @@ public class Vehicle : MonoBehaviour {
         Pickups.used = true;
         bonusSpeed = Pickups.velocityIncrease;
         shieldActivated = Pickups.shield;
+        Instantiate(Pickups.projectile);
     }
     void destroyPickup()
     {
@@ -66,6 +68,11 @@ public class Vehicle : MonoBehaviour {
     }
     public void Stun()
     {
-        vehicleStun = 3;
+        if (!shieldActivated)
+        {
+            vehicleStun = 2;
+        }
+        else
+            vehicleStun = 0;       
     }
 }

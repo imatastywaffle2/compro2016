@@ -12,6 +12,10 @@ public class Projectile : MonoBehaviour
 
     // Target
     public Transform target;
+    void Start()
+    {
+        
+    }
 
     void FixedUpdate()
     {
@@ -21,13 +25,17 @@ public class Projectile : MonoBehaviour
             {
                 transform.LookAt(target.position);
                 // Fly towards the target        
-
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
+
             }
             else {
                 // Otherwise destroy self
                 Destroy(gameObject);
             }
+        }
+        else
+        {
+            GetComponent<Rigidbody>().velocity = transform.forward * speed;
         }
     }
 
@@ -39,9 +47,13 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);           
         }
     }
-    void OnTriggerEnter(Collision otherShip)
+    void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
+        if (otherShip.gameObject.GetComponent<Player>().playerID != gameObject.GetComponent<Player>().playerID && otherShip.gameObject.tag == "Player" && trackTarget)
+        {
+            target = otherShip.transform;
+        }
     }
 
 
