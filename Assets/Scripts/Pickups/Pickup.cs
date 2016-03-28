@@ -8,10 +8,11 @@ public class Pickup : MonoBehaviour {
     public Quaternion scale;
     public GameObject projectile;
     public float timer;
+    public bool canShoot = true;
 
     void FixedUpdate()
     {
-        if (used) 
+        if (used)
         {
             if (gameObject.name == "PickupVelocityIncrease")
             {
@@ -23,7 +24,9 @@ public class Pickup : MonoBehaviour {
                 shield = true;
             }
             if (gameObject.name == "PickupProjectile")
-            {
+            {              
+                ShootProjectile();
+                canShoot = false;
             }
         }
 
@@ -34,6 +37,10 @@ public class Pickup : MonoBehaviour {
         {
             shield = false;
         }
+    }
+    void ShootProjectile()
+    {
+        Instantiate(projectile);
     }
 
 }
