@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     public Transform target;
     void Start()
     {
-        
+
     }
 
     void FixedUpdate()
