@@ -65,11 +65,11 @@ namespace CodingJar.MultiScene
 		}
 
 		/// <summary>
-		/// Remove all of the stored cross-scene references.
+		/// Remove all of the stored cross-scene references that reference 'toScene'.
 		/// </summary>
-		public void ResetCrossSceneReferences()
+		public void ResetCrossSceneReferences( Scene toScene )
 		{
-			_crossSceneReferences.Clear();
+			_crossSceneReferences.RemoveAll( x => (x.toScene.scene == toScene) );
 		}
 
 		void Awake()
@@ -77,9 +77,12 @@ namespace CodingJar.MultiScene
 			AmsDebug.Log( this, "{0}.Awake() Scene: {1}. Path: {2}. Frame: {3}. Root Count: {4}", GetType().Name, gameObject.scene.name, gameObject.scene.path, Time.frameCount, gameObject.scene.rootCount );
 
 			_referencesToResolve = new List<RuntimeCrossSceneReference>( _crossSceneReferences );
-			ConditionalResolveReferences( _referencesToResolve );
+
+			//ConditionalResolveReferences( _referencesToResolve );
+			StartCoroutine( CoWaitForSceneLoadThenResolveReferences(gameObject.scene) );
 
 			AmsMultiSceneSetup.OnAwake += HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnDestroyed += HandleSceneDestroyed;
 		}
 
 		void Start()
@@ -90,13 +93,16 @@ namespace CodingJar.MultiScene
 			PerformPostBuildCleanup();
 
 			// Give us a second chance (helps initial load of scene)
-			// For some reason in Awake(), the scene we long to isn't considered "loaded"?!
+			// For some reason in Awake(), the scene we belong to isn't considered "loaded"?!
+			// Unfortunately we can get a Start() before CoWaitForSceneLoadThenResolveReferences finishes... so we need to nuke it if it's still running.
+			StopAllCoroutines();
 			ResolvePendingCrossSceneReferences();
 		}
 
 		void OnDestroy()
 		{
 			AmsMultiSceneSetup.OnAwake -= HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnDestroyed -= HandleSceneDestroyed;
 		}
 
 		/// <summary>
@@ -105,13 +111,57 @@ namespace CodingJar.MultiScene
 		/// <param name="sceneSetup">The AmsMultiSceneSetup that was loaded</param>
 		private void HandleNewSceneLoaded( AmsMultiSceneSetup sceneSetup )
 		{
+			StartCoroutine( CoWaitForSceneLoadThenResolveReferences(sceneSetup.gameObject.scene) );
+		}
+
+		/// <summary>
+		/// Whenever a scene is destroyed, we will receive this callback.  In the editor, we can remember that we may be about to lose a cross-scene reference.
+		/// </summary>
+		/// <param name="sceneSetup"></param>
+		private void HandleSceneDestroyed( AmsMultiSceneSetup sceneSetup )
+		{
+			var destroyedScene = sceneSetup.gameObject.scene;
+			if ( !destroyedScene.IsValid() )
+				return;
+
+			// If our own scene is being destroyed, we don't need to do anymore work
+			if ( destroyedScene == gameObject.scene )
+				return;
+
+			// Remove all of the pending refs for that scene.
+			_referencesToResolve.RemoveAll( x => x.toScene.scene == destroyedScene );
+
+			// Now we re-add all of the relevant refs to pending.  They'll be re-resolved when the scene is loaded again.
+			var allRelevantRefs = _crossSceneReferences.Where( x => x.toScene.scene == destroyedScene );
+			_referencesToResolve.AddRange( allRelevantRefs );
+		}
+
+		/// <summary>
+		/// This is a co-routine for waiting until a given scene is loaded, then performing a cross-scene reference resolve
+		/// </summary>
+		/// <param name="scene">The scene to guarantee loaded</param>
+		System.Collections.IEnumerator	CoWaitForSceneLoadThenResolveReferences( Scene scene )
+		{
+			if ( !scene.IsValid() )
+				yield break;
+
+			while ( !scene.isLoaded )
+				yield return null;
+
 			ResolvePendingCrossSceneReferences();
 		}
 
-		[ContextMenu("Retry Resolves")]
+		[ContextMenu("Retry Pending Resolves")]
 		public void ResolvePendingCrossSceneReferences()
 		{
 			ConditionalResolveReferences( _referencesToResolve );
+		}
+
+		[ContextMenu("Retry ALL Resolves")]
+		private void RetryAllResolves()
+		{
+			_referencesToResolve = new List<RuntimeCrossSceneReference>( _crossSceneReferences );
+			ResolvePendingCrossSceneReferences();
 		}
 
 		private void ConditionalResolveReferences( List<RuntimeCrossSceneReference> references )

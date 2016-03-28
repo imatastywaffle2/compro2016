@@ -67,7 +67,7 @@ namespace CodingJar
         /**
 		 * Find the given component on either the-passed in transform or on any of its parents.
 		 */
-		public static T FindInParents<T>( this Transform transform, bool bIncludeSelf ) where T : Component
+		public static T FindInParents<T>( this Transform transform, bool bIncludeSelf = true ) where T : Component
 		{
 #if UNITY_5
             var components = transform.GetComponentsInParent<T>(true);
