@@ -12,6 +12,7 @@ namespace CodingJar.MultiScene.Editor
 	static class AmsHierarchyDrawer
 	{
 		private static GUIStyle	_justifyRightLabel = null;
+		private static GUIStyle _justifyRightPopup = null;
 
 		[InitializeOnLoadMethod]
 		static void HookUpDrawer()
@@ -24,16 +25,24 @@ namespace CodingJar.MultiScene.Editor
 			if ( Application.isPlaying )
 				return;
 
-			// Event.Used is when it scrolls
-			// Let's not waste any resources unless we're painting
-			if ( Event.current.type != EventType.Repaint )
-				return;
+			// We can't early out because now we have widgets that respond to events.
+			// We could potentially early-out on EventType.Used (which is used during scrolling).
+			//if ( Event.current.type != EventType.Repaint )
+			//	return;
 
 			if ( _justifyRightLabel == null )
 			{
 				_justifyRightLabel = new GUIStyle( GUI.skin.label );
 				_justifyRightLabel.alignment = TextAnchor.UpperRight;
 				_justifyRightLabel.richText = true;
+			}
+
+			if ( _justifyRightPopup == null )
+			{
+				_justifyRightPopup = new GUIStyle( GUI.skin.FindStyle("Popup") );
+				_justifyRightPopup.stretchWidth = false;
+				_justifyRightPopup.alignment = TextAnchor.UpperRight;
+				_justifyRightPopup.richText = true;
 			}
 
 			// Which object are we looking at?
@@ -69,7 +78,7 @@ namespace CodingJar.MultiScene.Editor
 			var entry = entries.FirstOrDefault( x => x.scene.editorPath == scene.path );
 			if ( entry == null )
 			{
-				GUI.Label( selectionRect, ColorText("No AMS entry for this Scene", Color.red), _justifyRightLabel );
+				GUI.Label( selectionRect, ColorText("Save to Generate AMS Entry", Color.red), _justifyRightLabel );
 				return;
 			}
 
@@ -78,12 +87,18 @@ namespace CodingJar.MultiScene.Editor
 				var buildEntry = EditorBuildSettings.scenes.FirstOrDefault(x => x.path == scene.path);
 				if ( buildEntry == null || !buildEntry.enabled )
 				{
-					GUI.Label( selectionRect, ColorText( "Not in Build", Color.red ), _justifyRightLabel );
-					return;
+					// Draw this next to the drop-down.
+					Rect textRect = new Rect(selectionRect);
+					textRect.xMax -= 100.0f;
+					GUI.Label( textRect, ColorText( "Not in Build", Color.red ), _justifyRightLabel );
 				}
 			}
 
-			GUI.Label( selectionRect, ColorText(string.Format("({0})",entry.loadMethod.ToString()), Color.green), _justifyRightLabel );
+			EditorGUI.BeginChangeCheck();
+			selectionRect.xMin = selectionRect.xMax - 100.0f;
+			entry.loadMethod = (AmsMultiSceneSetup.LoadMethod)EditorGUI.EnumPopup( selectionRect, entry.loadMethod );
+			if ( EditorGUI.EndChangeCheck() )
+				EditorSceneManager.MarkSceneDirty( sceneSetup.gameObject.scene );
 		}
 
 		/// <summary>

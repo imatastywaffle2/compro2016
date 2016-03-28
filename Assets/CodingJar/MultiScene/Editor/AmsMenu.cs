@@ -30,7 +30,7 @@ namespace CodingJar.MultiScene.Editor
 		[MenuItem("Tools/Advanced Multi-Scene/Support")]
 		private static void GotoForumThread()
 		{
-			System.Diagnostics.Process.Start( "http://forum.unity3d.com/threads/advanced-multi-scene-coming-soon.383525/" );
+			System.Diagnostics.Process.Start( "http://forum.unity3d.com/threads/advanced-multi-scene-now-available.383525/" );
 		}
 
 		[MenuItem("Tools/Advanced Multi-Scene/Detect Cross-Scene Refs")]
