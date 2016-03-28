@@ -24,7 +24,6 @@ public class Pickup : MonoBehaviour {
             }
             if (gameObject.name == "PickupProjectile")
             {
-
             }
         }
 
