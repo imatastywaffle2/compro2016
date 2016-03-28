@@ -102,25 +102,108 @@ namespace CodingJar.MultiScene
 			ResolveInternal( fromObject, toObject, _fromField, this );
 		}
 
-		private static void ResolveInternal( Object fromObject, Object toObject, string fromField, RuntimeCrossSceneReference debugThis )
+		/// <summary>
+		/// Resolve a cross-scene reference piecewise.  This does the heavy lifting of figuring out how to parse the path.
+		/// </summary>
+		/// <param name="fromObject">The object that is the source of the cross-scene reference</param>
+		/// <param name="toObject">The object that the cross-scene reference is referring to</param>
+		/// <param name="fromFieldPath">The path of the field that fromObject uses to point to</param>
+		/// <param name="debugThis">Debug information about which cross-scene reference this is coming from</param>
+		private static void ResolveInternal( System.Object fromObject, Object toObject, string fromFieldPath, RuntimeCrossSceneReference debugThis )
 		{
+			// Sub-object path is indicated by a dot
+			string[] splitPaths = fromFieldPath.Split('.');
+
+			// Since the property is of the form: field1.field2.arrayName,arrayIndex.final_field or simply final_field, we need to chase
+			// the property down the rabbit hole starting with the base fromObject and going all the way to final_field.
+			for (int i = 0 ; i < splitPaths.Length - 1 ; ++i)
+			{
+				try
+				{
+					fromObject = GetObjectFromField( fromObject, splitPaths[i] );
+					if ( fromObject == null )
+					{
+						throw new ResolveException( string.Format("Cross-Scene Ref: {0}. Could not follow path {1} because {2} was null", debugThis, fromFieldPath, splitPaths[i]) );
+					}
+					else if ( !fromObject.GetType().IsClass )
+					{
+						throw new ResolveException( string.Format("Cross-Scene Ref: {0}. Could not follow path {1} because {2} was not a class (probably a struct). This is unsupported.", debugThis, fromFieldPath, splitPaths[i]) );
+					}
+				}
+				catch ( System.Exception ex )
+				{
+					throw new ResolveException( string.Format("Cross-Scene Ref: {0}. {1}", debugThis, ex.Message) );
+				}
+			}
+
+			// Finally, get the final field.
+			FieldInfo field;
+			int arrayIndex;
+			string fieldName = splitPaths[ splitPaths.Length-1 ];
+
+			if ( !GetFieldFromObject(fromObject, fieldName, out field, out arrayIndex ) )
+				throw new ResolveException( string.Format("Cross-Scene Ref: {0}. Could not parse piece of path {1} from {2}", debugThis, fieldName, fromFieldPath) );
+
+			// Now we can finally assign it!
+			AssignField( fromObject, toObject, field, arrayIndex );
+		}
+
+		/// <summary>
+		/// Try to find the field that belongs to fromObject.
+		/// </summary>
+		/// <param name="fromObject">The source object that has a field named fromField</param>
+		/// <param name="fromField">The field name to check for the reference. Can be of the form fieldName,index</param>
+		/// <param name="field">The field that represents fromField</param>
+		/// <param name="arrayIndex">The array index represented in fromField, or -1 if not an array</param>
+		/// <returns>The object referred to by fromObject.fromField</returns>
+		private static bool	GetFieldFromObject( System.Object fromObject, string fromField, out FieldInfo field, out int arrayIndex )
+		{
+			arrayIndex = -1;
+			field = null;
+
 			string[] parseField = fromField.Split(',');
 			string fieldName = parseField[0];
 			
 			// Check if it's an array
-			int arrayIndex = -1;
 			if ( parseField.Length > 1 )
 			{
 				if ( !int.TryParse(parseField[1], out arrayIndex) )
-					throw new ResolveException( string.Format("Cross-Scene Ref: {0}. Could not parse list index {1} from {2}", debugThis, parseField[1], fromField) );
+					return false;
 			}
 
-			FieldInfo field = fromObject.GetType().GetField( fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance );
-			if ( field == null )
-				throw new ResolveException( string.Format( "Cross-Scene Ref: {0}. Could not find Field {1}", debugThis, fieldName ) );
+			// Find the field
+			field = fromObject.GetType().GetField( fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance );
+			return (field != null);
+		}
 
-			AssignField( fromObject, toObject, field, arrayIndex );
-			// Success!
+		/// <summary>
+		/// Try to find the object that fromObject.fromField refers to
+		/// </summary>
+		/// <param name="fromObject">The source object that has a field named fromField</param>
+		/// <param name="fromField">The field name to check for the reference</param>
+		/// <returns>The object referred to by fromObject.fromField</returns>
+		private static System.Object	GetObjectFromField( System.Object fromObject, string fromField )
+		{
+			int arrayIndex;
+			FieldInfo field;
+
+			if ( !GetFieldFromObject( fromObject, fromField, out field, out arrayIndex ) )
+				throw new ResolveException( string.Format( "Could not find Field {0}", fromField ) );
+
+			bool isArray = arrayIndex >= 0;
+			if ( isArray )
+			{
+				var list = field.GetValue( fromObject ) as System.Collections.IList;
+				if ( list == null )
+					throw new ResolveException( string.Format( "Expected collection of elements for property {0} but field type is {1}", field.Name, field.FieldType.Name ) );
+				else if ( list.Count < arrayIndex )
+					throw new ResolveException( string.Format( "Expected collection of at least {0} elements from property {1}", arrayIndex, field.Name ) );
+
+				// Found it!  Here's the entry.
+				return list[arrayIndex];
+			}
+
+			return field.GetValue( fromObject );
 		}
 
 		/// <summary>
@@ -130,7 +213,7 @@ namespace CodingJar.MultiScene
 		/// <param name="toObject">The target object</param>
 		/// <param name="field">The field that should be assigned</param>
 		/// <param name="arrayIndex">The array index of that field (or negative if it's not an array)</param>
-		private static void AssignField( Object fromObject, Object toObject, FieldInfo field, int arrayIndex )
+		private static void AssignField( System.Object fromObject, Object toObject, FieldInfo field, int arrayIndex )
 		{
 			bool isArray = arrayIndex >= 0;
 			if ( isArray )

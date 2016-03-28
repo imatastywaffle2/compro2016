@@ -818,6 +818,12 @@ MonoBehaviour:
       _path: Assets/Scenes/Track.unity
     loadInEditor: 1
     loadMethod: 1
+  - scene:
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
+    loadInEditor: 1
+    loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
 --- !u!4 &449732019
 Transform:
