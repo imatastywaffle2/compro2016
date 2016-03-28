@@ -53,45 +53,65 @@ namespace CodingJar.MultiScene.Editor
             return fromProperty.GetHashCode() + toInstance.GetHashCode();
         }
 
+		/// <summary>
+		/// Give us a runtime resolvable version of this cross-scene reference.
+		/// This is a best-attempt and is not guaranteed to be resolvable.
+		/// </summary>
+		/// <returns>The runtime resolvable version.</returns>
 		public RuntimeCrossSceneReference	ToSerializable()
 		{
-			string fromField = ToSerializableField( fromProperty );
+			string fromField = ToRuntimeSerializableField( fromProperty );
 			return new RuntimeCrossSceneReference( new UniqueObject(fromObject), fromField, new UniqueObject(toInstance) );
 		}
 
-		private string ToSerializableField( SerializedProperty property )
+		/// <summary>
+		/// Given a property, let's return a runtime serializeable field string.
+		/// </summary>
+		/// <param name="property">The property to capture the field from</param>
+		/// <returns>The field string which can be parsed at runtime</returns>
+		private string ToRuntimeSerializableField( SerializedProperty property )
 		{
-			string returnValue = property.name;
-			if ( returnValue != "data" )
-				return returnValue;
+			const string ARRAY_INDICATOR = "@ArrayIndex[";
+			int arrayIndicatorLength = ARRAY_INDICATOR.Length;
 
-			// "data" indicates an array.
-			// If we're serializing an array, the field is "fieldName.Array.data[0]".  So we need to chop-off .Array.data[x].
-			const string arrayIndicator = ".Array.data[";
-			string propertyPath = fromProperty.propertyPath;
+			// Give us an easy sentinel value to scan for in case of arrays
+			string parseablePropertyPath = property.propertyPath.Replace( ".Array.data[", "."+ARRAY_INDICATOR );
+			var splitPaths = parseablePropertyPath.Split( '.' );
 
-			// Now try to extract the index from .Array.data[index].
-			int propertyIndex = propertyPath.IndexOf( arrayIndicator );
-			if ( propertyIndex >= 0 )
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			for (int i = 0 ; i < splitPaths.Length ; ++i)
 			{
-				string fieldName = propertyPath.Substring( 0, propertyIndex );
+				string pathPiece = splitPaths[i];
 
-				int indexOffset = propertyIndex + arrayIndicator.Length;
-				string indexString = propertyPath.Substring( indexOffset, propertyPath.Length - indexOffset - 1 );
-
-				int arrayIndex;
-				if ( int.TryParse(indexString, out arrayIndex) )
+				bool bIsArrayIndex = pathPiece.StartsWith(ARRAY_INDICATOR);
+				if ( !bIsArrayIndex )
 				{
-					return string.Format( "{0},{1}", fieldName, arrayIndex );
+					// Append the . if we're a nested object
+					if ( i > 0 )
+						sb.Append( '.' );
+
+					sb.Append( pathPiece );
 				}
 				else
 				{
-					arrayIndex = -1;
-					AmsDebug.LogError( null, "Could not parse array index for property path {0}", propertyPath );
+					// It's an array, so we're doing the index portion of @ArrayIndex[index]
+					string indexString = pathPiece.Substring( arrayIndicatorLength, pathPiece.Length - arrayIndicatorLength - 1 );
+
+					int arrayIndex = 0;
+					if ( int.TryParse(indexString, out arrayIndex) )
+					{
+						// Arrays are of the form fieldName,arrayIndex
+						sb.Append( ',' );
+						sb.Append( arrayIndex );
+					}
+					else
+					{
+						AmsDebug.LogError( null, "Could not parse array index for property path {0}", property.propertyPath );
+					}
 				}
 			}
 
-			return returnValue;
+			return sb.ToString();
 		}
 	} // struct
 }
