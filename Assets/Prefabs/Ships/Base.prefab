@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19905368}
   m_Layer: 0
   m_Name: ParticleThrustLeft (1)
-  m_TagString: Untagged
+  m_TagString: EngineEmission
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ GameObject:
   - 199: {fileID: 19966514}
   m_Layer: 0
   m_Name: ParticleThrustLeft
-  m_TagString: Untagged
+  m_TagString: EngineEmission
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vehicle: {fileID: 129952}
+  engines:
+  - {fileID: 19844290}
+  - {fileID: 19801774}
   stunDuration: 0
 --- !u!114 &11495922
 MonoBehaviour:

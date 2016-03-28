@@ -4,7 +4,7 @@ Copyright: Coding Jar Studios 2016
 What is Advanced Multi-Scene?
 -----------------------------
 
-Advanced Multi-Scene (AMS) is a plug-in used to deal with Unity 5.3's new Multi-Scene editing capabilities.  The new functionality is much welcomed,
+Advanced Multi-Scene (AMS) is a plug-in used to deal with Unity 5.3's new Multi-Scene editing capabilities.  The new functionality is welcomed,
 but this plug-in addresses some of its shortcomings.
 
 Is There a Video?
@@ -85,7 +85,7 @@ This is a legal, AMS-serializable cross-scene reference because it fulfills the 
 
 1. Unique Path to Source Object.
 2. Unique Path to Destination Object.
-3. Only a single list.
+3. All objects along the path must be classes, not structs.
 
 This cross-scene reference would be described as: "AI_01/Path/To/Character",ReachGoalComponent.ListOfGoals,5 -> "Dynamic_01/Path/To/Goal",GoalComponent.
 
@@ -105,7 +105,8 @@ loads (hint: it follows the order in the Hierarchy), as well as deferring any ac
 to access them in Awake() or OnEnable()).
 
 Initialization order is especially problematic on mobile devices, where the first loaded scene has different initialization rules than other platforms.  To combat this issue,
-you should always have a dummy scene 0 whose job it is to load the subsequent scenes.  This first scene should not rely on any other scenes.
+you should always have a dummy scene 0 whose job it is to load the subsequent scenes.  This first scene should not rely on any other scenes.  Unity recommends the first scene
+be a splash screen in order to hide issues with loading assets; in fact it is for this reason that the first scene does not follow the same initialization order as other scenes.
 
 Differences from Advanced Additive Scenes (AAS)
 -----------------------------------------------
@@ -144,4 +145,5 @@ To Import WITHOUT Cross-Scene References:
 5.  Delete the SubScene GameObject (this will make sure the Unity-managed one is the only instance).
 6.  Create a new GameObject and put a AmsMultiSceneSetup behaviour on that GameObject (this enables AMS).
 
-Support E-mail:		jodon@codingjar.com
+Support Forum (Preferred):	http://forum.unity3d.com/threads/advanced-multi-scene-now-available.383525/
+Support E-mail:				jodon@codingjar.com (I want to discourage this because others don't get to see the posts, but it's good for code dumps)
