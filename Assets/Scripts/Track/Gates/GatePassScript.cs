@@ -28,6 +28,8 @@ public class GatePassScript : MonoBehaviour
             if (!gate.PlayersPassed.Contains(player) && gate.GateNumber == player.currentGate + 1){
                 player.currentGate++;
                 gate.PlayersPassed.Add(player);
+                if (col.gameObject.layer == 8)
+                        gate.previousGate();
 
             }
           //  count = count + 1;

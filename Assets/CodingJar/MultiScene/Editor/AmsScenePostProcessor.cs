@@ -12,7 +12,6 @@ namespace CodingJar.MultiScene.Editor
 	/// <summary>
 	/// This class listens for saves/loads and ensures the subScene data end up where they belong
 	/// </summary>
-    [InitializeOnLoad]
 	internal static class AmsScenePostProcessor
 	{
 		private static void GetCommonParameters( ref Scene activeScene, ref AmsMultiSceneSetup activeSceneSetup, List<AmsMultiSceneSetup.SceneEntry> bakedScenes )

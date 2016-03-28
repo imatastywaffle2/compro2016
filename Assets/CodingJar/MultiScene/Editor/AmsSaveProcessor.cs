@@ -15,12 +15,6 @@ namespace CodingJar.MultiScene.Editor
 	{
 		static string[] OnWillSaveAssets( string[] filenames )
 		{
-			var crossSceneReferenceBehaviour = AmsPreferences.CrossSceneReferencing;
-
-			// If we don't allow cross-scene references, then just save.
-			if ( crossSceneReferenceBehaviour == AmsPreferences.CrossSceneReferenceHandling.UnityDefault )
-				return filenames;
-
 			// Check if we're saving any scenes
 			List<Scene> savingScenes = new List<Scene>();
 			foreach( var filename in filenames )
@@ -32,16 +26,14 @@ namespace CodingJar.MultiScene.Editor
 				}
 			}
 
+			HandleSavingScenes( savingScenes );
 			HandleCrossSceneReferences( savingScenes );
+
 			return filenames;
 		}
 
-		public static void HandleCrossSceneReferences( IList<Scene> scenes )
+		private static void HandleSavingScenes( IList<Scene> scenes )
 		{
-			// If we are...
-			if ( scenes.Count < 1 )
-				return;
-
 			// We need to create an AmsMultiSceneSetup singleton in every scene.  This is how we keep track of Awake scenes and
 			// it also allows us to use cross-scene references.
 			foreach( var scene in scenes )
@@ -51,16 +43,36 @@ namespace CodingJar.MultiScene.Editor
 
 				var sceneSetup = GameObjectEx.GetSceneSingleton<AmsMultiSceneSetup>( scene, true );
 				sceneSetup.OnBeforeSerialize();
+			}
+		}
+
+		public static void HandleCrossSceneReferences( IList<Scene> scenes )
+		{
+			// If we don't allow cross-scene references, then early return.
+			var crossSceneReferenceBehaviour = AmsPreferences.CrossSceneReferencing;
+			bool bSkipCrossSceneReferences = (crossSceneReferenceBehaviour == AmsPreferences.CrossSceneReferenceHandling.UnityDefault);
+			bool bSaveCrossSceneReferences = (crossSceneReferenceBehaviour == AmsPreferences.CrossSceneReferenceHandling.Save);
+
+			if ( bSkipCrossSceneReferences || scenes.Count < 1 )
+				return;
+
+			// We need to create an AmsMultiSceneSetup singleton in every scene.  This is how we keep track of Awake scenes and
+			// it also allows us to use cross-scene references.
+			foreach( var scene in scenes )
+			{
+				if ( !scene.isLoaded )
+					continue;
 
 				// Reset all of the cross-scene references.
 				var crossSceneRefBehaviour = AmsCrossSceneReferences.GetSceneSingleton( scene, true );
-				crossSceneRefBehaviour.ResetCrossSceneReferences();
+				foreach ( var otherScene in scenes )
+				{
+					if ( otherScene.isLoaded )
+						crossSceneRefBehaviour.ResetCrossSceneReferences( otherScene );
+				}
 			}
 
-			var crossSceneReferenceBehaviour = AmsPreferences.CrossSceneReferencing;
 			var xSceneRefs = AmsCrossSceneReferenceProcessor.GetCrossSceneReferencesForScenes( scenes );
-			
-			bool bSaveCrossSceneReferences = crossSceneReferenceBehaviour == AmsPreferences.CrossSceneReferenceHandling.Save;
 			if ( bSaveCrossSceneReferences && xSceneRefs.Count > 0 )
 			{
 				AmsDebug.LogWarning( null, "Ams Plugin: Found {0} Cross-Scene References. Saving them.", xSceneRefs.Count );
