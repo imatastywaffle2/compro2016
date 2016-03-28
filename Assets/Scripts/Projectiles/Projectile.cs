@@ -12,9 +12,10 @@ public class Projectile : MonoBehaviour
 
     // Target
     public Transform target;
+    Pickup Pickups;
     void Start()
     {
-
+        
     }
 
     void FixedUpdate()
@@ -26,7 +27,6 @@ public class Projectile : MonoBehaviour
                 transform.LookAt(target.position);
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
-
             }
             else {
                 // Otherwise destroy self
@@ -55,6 +55,4 @@ public class Projectile : MonoBehaviour
             target = otherShip.transform;
         }
     }
-
-
 }
