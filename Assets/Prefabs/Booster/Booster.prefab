@@ -10,6 +10,9 @@ GameObject:
   - 4: {fileID: 498658}
   - 33: {fileID: 3393084}
   - 23: {fileID: 2324762}
+  - 65: {fileID: 6517094}
+  - 95: {fileID: 9592108}
+  - 114: {fileID: 11477788}
   m_Layer: 0
   m_Name: Booster
   m_TagString: Untagged
@@ -25,6 +28,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422512}
+  - 114: {fileID: 11427510}
   m_Layer: 0
   m_Name: Booster
   m_TagString: Untagged
@@ -90,6 +94,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105840}
   m_Mesh: {fileID: 4300000, guid: 7376237b3b9f32349ad58870f3244d45, type: 3}
+--- !u!65 &6517094
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 120.67, y: 2, z: 118.5}
+  m_Center: {x: -44.4, y: 9.86, z: 0.01}
+--- !u!95 &9592108
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105840}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28372b65784ecb24eba49a4b1846c37e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11427510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe1594e1831b5447afec9b32169a148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11477788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe1594e1831b5447afec9b32169a148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
