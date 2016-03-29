@@ -90,6 +90,8 @@ MonoBehaviour:
   PickupType: {fileID: 0}
   PickupPrefabs:
   - {fileID: 139326, guid: e6b7c4fe7a7335d469374c86b313f4c4, type: 2}
+  - {fileID: 193196, guid: 7ff531a2dc634ff4a8e0a29f7860e1bc, type: 2}
+  - {fileID: 174896, guid: 3db6264df3be2c94084b0865896063f0, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
