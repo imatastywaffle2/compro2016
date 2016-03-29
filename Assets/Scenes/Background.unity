@@ -727,7 +727,7 @@ Transform:
   m_LocalScale: {x: 1800, y: 1800, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 35
 --- !u!1 &406631009
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +874,12 @@ MonoBehaviour:
       editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
       name: Track
       _path: Assets/Scenes/Track.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -1692,7 +1698,7 @@ Transform:
   m_LocalScale: {x: 1027.2, y: 1027.2, z: 1027.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
 --- !u!1 &1082954895 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 3db19c72721e52e4d9b1d0cc9c4ec889, type: 3}
@@ -1979,7 +1985,7 @@ Transform:
   m_LocalScale: {x: 16.3, y: 16.3, z: 16.3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 33
 --- !u!1 &1225315080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2225,7 @@ Transform:
   m_LocalScale: {x: 48.5, y: 48.5, z: 48.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!1001 &1338487907
 Prefab:
   m_ObjectHideFlags: 0
@@ -2564,7 +2570,7 @@ Transform:
   m_LocalScale: {x: 337.2, y: 337.2, z: 337.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 29
 --- !u!1001 &1568889257
 Prefab:
   m_ObjectHideFlags: 0
@@ -2739,7 +2745,7 @@ Transform:
   m_LocalScale: {x: 836.5, y: 836.5, z: 836.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 27
 --- !u!1 &1807937288 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
@@ -3045,7 +3051,7 @@ Transform:
   m_LocalScale: {x: 326.4, y: 326.4, z: 326.4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 31
 --- !u!1 &1973178738 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 3db19c72721e52e4d9b1d0cc9c4ec889, type: 3}
