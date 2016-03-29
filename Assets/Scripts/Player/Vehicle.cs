@@ -15,8 +15,10 @@ public class Vehicle : MonoBehaviour {
     public bool shieldActivated;
     public float bonusSpeed;
     public float vehicleStun;
+    public float whatIsSpeed;
     Pickup Pickups;
     InputInformation Information;
+    public Rigidbody rb;
 
 
     // Use this for initialization
@@ -24,6 +26,7 @@ public class Vehicle : MonoBehaviour {
     {
         Pickups = GetComponent<Pickup>();
         Information = GetComponent<InputInformation>();
+        rb = GetComponent<Rigidbody>();
         bonusSpeed = 0;
     }
 	// Update is called once per frame
@@ -62,8 +65,7 @@ public class Vehicle : MonoBehaviour {
             GameObject item = (GameObject)Instantiate(co.gameObject.GetComponent<PickupBox>().PickupType, transform.position, Quaternion.identity);
             item.transform.SetParent(transform);
             ItemPickup = item.GetComponent<Pickup>();
-        }
-        
+        }        
     }
     public void Stun()
     {
@@ -73,5 +75,9 @@ public class Vehicle : MonoBehaviour {
         }
         else
             vehicleStun = 0;       
+    }
+    public void CalculateSpeed()
+    {
+        whatIsSpeed = rb.velocity.magnitude;
     }
 }
