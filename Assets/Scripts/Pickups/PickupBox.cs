@@ -9,9 +9,10 @@ public class PickupBox : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {            
-            Destroy(gameObject);
+        if (other.gameObject.tag == "Player" && !other.gameObject.GetComponent<Vehicle>().ItemPickup)
+        {
+            Destroy(gameObject.GetComponentInChildren<Transform>());
+            other.gameObject.GetComponent<Vehicle>().ItemPickup = PickupType;
         }
     }
     public void GetPickup()

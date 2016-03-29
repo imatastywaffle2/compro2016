@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
     private bool speedBoost;
-    public Pickup ItemPickup;
+    public GameObject ItemPickup;
     public float fowardAccel = 3;
     public float maxSpeed = 20;
     public double recoveryTime = 4.5;
@@ -32,11 +32,11 @@ public class Vehicle : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (Pickups && !Pickups.used && Information.UsePickup() == 1)
+        if (ItemPickup && !ItemPickup.GetComponent<Pickup>().used && Information.UsePickup() == 1)
         {
             UsePickup();         
         }
-        else if (Pickups && Pickups.used && Pickups.timer <= 0 || !shieldActivated || !Pickups.canShoot)
+        else if (ItemPickup && ItemPickup.GetComponent<Pickup>().used && Pickups.timer <= 0 || !shieldActivated || !Pickups.canShoot)
         {
             destroyPickup();   
         }
@@ -45,27 +45,18 @@ public class Vehicle : MonoBehaviour {
             bonusSpeed = 0;
             shieldActivated = false;          
         }
+        CalculateSpeed();
     }
 
     void UsePickup()
     {
         Pickups.used = true;
-        bonusSpeed = Pickups.velocityIncrease;
-        shieldActivated = Pickups.shield;        
+        bonusSpeed = ItemPickup.GetComponent<Pickup>().velocityIncrease;
+        shieldActivated = ItemPickup.GetComponent<Pickup>().shield;        
     }
     void destroyPickup()
     {
         Destroy(ItemPickup.gameObject);
-    }
-
-    void OnCollisionEnter(Collision co)
-    {
-        if(co.gameObject.tag == "PickUp")
-        {
-            GameObject item = (GameObject)Instantiate(co.gameObject.GetComponent<PickupBox>().PickupType, transform.position, Quaternion.identity);
-            item.transform.SetParent(transform);
-            ItemPickup = item.GetComponent<Pickup>();
-        }        
     }
     public void Stun()
     {
