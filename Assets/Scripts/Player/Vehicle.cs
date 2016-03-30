@@ -13,9 +13,10 @@ public class Vehicle : MonoBehaviour {
     public float verticalAccel = 1;
     public float minimumSpeed = 5;
     public bool shieldActivated;
-    public float bonusSpeed;
     public float vehicleStun;
     public float whatIsSpeed;
+    public float boostTime;
+    public float boostSpeed;
     Pickup Pickups;
     InputInformation Information;
     public Rigidbody rb;
@@ -27,14 +28,13 @@ public class Vehicle : MonoBehaviour {
         Pickups = GetComponent<Pickup>();
         Information = GetComponent<InputInformation>();
         rb = GetComponent<Rigidbody>();
-        bonusSpeed = 0;
     }
 	// Update is called once per frame
 	void FixedUpdate ()
     {
         if (ItemPickup && !ItemPickup.GetComponent<Pickup>().used && Information.UsePickup() == 1)
         {
-            UsePickup();         
+            UsePickup();
         }
         else if (ItemPickup && ItemPickup.GetComponent<Pickup>().used && Pickups.timer <= 0 || !shieldActivated || !Pickups.canShoot)
         {
@@ -42,16 +42,17 @@ public class Vehicle : MonoBehaviour {
         }
         else
         {
-            bonusSpeed = 0;
+            boostSpeed = 0;
             shieldActivated = false;          
         }
         CalculateSpeed();
+        boostSpeed = Pickups.velocityIncrease;
+        boostTime -= Time.deltaTime;
     }
 
     void UsePickup()
     {
         Pickups.used = true;
-        bonusSpeed = ItemPickup.GetComponent<Pickup>().velocityIncrease;
         shieldActivated = ItemPickup.GetComponent<Pickup>().shield;        
     }
     void destroyPickup()
@@ -72,9 +73,9 @@ public class Vehicle : MonoBehaviour {
         whatIsSpeed = rb.velocity.magnitude;
     }
 
-    public void boost(float boostSpeed, float boostTime)
+    public void Boost(float boostSpeed, float boostTime)
     {
-
-
+        boostSpeed = Pickups.velocityIncrease;
+        boostTime = Pickups.timer;
     }
 }

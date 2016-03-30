@@ -16,8 +16,9 @@ public class Pickup : MonoBehaviour {
         {
             if (gameObject.name == "PickupVelocityIncrease")
             {
-                timer -= Time.deltaTime;
                 velocityIncrease = 150;
+                gameObject.GetComponent<Vehicle>().Boost(velocityIncrease, timer);
+                timer -= Time.deltaTime;
             }
             if (gameObject.name == "PickupShield")
             {
