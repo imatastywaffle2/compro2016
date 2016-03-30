@@ -71,4 +71,10 @@ public class Vehicle : MonoBehaviour {
     {
         whatIsSpeed = rb.velocity.magnitude;
     }
+
+    public void boost(float boostSpeed, float boostTime)
+    {
+
+
+    }
 }
