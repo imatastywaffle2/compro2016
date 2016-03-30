@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400282}
   - 114: {fileID: 11475274}
+  - 122: {fileID: 12231826}
   m_Layer: 0
   m_Name: PickupVelocityIncrease
   m_TagString: Untagged
@@ -41,8 +42,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -76.67968, y: 228.58829, z: -116.01524}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: -76.67968, y: 221.7, z: -116.01524}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 483532}
   m_Father: {fileID: 0}
@@ -54,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.07, y: 2.432, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 400282}
   m_RootOrder: 0
@@ -99,7 +100,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125734}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -122,6 +123,17 @@ MonoBehaviour:
   projectile: {fileID: 0}
   timer: 5
   canShoot: 1
+--- !u!122 &12231826
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174896}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_Size: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
