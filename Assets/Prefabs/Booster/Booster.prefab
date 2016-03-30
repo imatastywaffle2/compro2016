@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 498658}
   - 33: {fileID: 3393084}
   - 23: {fileID: 2324762}
-  - 65: {fileID: 6517094}
   - 95: {fileID: 9592108}
   - 114: {fileID: 11477788}
   m_Layer: 0
@@ -29,6 +28,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 422512}
   - 114: {fileID: 11427510}
+  - 65: {fileID: 6572946}
   m_Layer: 0
   m_Name: Booster
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 50.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 422512}
@@ -94,18 +94,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105840}
   m_Mesh: {fileID: 4300000, guid: 7376237b3b9f32349ad58870f3244d45, type: 3}
---- !u!65 &6517094
+--- !u!65 &6572946
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105840}
+  m_GameObject: {fileID: 137836}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 120.67, y: 2, z: 118.5}
-  m_Center: {x: -44.4, y: 9.86, z: 0.01}
+  m_Size: {x: 93.7, y: 27.9, z: 89.7}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9592108
 Animator:
   serializedVersion: 3
