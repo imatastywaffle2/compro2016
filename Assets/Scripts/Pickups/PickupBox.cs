@@ -5,6 +5,7 @@ public class PickupBox : MonoBehaviour
 {
     public GameObject PickupType;
     public GameObject[] PickupPrefabs;
+    public GameObject Mesh;
 
 
     void OnTriggerEnter(Collider other)
@@ -13,27 +14,8 @@ public class PickupBox : MonoBehaviour
         {
             Destroy(gameObject.GetComponentInChildren<Transform>());
             other.gameObject.GetComponent<Vehicle>().ItemPickup = PickupType;
+
         }
-    }
-    public void GetPickup()
-    {
-        int num = Random.Range(1, 4);
-        if (num == 1)
-        {
-            PickupType = PickupPrefabs[1];
-        }
-        if (num == 2)
-        {
-            PickupType = PickupPrefabs[2];
-        }
-        if (num == 3)
-        {
-            PickupType = PickupPrefabs[3];
-        }
-    }
-    void Start()
-    {
-        GetPickup();
     }
 
 

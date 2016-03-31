@@ -130,8 +130,8 @@ MonoBehaviour:
   _sceneSetup:
   - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
-      name: Test
-      _path: Assets/Scenes/Test.unity
+      name: Boosters
+      _path: Assets/Scenes/Boosters.unity
     loadInEditor: 1
     loadMethod: 1
   - scene:

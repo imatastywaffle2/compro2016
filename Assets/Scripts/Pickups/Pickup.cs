@@ -1,7 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Pickups
+{
+    Shield,
+    Boost,
+    Projectile
+}
+
 public class Pickup : MonoBehaviour {
+    public Pickups PickupType;
     public bool used = false;
     public float velocityIncrease;
     public bool shield = false;
