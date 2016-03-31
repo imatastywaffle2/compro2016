@@ -9,7 +9,7 @@ public class SpeedBoost : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.GetComponent<Vehicle>().boost(Speed, BoostTime);
+            col.gameObject.GetComponent<Vehicle>().Boost(Speed, BoostTime);
         }
     }
 	
