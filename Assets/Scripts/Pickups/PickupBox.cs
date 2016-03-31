@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Pickups
+{
+    Shield,
+    Boost,
+    Projectile
+}
+
+
 public class PickupBox : MonoBehaviour
 {
-    public GameObject PickupType;
-    public GameObject[] PickupPrefabs;
-    public GameObject Mesh;
+    public Pickups PickupType;
 
-
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider col)
     {
-        if (other.gameObject.tag == "Player" && !other.gameObject.GetComponent<Vehicle>().ItemPickup)
+        if (col.gameObject.tag == "Player")
         {
-            Destroy(gameObject.GetComponentInChildren<Transform>());
-            other.gameObject.GetComponent<Vehicle>().ItemPickup = PickupType;
-
+            //if (this.PickupType == Pickups.Boost)
+                //col.gameObject.GetComponent
         }
     }
 
