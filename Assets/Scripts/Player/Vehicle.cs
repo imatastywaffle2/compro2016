@@ -17,6 +17,7 @@ public class Vehicle : MonoBehaviour {
     public float whatIsSpeed;
     public float boostTime;
     public float boostSpeed;
+    public bool boostOn;
     InputInformation Information;
     public Rigidbody rb;
 
@@ -45,6 +46,10 @@ public class Vehicle : MonoBehaviour {
         }
         CalculateSpeed();
         boostTime -= Time.deltaTime;
+        if (boostTime <= 0)
+        {
+            boostSpeed = 0;
+        }
     }
 
     void UsePickup()
@@ -71,6 +76,7 @@ public class Vehicle : MonoBehaviour {
 
     public void Boost(float boostSpeed, float boostTime)
     {
-
+        this.boostTime = boostTime;
+        this.boostSpeed = boostSpeed;
     }
 }
