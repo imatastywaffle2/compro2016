@@ -77,5 +77,9 @@ public class Vehicle : MonoBehaviour {
     {
         boostSpeed = Pickups.velocityIncrease;
         boostTime = Pickups.timer;
+        if (boostTime <= 0)
+        {
+            boostSpeed = 0;
+        }
     }
 }
