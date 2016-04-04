@@ -26,7 +26,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400282}
-  - 114: {fileID: 11475274}
   - 122: {fileID: 12231826}
   - 114: {fileID: 11482540}
   m_Layer: 0
@@ -106,24 +105,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11475274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a76490ee80ee44880a5a9585fd6c23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  used: 0
-  velocityIncrease: 1.5
-  shield: 0
-  scale: {x: 0, y: 0, z: 0, w: 0}
-  projectile: {fileID: 0}
-  timer: 5
-  canShoot: 1
 --- !u!114 &11482540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,9 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dd88a41612acd45a5313fa611bd39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupType: {fileID: 0}
-  PickupPrefabs: []
-  Mesh: {fileID: 0}
+  PickupType: 1
 --- !u!122 &12231826
 Halo:
   m_ObjectHideFlags: 1
