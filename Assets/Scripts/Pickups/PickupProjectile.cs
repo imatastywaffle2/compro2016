@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickupProjectile : MonoBehaviour {
+public class PickupProjectile : Pickup {
 
 	// Use this for initialization
 	void Start () {
