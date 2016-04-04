@@ -17,7 +17,7 @@ public class PickupSpawner : MonoBehaviour
     }
     void SpawnNext()
     {
-        int randomNumber = Random.Range(0, 3);
+        int randomNumber = Random.Range(0, Prefab.Length);
         if (SpawnedPickup == null)
         {
                 SpawnedPickup = (GameObject)Instantiate(Prefab[randomNumber], transform.position, Quaternion.identity);
