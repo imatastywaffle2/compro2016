@@ -200,7 +200,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
       propertyPath: m_LocalScale.x
@@ -259,7 +259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
       propertyPath: m_LocalScale.x
@@ -777,7 +777,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422654, guid: 04f38b7ddffbad340a94165d894277cd, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 422654, guid: 04f38b7ddffbad340a94165d894277cd, type: 2}
       propertyPath: m_LocalScale.x
@@ -865,6 +865,12 @@ MonoBehaviour:
       editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
       name: Track
       _path: Assets/Scenes/Track.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -956,7 +962,7 @@ Transform:
   m_Children:
   - {fileID: 1225315081}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
 --- !u!122 &487273532
 Halo:
   m_ObjectHideFlags: 0

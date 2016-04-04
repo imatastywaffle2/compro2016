@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickupShield : MonoBehaviour {
+public class PickupShield : Pickup {
 
 	// Use this for initialization
 	void Start () {
