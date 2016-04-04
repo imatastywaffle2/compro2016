@@ -24,7 +24,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Player.unity
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/Boosters.unity
   - enabled: 1
     path: Assets/Scenes/Track.unity
   - enabled: 1

@@ -30,30 +30,18 @@ public class Vehicle : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (ItemPickup && !ItemPickup.GetComponent<Pickup>().used && Information.UsePickup() == 1)
-        {
-            UsePickup();
-        }
-        else if (ItemPickup && ItemPickup.GetComponent<Pickup>().used && ItemPickup.GetComponent<Pickup>().timer <= 0 || !shieldActivated || !ItemPickup.GetComponent<Pickup>().canShoot)
-        {
-            destroyPickup();   
-        }
-        else
-        {
-            boostSpeed = 0;
-            shieldActivated = false;          
-        }
+       
         CalculateSpeed();
         boostTime -= Time.deltaTime;
     }
 
     void UsePickup()
     {
-        shieldActivated = ItemPickup.GetComponent<Pickup>().shield;        
+        
     }
     void destroyPickup()
     {
-        Destroy(ItemPickup.gameObject);
+       
     }
     public void Stun()
     {
