@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 451064}
   - 122: {fileID: 12285806}
   - 114: {fileID: 11473886}
+  - 65: {fileID: 6518426}
   m_Layer: 0
   m_Name: PickupShield
   m_TagString: Untagged
@@ -26,7 +27,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 495510}
   - 33: {fileID: 3344516}
-  - 65: {fileID: 6504536}
   - 23: {fileID: 2362546}
   m_Layer: 0
   m_Name: Cube
@@ -43,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 139326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -77.6, y: 222.6, z: -114.5}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 495510}
   m_Father: {fileID: 0}
@@ -93,12 +93,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161016}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6504536
+--- !u!65 &6518426
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161016}
+  m_GameObject: {fileID: 139326}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -123,7 +123,7 @@ Halo:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 4294967295

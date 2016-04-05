@@ -17,8 +17,25 @@ public class PickupBox : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            //if (this.PickupType == Pickups.Boost)
-                //col.gameObject.GetComponent
+            Vehicle player = col.gameObject.GetComponent<Vehicle>();
+            if (player.ItemPickup == null)
+            {
+            
+                if (this.PickupType == Pickups.Boost)
+                {
+                    player.ItemPickup = new PickupBoost();
+                }
+                else if (this.PickupType == Pickups.Shield)
+                {
+                    player.ItemPickup = new PickupShield();
+                }
+                else if (this.PickupType == Pickups.Projectile)
+                {
+                    player.ItemPickup = new PickupProjectile();
+                }
+                Destroy(gameObject);
+            }
+
         }
     }
 
