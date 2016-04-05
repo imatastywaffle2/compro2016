@@ -13,7 +13,7 @@ public class PickupSpawner : MonoBehaviour
     void Start ()
     {
         //if something to make it not spawn if one is already there
-        InvokeRepeating("SpawnNext", interval, interval);
+        InvokeRepeating("SpawnNext", 0, interval);
     }
     void SpawnNext()
     {
@@ -23,6 +23,7 @@ public class PickupSpawner : MonoBehaviour
                 SpawnedPickup = (GameObject)Instantiate(Prefab[randomNumber], transform.position, Quaternion.identity);
         }
     }
+
     void Update()
     { 
     }

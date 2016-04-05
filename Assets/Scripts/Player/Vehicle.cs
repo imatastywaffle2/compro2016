@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
     private bool speedBoost;
-    public GameObject ItemPickup;
+    public Pickup ItemPickup;
     public float fowardAccel = 3;
     public float maxSpeed = 20;
     public double recoveryTime = 4.5;
