@@ -40,9 +40,12 @@ public class Vehicle : MonoBehaviour {
         }
     }
 
-    void UsePickup()
+    public void UsePickup()
     {
-        
+        if (ItemPickup)
+        {
+            
+        }
     }
     void destroyPickup()
     {
