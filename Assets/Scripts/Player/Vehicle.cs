@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
     private bool speedBoost;
-    public Pickup ItemPickup;
+    public GameObject ItemPickup;
     public float fowardAccel = 3;
     public float maxSpeed = 20;
     public double recoveryTime = 4.5;
@@ -13,57 +13,35 @@ public class Vehicle : MonoBehaviour {
     public float verticalAccel = 1;
     public float minimumSpeed = 5;
     public bool shieldActivated;
-    public float bonusSpeed;
     public float vehicleStun;
-    Pickup Pickups;
+    public float whatIsSpeed;
+    public float boostTime;
+    public float boostSpeed;
     InputInformation Information;
+    public Rigidbody rb;
 
 
     // Use this for initialization
     void Start ()
     {
-        Pickups = GetComponent<Pickup>();
         Information = GetComponent<InputInformation>();
-        bonusSpeed = 0;
+        rb = GetComponent<Rigidbody>();
     }
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (Pickups && !Pickups.used && Information.UsePickup() == 1)
-        {
-            UsePickup();         
-        }
-        else if (Pickups && Pickups.used && Pickups.timer <= 0 || !shieldActivated || !Pickups.canShoot)
-        {
-            destroyPickup();   
-        }
-        else
-        {
-            bonusSpeed = 0;
-            shieldActivated = false;          
-        }
+       
+        CalculateSpeed();
+        boostTime -= Time.deltaTime;
     }
 
     void UsePickup()
     {
-        Pickups.used = true;
-        bonusSpeed = Pickups.velocityIncrease;
-        shieldActivated = Pickups.shield;        
+        
     }
     void destroyPickup()
     {
-        Destroy(ItemPickup.gameObject);
-    }
-
-    void OnCollisionEnter(Collision co)
-    {
-        if(co.gameObject.tag == "PickUp")
-        {
-            GameObject item = (GameObject)Instantiate(co.gameObject.GetComponent<PickupBox>().PickupType, transform.position, Quaternion.identity);
-            item.transform.SetParent(transform);
-            ItemPickup = item.GetComponent<Pickup>();
-        }
-        
+       
     }
     public void Stun()
     {
@@ -73,5 +51,14 @@ public class Vehicle : MonoBehaviour {
         }
         else
             vehicleStun = 0;       
+    }
+    public void CalculateSpeed()
+    {
+        whatIsSpeed = rb.velocity.magnitude;
+    }
+
+    public void Boost(float boostSpeed, float boostTime)
+    {
+
     }
 }
