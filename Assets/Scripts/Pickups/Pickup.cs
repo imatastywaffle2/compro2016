@@ -9,20 +9,18 @@ public class Pickup : MonoBehaviour {
     public void Start()
     {
         vehicle = GetComponent<Vehicle>();
+        InputInfo = GetComponent<InputInformation>();
     }
 
     public void FixedUpdate()
     {
-        if (InputInfo.UsePickup() == 1)
+        if (InputInfo.UsePickup())
         {
-            Use(vehicle);
+            Use();
         }
     }
 
-    public virtual void Use(Vehicle vehicle)
-    {
-        
+    public virtual void Use()
+    {       
     }
-
-
 }

@@ -5,8 +5,9 @@ public class PickupBoost : Pickup {
     float boostSpeed = 100;
     float boostTime = 2.5f;
 
-    public override void Use(Vehicle vehicle)
+    public override void Use()
     {
-        vehicle.Boost(boostSpeed, boostTime);
+        GetComponent<Vehicle>().Boost(boostSpeed, boostTime);
+        Destroy(this);
     }
 }
