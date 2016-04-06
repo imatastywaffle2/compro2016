@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PickupBoost : Pickup {
-    float boostSpeed = 10;
-    float boostTime = 2;
+    float boostSpeed = 100;
+    float boostTime = 2.5f;
 
     public override void Use(Vehicle vehicle)
     {
