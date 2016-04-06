@@ -23,21 +23,19 @@ public class PickupBox : MonoBehaviour
             
                 if (this.PickupType == Pickups.Boost)
                 {
-                    player.ItemPickup = new PickupBoost();
+                    player.ItemPickup = player.gameObject.AddComponent<PickupBoost>();
                 }
                 else if (this.PickupType == Pickups.Shield)
                 {
-                    player.ItemPickup = new PickupShield();
+                    player.ItemPickup = player.gameObject.AddComponent<PickupShield>();
                 }
                 else if (this.PickupType == Pickups.Projectile)
                 {
-                    player.ItemPickup = new PickupProjectile();
+                    player.ItemPickup = player.gameObject.AddComponent<PickupProjectile>();
                 }
                 Destroy(gameObject);
             }
 
         }
     }
-
-
 }

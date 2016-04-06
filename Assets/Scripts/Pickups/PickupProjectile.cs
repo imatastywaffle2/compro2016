@@ -2,14 +2,13 @@
 using System.Collections;
 
 public class PickupProjectile : Pickup {
+    public Projectile projectile;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override void Use()
+    {
+        base.Use();
+        Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(this);
+    }
+
 }

@@ -3,9 +3,24 @@ using System.Collections;
 
 
 public class Pickup : MonoBehaviour {
-   
-    public virtual void Use(Vehicle vehicle)
-    {
+    Vehicle vehicle;
+    InputInformation InputInfo;
 
+    public void Start()
+    {
+        vehicle = GetComponent<Vehicle>();
+        InputInfo = GetComponent<InputInformation>();
+    }
+
+    public void FixedUpdate()
+    {
+        if (InputInfo.UsePickup())
+        {
+            Use();
+        }
+    }
+
+    public virtual void Use()
+    {       
     }
 }
