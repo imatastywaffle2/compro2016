@@ -2,14 +2,11 @@
 using System.Collections;
 
 public class PickupProjectile : Pickup {
+    public Projectile projectile;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void Activate()
+    {
+
+    }
+
 }
