@@ -17,7 +17,8 @@ public class CameraFollow : MonoBehaviour {
     {
         if (!target)
         {
-            GameObject temp = GameObject.FindGameObjectWithTag("Player");
+           
+            GameObject temp = (GameObject)PhotonNetwork.player.TagObject;
             if (temp && temp.layer == 8)
             {
                 target = temp.transform;
