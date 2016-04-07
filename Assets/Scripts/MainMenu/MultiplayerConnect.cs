@@ -12,6 +12,10 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public byte Version = 1;
 
     private bool ConnectInUpdate = true;
+
+    public GameObject Menu;
+
+    public VehicleSpawning vehicleSpawn;
      
     public virtual void Start()
     {
@@ -51,7 +55,9 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room");
-        ChangeToScene("Master");
+        Menu.SetActive(false);
+        vehicleSpawn.SpawnPlayer();
+
     }
 
     public void ChangeToScene(string sceneToChangeTo)
