@@ -20,6 +20,7 @@ public class Vehicle : MonoBehaviour {
     public bool boostOn;
     InputInformation Information;
     public Rigidbody rb;
+    public GameObject projectile;
 
 
     // Use this for initialization

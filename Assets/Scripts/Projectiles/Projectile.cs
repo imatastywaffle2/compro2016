@@ -35,13 +35,14 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            gameObject.GetComponent<Rigidbody>().velocity = transform.forward * speed;
         }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<Player>().playerID 
+            != gameObject.GetComponent<Player>().playerID && other.gameObject.tag != "Untagged")
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
             Destroy(gameObject);           
@@ -50,7 +51,8 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if (otherShip.gameObject.GetComponent<Player>().playerID != gameObject.GetComponent<Player>().playerID && otherShip.gameObject.tag == "Player" && trackTarget)
+        if (otherShip.gameObject.GetComponent<Player>().playerID 
+            != gameObject.GetComponent<Player>().playerID && otherShip.gameObject.tag == "Player" && trackTarget && otherShip.gameObject.tag != "Untagged")
         {
             target = otherShip.transform;
         }
