@@ -21,9 +21,6 @@ public class InputInformation : MonoBehaviour
     // Use this for initialization
     void Update()
     {
-        Forward();
-        SideMovement();
-        RotateShip();
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Cursor.lockState = wantedMode = CursorLockMode.None;
@@ -84,14 +81,9 @@ public class InputInformation : MonoBehaviour
         else
             return Input.GetAxis("Mouse Y"); //Get invert setting
     }
-    public float UsePickup()
+    public bool UsePickup()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            return 1;
-        }
-        else
-            return 0;
+        return Input.GetButton("Fire1");
     }
 
 }
