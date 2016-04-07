@@ -12,7 +12,6 @@ public class VehicleSpawning : MonoBehaviour {
 
     void Start()
     {
-        SpawnPlayer();
     }
     void Update()
     {
@@ -24,12 +23,12 @@ public class VehicleSpawning : MonoBehaviour {
 
     public void SpawnPlayer()
     {
-        Transform player = (Transform)Instantiate(VehiclePrefab, transform.position, Quaternion.Euler(0, 0, 0));
-        player.SetParent(LocalPlayers);
-        player.gameObject.layer = 8;
+        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position, Quaternion.Euler(0, 0, 0), 0);
+        //
+       // player.gameObject.layer = 8;
         VehicleCount++;
-        players.Add(player);
-        player.GetComponent<Player>().playerID = Time.time + players.Count;
+        //players.Add(player.transform);
+       // player.GetComponent<Player>().playerID = Time.time + players.Count;
         
         //note to self change later to when player joins
     }

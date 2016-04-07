@@ -31,8 +31,9 @@ GameObject:
   - 54: {fileID: 5434980}
   - 65: {fileID: 6553084}
   - 114: {fileID: 11495922}
+  - 114: {fileID: 11412020}
   m_Layer: 0
-  m_Name: Base
+  m_Name: BaseShipPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,6 +184,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11412020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 492524}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &11424830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,6 +229,13 @@ MonoBehaviour:
   horizontalAccel: 0
   verticalAccel: 0
   minimumSpeed: 0
+  shieldActivated: 0
+  vehicleStun: 0
+  whatIsSpeed: 0
+  boostTime: 0
+  boostSpeed: 0
+  boostOn: 0
+  rb: {fileID: 0}
 --- !u!114 &11439190
 MonoBehaviour:
   m_ObjectHideFlags: 1

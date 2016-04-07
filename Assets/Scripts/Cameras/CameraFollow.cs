@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour {
         if (!target)
         {
             GameObject temp = GameObject.FindGameObjectWithTag("Player");
-            if (temp.layer == 8)
+            if (temp && temp.layer == 8)
             {
                 target = temp.transform;
             }
