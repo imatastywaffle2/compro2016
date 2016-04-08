@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PickupDesign.unity
   - enabled: 1
-    path: Assets/Scripts/Player/Pickups.unity
+    path: Assets/Scenes/Pickups.unity
   - enabled: 1
     path: Assets/Scenes/Player.unity
   - enabled: 1
