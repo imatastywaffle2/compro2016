@@ -25,34 +25,34 @@ public class Move : MonoBehaviour {
         InputInfo = GetComponent<InputInformation>();
 
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        
-        acceleration = Vehicles.fowardAccel;
-        horizontalspeed = Vehicles.horizontalSpeed;
-        stunDuration = Vehicles.vehicleStun;
-        if (stunDuration <= 0)
-        {          
-            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
-            GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-            transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
-            transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
-            transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());          
-            foreach(ParticleSystem engine in engines)
+        if (gameObject.layer == 8) { 
+            acceleration = Vehicles.fowardAccel;
+            horizontalspeed = Vehicles.horizontalSpeed;
+            stunDuration = Vehicles.vehicleStun;
+            if (stunDuration <= 0)
             {
-                if (InputInfo.Forward() > 0)
-                    engine.Play();
-                else
-                    engine.Stop();
+                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
+                GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+                transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
+                transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
+                transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
+                foreach (ParticleSystem engine in engines)
+                {
+                    if (InputInfo.Forward() > 0)
+                        engine.Play();
+                    else
+                        engine.Stop();
+                }
+            }
+            else
+            {
+                stunDuration -= Time.deltaTime;
             }
         }
-        else
-        {
-            stunDuration -= Time.deltaTime;
-        }
-        
 
     }
 
