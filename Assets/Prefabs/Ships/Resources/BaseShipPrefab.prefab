@@ -199,7 +199,7 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 1
+  synchronization: 2
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   boostSpeed: 0
   boostOn: 0
   rb: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!114 &11439190
 MonoBehaviour:
   m_ObjectHideFlags: 1
