@@ -842,6 +842,12 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
       name: Boosters
       _path: Assets/Scenes/Boosters.unity
@@ -875,12 +881,6 @@ MonoBehaviour:
       editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
       name: Background
       _path: Assets/Scenes/Background.unity
-    loadInEditor: 1
-    loadMethod: 1
-  - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
