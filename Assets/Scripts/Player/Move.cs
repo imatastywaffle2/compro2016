@@ -37,7 +37,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (this.photonView.isMine)
         {
