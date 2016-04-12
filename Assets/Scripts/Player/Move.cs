@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(PhotonView))]
 public class Move : Photon.MonoBehaviour, IPunObservable
 {
     public GameObject Vehicle;
