@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Move : MonoBehaviour {
+[RequireComponent(typeof(PhotonView))]
+public class Move : Photon.MonoBehaviour, IPunObservable
+{
     public GameObject Vehicle;
     bool inMotion; //Is this object in motion
     float horizontalspeed; //How fast you can move side to side
@@ -17,6 +20,10 @@ public class Move : MonoBehaviour {
     public float stunDuration;
     InputInformation InputInfo;
 
+    private Vector3 latestCorrectPos;
+    private Vector3 onUpdatePos;
+    private float fraction;
+
 
     // Use this for initialization
     void Start ()
@@ -24,12 +31,16 @@ public class Move : MonoBehaviour {
         Vehicles = GetComponent<Vehicle>();
         InputInfo = GetComponent<InputInformation>();
 
+        this.latestCorrectPos = transform.position;
+        this.onUpdatePos = transform.position;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameObject.layer == 8) { 
+        if (this.photonView.isMine)
+        {
             acceleration = Vehicles.fowardAccel;
             horizontalspeed = Vehicles.horizontalSpeed;
             stunDuration = Vehicles.vehicleStun;
@@ -53,9 +64,38 @@ public class Move : MonoBehaviour {
                 stunDuration -= Time.deltaTime;
             }
         }
-
+        else
+        {
+            this.fraction = this.fraction + Time.deltaTime * 9;
+            transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+        }
     }
 
+    
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
+            stream.Serialize(ref pos);
+            stream.Serialize(ref rot);
+        }
+        else
+        {
+            // Receive latest state information
+            Vector3 pos = Vector3.zero;
+            Quaternion rot = Quaternion.identity;
 
+            stream.Serialize(ref pos);
+            stream.Serialize(ref rot);
+
+            this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
+            this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
+            this.fraction = 0;                          // reset the fraction we alreay moved. see Update()
+
+            transform.localRotation = rot;              // this sample doesn't smooth rotation
+        }
+    }
 }
