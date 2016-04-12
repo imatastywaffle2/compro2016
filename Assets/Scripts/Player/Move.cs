@@ -67,7 +67,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         else
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
-            transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+            transform.position = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
         }
     }
 
@@ -77,8 +77,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.localPosition;
-            Quaternion rot = transform.localRotation;
+            Vector3 pos = transform.position;
+            Quaternion rot = transform.rotation;
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
         }
@@ -92,10 +92,10 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             stream.Serialize(ref rot);
 
             this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
-            this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
+            this.onUpdatePos = transform.position; // we interpolate from here to latestCorrectPos
             this.fraction = 0;                          // reset the fraction we alreay moved. see Update()
 
-            transform.localRotation = rot;              // this sample doesn't smooth rotation
+            transform.rotation = rot;              // this sample doesn't smooth rotation
         }
     }
 }
