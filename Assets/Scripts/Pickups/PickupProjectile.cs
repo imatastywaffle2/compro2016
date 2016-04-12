@@ -6,7 +6,7 @@ public class PickupProjectile : Pickup {
 
     public override void Use()
     {
-        Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject projectile = PhotonNetwork.Instantiate("Projectile", transform.position, Quaternion.Euler(0, 0, 0), 0);
         Destroy(this);
     }
 
