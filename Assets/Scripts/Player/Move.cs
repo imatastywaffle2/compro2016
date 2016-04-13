@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(PhotonView))]
 public class Move : Photon.MonoBehaviour, IPunObservable
 {
     public GameObject Vehicle;
@@ -28,11 +27,11 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     // Use this for initialization
     void Start ()
     {
-        Vehicles = GetComponent<Vehicle>();
-        InputInfo = GetComponent<InputInformation>();
-
         this.latestCorrectPos = transform.position;
         this.onUpdatePos = transform.position;
+
+        Vehicles = GetComponent<Vehicle>();
+        InputInfo = GetComponent<InputInformation>();
 
     }
 
@@ -67,7 +66,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         else
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
-            transform.position = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+            transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
         }
     }
 
@@ -77,8 +76,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
         }
@@ -92,10 +91,10 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             stream.Serialize(ref rot);
 
             this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
-            this.onUpdatePos = transform.position; // we interpolate from here to latestCorrectPos
+            this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
             this.fraction = 0;                          // reset the fraction we alreay moved. see Update()
 
-            transform.rotation = rot;              // this sample doesn't smooth rotation
+            transform.localRotation = rot;              // this sample doesn't smooth rotation
         }
     }
 }
