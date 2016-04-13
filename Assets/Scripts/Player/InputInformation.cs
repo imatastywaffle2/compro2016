@@ -43,22 +43,9 @@ public class InputInformation : MonoBehaviour
     }
     public float SideMovement()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            return -1;      
-        }
-        else if (Input.GetKey(KeyCode.E))
-        {
-            return 1;
-        }
-
-        return 0;
-    }
-    public float RotateShip()
-    {
         if (Input.GetKey(KeyCode.A))
         {
-            return -1;
+            return -1;      
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -66,6 +53,10 @@ public class InputInformation : MonoBehaviour
         }
 
         return 0;
+    }
+    public bool RotateShip()
+    {
+        return Input.GetButton("Roll");
     }
     public float AxisX()
     {
@@ -83,7 +74,7 @@ public class InputInformation : MonoBehaviour
     }
     public bool UsePickup()
     {
-        return Input.GetButton("Fire1");
+        return Input.GetButton("UseItem");
     }
 
 }
