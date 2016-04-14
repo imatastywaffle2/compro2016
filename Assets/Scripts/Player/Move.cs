@@ -47,12 +47,18 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             stunDuration = Vehicles.vehicleStun;
             if (stunDuration <= 0)
             {
-                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
+                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * Input.GetAxis("Vertical"));
                 GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-                transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
+                transform.Rotate(Vector3.forward * Input.GetAxis("Horizontal") * rotateSpeed);
                 transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
                 transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-               
+                foreach (ParticleSystem engine in engines)
+                {
+                    if (InputInfo.Forward() > 0)
+                        engine.Play();
+                    else
+                        engine.Stop();
+                }
             }
             else
             {
