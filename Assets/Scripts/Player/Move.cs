@@ -23,6 +23,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     private Vector3 onUpdatePos;
     private float fraction;
 
+    private float enginesOn = 0;
+
 
     // Use this for initialization
     void Start ()
@@ -38,7 +40,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        Vector3 speed = 0;
+        Vector3 speed = Vector3.zero;
 
         if (this.photonView.isMine)
         {
@@ -52,13 +54,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
                 transform.Rotate(Vector3.forward * Input.GetAxis("Roll") * rotateSpeed);
                 transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
                 transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-                foreach (ParticleSystem engine in engines)
-                {
-                    if (InputInfo.Forward() > 0)
-                        engine.Play();
-                    else
-                        engine.Stop();
-                }
+                enginesOn = InputInfo.Forward();
+               
             }
             else
             {
@@ -74,7 +71,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
 
         foreach (ParticleSystem engine in engines)
         {
-            if (InputInfo.Forward() > 0)
+            if (enginesOn > 0)
                 engine.Play();
             else
                 engine.Stop();
@@ -91,6 +88,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             Quaternion rot = transform.localRotation;
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
+            stream.Serialize(ref enginesOn);
         }
         else
         {
@@ -100,6 +98,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
 
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
+            stream.Serialize(ref enginesOn);
 
             this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
             this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
