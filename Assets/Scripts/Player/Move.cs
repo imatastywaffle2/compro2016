@@ -55,7 +55,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
                 transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
                 transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
                 enginesOn = InputInfo.Forward();
-               
+                
             }
             else
             {
