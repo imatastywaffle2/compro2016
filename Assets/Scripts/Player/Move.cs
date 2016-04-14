@@ -38,6 +38,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        Vector3 speed = 0;
+
         if (this.photonView.isMine)
         {
             acceleration = Vehicles.fowardAccel;
@@ -50,13 +52,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
                 transform.Rotate(Vector3.forward * rotateSpeed * InputInfo.RotateShip());
                 transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
                 transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-                foreach (ParticleSystem engine in engines)
-                {
-                    if (InputInfo.Forward() > 0)
-                        engine.Play();
-                    else
-                        engine.Stop();
-                }
+               
             }
             else
             {
@@ -67,6 +63,15 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
             transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+            speed = latestCorrectPos - onUpdatePos;
+        }
+
+        foreach (ParticleSystem engine in engines)
+        {
+            if (InputInfo.Forward() > 0)
+                engine.Play();
+            else
+                engine.Stop();
         }
     }
 
