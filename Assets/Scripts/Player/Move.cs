@@ -23,6 +23,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     private Vector3 onUpdatePos;
     private float fraction;
 
+    private float enginesOn = 0;
+
 
     // Use this for initialization
     void Start ()
@@ -38,6 +40,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        Vector3 speed = Vector3.zero;
+
         if (this.photonView.isMine)
         {
             acceleration = Vehicles.fowardAccel;
@@ -50,14 +54,8 @@ public class Move : Photon.MonoBehaviour, IPunObservable
                 transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
                 transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
                 transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
+                enginesOn = InputInfo.Forward();
                 
-                foreach (ParticleSystem engine in engines)
-                {
-                    if (InputInfo.Forward() > 0)
-                        engine.Play();
-                    else
-                        engine.Stop();
-                }
             }
             else
             {
@@ -68,6 +66,15 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
             transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+            speed = latestCorrectPos - onUpdatePos;
+        }
+
+        foreach (ParticleSystem engine in engines)
+        {
+            if (enginesOn > 0)
+                engine.Play();
+            else
+                engine.Stop();
         }
     }
 
@@ -81,6 +88,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             Quaternion rot = transform.localRotation;
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
+            stream.Serialize(ref enginesOn);
         }
         else
         {
@@ -90,6 +98,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
 
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
+            stream.Serialize(ref enginesOn);
 
             this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
             this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
