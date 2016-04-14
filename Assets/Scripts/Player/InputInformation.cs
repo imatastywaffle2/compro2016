@@ -29,34 +29,42 @@ public class InputInformation : MonoBehaviour
 
     public float Forward()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetButton("Vertical") == true)
         {
             return 1;
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
+        else if (Input.GetButton("Vertical") == false)
+        {  
             return -0.5f;
-
         }
         else
             return 0;
     }
     public float SideMovement()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetButton("Horizontal") == true)
         {
-            return -1;      
+            return 1f;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetButton("Horizontal") == false)
+        {
+            return -1f;
+        }
+        else
+            return 0;
+    }
+    public float Rotate()
+    {
+        if (Input.GetButton("Roll") == true)
         {
             return 1;
         }
-
-        return 0;
-    }
-    public bool RotateShip()
-    {
-        return Input.GetButton("Roll");
+        else if (Input.GetButton("Roll") == false)
+        {
+            return -1f;
+        }
+        else
+            return 0;
     }
     public float AxisX()
     {
