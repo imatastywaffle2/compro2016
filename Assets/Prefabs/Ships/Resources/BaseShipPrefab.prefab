@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 420424}
   - 198: {fileID: 19801774}
   - 199: {fileID: 19905368}
+  - 96: {fileID: 9657004}
   m_Layer: 0
   m_Name: ParticleThrustLeft (1)
   m_TagString: EngineEmission
@@ -49,6 +50,7 @@ GameObject:
   - 4: {fileID: 434466}
   - 198: {fileID: 19844290}
   - 199: {fileID: 19966514}
+  - 96: {fileID: 9680372}
   m_Layer: 0
   m_Name: ParticleThrustLeft
   m_TagString: EngineEmission
@@ -184,6 +186,100 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!96 &9657004
+TrailRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109574}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b3e9b23e5eccdeb47aa22bcd8a3b3dae, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 0.3
+  m_StartWidth: 1
+  m_EndWidth: 0
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294910733
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294910733
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294963273
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294963273
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
+--- !u!96 &9680372
+TrailRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136054}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b3e9b23e5eccdeb47aa22bcd8a3b3dae, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 0.3
+  m_StartWidth: 1
+  m_EndWidth: 0
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294910733
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294910733
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294963273
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294963273
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
 --- !u!114 &11424830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,7 +427,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 10
+      scalar: 0.15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -366,7 +462,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0.01
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -495,7 +591,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 3
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1830,7 +1926,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 10
+      scalar: 0.15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1865,7 +1961,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0.01
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1994,7 +2090,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 3
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2136,7 +2232,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     gravityModifier: 0
     maxNumParticles: 1000
-    rotation3D: 0
+    rotation3D: 1
   ShapeModule:
     serializedVersion: 2
     enabled: 1
