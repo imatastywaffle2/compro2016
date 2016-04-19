@@ -1146,8 +1146,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11454154}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!114 &11454154
 MonoBehaviour:
@@ -1160,6 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01483e37c1fbee647a8fcf61d94a122f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gateManager: {fileID: 0}
 --- !u!114 &11484658
 MonoBehaviour:
   m_ObjectHideFlags: 1
