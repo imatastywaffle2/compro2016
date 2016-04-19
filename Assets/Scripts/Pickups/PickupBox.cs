@@ -12,6 +12,14 @@ public enum Pickups
 public class PickupBox : MonoBehaviour
 {
     public Pickups PickupType;
+    private PickupUI pickupUI;
+
+    void Start()
+    {
+        pickupUI = GameObject.FindObjectOfType<PickupUI>();
+    }
+
+
 
     void OnTriggerEnter(Collider col)
     {
@@ -33,6 +41,7 @@ public class PickupBox : MonoBehaviour
                 {
                     player.ItemPickup = player.gameObject.AddComponent<PickupProjectile>();
                 }
+                pickupUI.enableIcon(this.PickupType);
                 Destroy(gameObject);
             }
 
