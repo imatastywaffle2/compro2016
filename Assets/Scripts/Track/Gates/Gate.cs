@@ -12,6 +12,7 @@ public class Gate : MonoBehaviour
     void Start ()
     {
         gateManager = gameObject.GetComponentInParent<GateManager>();
+
     }
 	
 
@@ -23,11 +24,14 @@ public class Gate : MonoBehaviour
     public void nextGate()
     {
         NextGateParticles.Play();
+
     }
 
-    public void previousGate()
+    public void previousGate(int nextGate)
     {
-
+        NextGateParticles.Stop();
+        if (nextGate < gateManager.Gates.Length)
+            gateManager.Gates[nextGate].nextGate();
     }
 
     void OnTriggerEnter(Collider col)
