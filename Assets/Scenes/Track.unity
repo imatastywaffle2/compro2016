@@ -755,6 +755,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11442360, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442360, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: instantiationId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11454154, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: gateManager
+      value: 
+      objectReference: {fileID: 1624965935}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
   m_IsPrefabParent: 0
