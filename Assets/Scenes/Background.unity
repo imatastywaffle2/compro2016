@@ -1936,12 +1936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c20de9ecc8bde41b5ed3a66a8071a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin: 1
-  spinParent: 0
-  speed: 1
-  clockwise: 1
-  direction: 1
-  directionChangeSpeed: 2
 --- !u!4 &1265071632
 Transform:
   m_ObjectHideFlags: 0
@@ -1953,7 +1947,7 @@ Transform:
   m_LocalScale: {x: 750, y: 750, z: 750}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 24
 --- !u!1001 &1280405350
 Prefab:
   m_ObjectHideFlags: 0

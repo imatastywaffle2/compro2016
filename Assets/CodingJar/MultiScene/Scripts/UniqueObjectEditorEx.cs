@@ -80,6 +80,8 @@ namespace CodingJar.MultiScene
 			scene = new AmsSceneReference();
 			fullPath = string.Empty;
 			componentName = string.Empty;
+			version = CurrentSerializedVersion;
+			componentIndex = 0;
 
 			if ( !obj )
 				return;
@@ -89,14 +91,13 @@ namespace CodingJar.MultiScene
 			{
 				scene = new AmsSceneReference( gameObject.scene );
 				fullPath = gameObject.GetFullName();
-					
-				if ( obj is Component )
+
+				Component comp = obj as Component;
+				if ( comp )
 				{
-					componentName = obj.GetType().FullName;
-					
-					// We should trim off UnityEngine. since that seems to be an issue.
-					if ( componentName.StartsWith("UnityEngine.") )
-						componentName = componentName.Substring( "UnityEngine.".Length );
+					componentName = obj.GetType().AssemblyQualifiedName;
+					gameObject.GetComponents( obj.GetType(), _reusableComponentsList );
+					componentIndex = _reusableComponentsList.IndexOf( comp );
 				}
 			}
 
