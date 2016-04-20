@@ -26,8 +26,9 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
     {
         if (col.gameObject.tag == "Player")
         {
-            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length)
+            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1)
             {
+                col.GetComponent<Player>().place = places.Count + 1;
                 places.Add(col.GetComponent<Player>());
 
                 if(col.gameObject.layer == 8)
