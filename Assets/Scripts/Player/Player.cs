@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Player : Photon.MonoBehaviour
+public class Player : Photon.MonoBehaviour, IPunObservable
 {
     public float playerID;
     public int currentGate = 0;
@@ -24,8 +25,20 @@ public class Player : Photon.MonoBehaviour
         }
         else
         {
-            transform.SetParent(localPlayers.gameObject.transform);
+            transform.SetParent(remotePlayers.gameObject.transform);
             gameObject.layer = 9;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.Serialize(ref currentGate);
+        }
+        else
+        {
+            stream.Serialize(ref currentGate);
         }
     }
 }
