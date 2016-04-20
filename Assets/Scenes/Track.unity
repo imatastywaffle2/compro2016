@@ -767,6 +767,10 @@ Prefab:
       propertyPath: gateManager
       value: 
       objectReference: {fileID: 1624965935}
+    - target: {fileID: 11454154, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: finishText
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
   m_IsPrefabParent: 0
@@ -1151,10 +1155,6 @@ Prefab:
     - target: {fileID: 19862470, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: playOnAwake
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 137274, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
-      propertyPath: m_Name
-      value: Particle System1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
