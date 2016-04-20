@@ -70,7 +70,7 @@ namespace CodingJar
 		/// <typeparam name="T">The type of MonoBehaviour to look for (or add)</typeparam>
 		/// <param name="gameObject">The GameObject to check/add</param>
 		/// <returns>The instance of T (which either existed or was created)</returns>
-		public static T		GetRequiredComponent<T>( this GameObject gameObject ) where T : MonoBehaviour
+		public static T		GetRequiredComponent<T>( this GameObject gameObject ) where T : Component
 		{
 			var instance = gameObject.GetComponent<T>();
 			if ( instance )

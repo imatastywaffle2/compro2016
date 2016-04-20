@@ -287,31 +287,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3769
+      value: -3752.6074
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1089
+      value: 1084.9469
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1384
+      value: 1144.134
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.42395437
+      value: 0.3783965
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.24759895
+      value: -0.27640563
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.4885501
+      value: 0.41286165
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.72130185
+      value: 0.7810002
       objectReference: {fileID: 0}
     - target: {fileID: 471264, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_RootOrder
@@ -767,6 +767,10 @@ Prefab:
       propertyPath: gateManager
       value: 
       objectReference: {fileID: 1624965935}
+    - target: {fileID: 11454154, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: finishText
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
   m_IsPrefabParent: 0
@@ -832,6 +836,34 @@ Prefab:
     - target: {fileID: 137274, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
       propertyPath: m_Name
       value: Particle System10
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.017529523
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.054864004
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.13291313
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9894528
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.031014511
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.19870949
+      objectReference: {fileID: 0}
+    - target: {fileID: 499328, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.07793212
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
@@ -1049,7 +1081,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crossSceneReferences: []
+  _crossSceneReferences:
+  - _fromObject:
+      scene:
+        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
+        name: Track
+        _path: Assets/Scenes/Track.unity
+      fullPath: /Gates/StartGate
+      componentName: StartGate, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: finishText
+    _toObject:
+      scene:
+        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
+        name: UI
+        _path: Assets/Scenes/UI.unity
+      fullPath: /Pilot HUD/FinishText
+      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
   _realSceneRootsForPostBuild: []
 --- !u!114 &1830145473
 MonoBehaviour:

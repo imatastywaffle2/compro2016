@@ -91,6 +91,7 @@ namespace CodingJar.MultiScene
 		private List<SceneEntry>	_bakedScenesMerged = new List<SceneEntry>();	// Already merged
 
 		public static System.Action<AmsMultiSceneSetup>	OnAwake;
+		public static System.Action<AmsMultiSceneSetup>	OnStart;
 		public static System.Action<AmsMultiSceneSetup>	OnDestroyed;
 		
 #if UNITY_EDITOR
@@ -127,7 +128,11 @@ namespace CodingJar.MultiScene
 		void Awake()
 		{
 			AmsDebug.Log( this, "{0}.Awake() (Scene {1}). IsLoaded: {2}. Frame: {3}", GetType().Name, gameObject.scene.name, gameObject.scene.isLoaded, Time.frameCount );
-			_thisScenePath = gameObject.scene.path;
+
+#if UNITY_EDITOR
+			if ( !BuildPipeline.isBuildingPlayer )
+				_thisScenePath = gameObject.scene.path;
+#endif
 
 			// Notify any listeners we're now awake
 			if ( OnAwake != null )
@@ -158,6 +163,10 @@ namespace CodingJar.MultiScene
 		void Start()
 		{
 			AmsDebug.Log( this, "{0}.Start() Scene: {1}. Frame: {2}", GetType().Name, gameObject.scene.name, Time.frameCount );
+
+			// Notify any listeners (like the cross-scene referencer)
+			if ( OnStart != null )
+				OnStart( this );
 
 			// Second chance at loading scenes
 			if ( _isMainScene )

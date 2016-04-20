@@ -104,6 +104,14 @@ namespace CodingJar.MultiScene
 			}
 #endif
 		} // static void AmsPreferencesOnGUI
+
+#if !UNITY_5_3 // (i.e. 5.4+)
+		[InitializeOnLoadMethod]
+		static void InitCrossSceneReferenceHandling()
+		{
+			UnityEditor.SceneManagement.EditorSceneManager.preventCrossSceneReferences = (CrossSceneReferencing == CrossSceneReferenceHandling.UnityDefault);
+		}
+#endif	// !UNITY_5_3 (i.e. 5.4+)
 #endif	// UNITY_EDITOR
 
 	} // class 
