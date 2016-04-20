@@ -26,6 +26,13 @@ namespace CodingJar.MultiScene.Editor
 				}
 			}
 
+			// Weird Unity issue where it doesn't come in here with a filename when saving a new scene (or a non-dirty scene).
+			bool bIsSaveNewScene = (filenames.Length < 1);
+			if ( bIsSaveNewScene )
+			{
+				savingScenes.Add( EditorSceneManager.GetActiveScene() );
+			}
+
 			HandleSavingScenes( savingScenes );
 			HandleCrossSceneReferences( savingScenes );
 
@@ -63,10 +70,11 @@ namespace CodingJar.MultiScene.Editor
 				if ( !scene.isLoaded )
 					continue;
 
-				// Reset all of the cross-scene references.
+				// Reset all of the cross-scene references for loaded scenes.
 				var crossSceneRefBehaviour = AmsCrossSceneReferences.GetSceneSingleton( scene, true );
-				foreach ( var otherScene in scenes )
+				for (int i = 0 ; i < EditorSceneManager.sceneCount ; ++i)
 				{
+					var otherScene = EditorSceneManager.GetSceneAt(i);
 					if ( otherScene.isLoaded )
 						crossSceneRefBehaviour.ResetCrossSceneReferences( otherScene );
 				}

@@ -75,7 +75,7 @@ copy of Goal.  This is often undesirable as any modifications to the original Go
 By default, AMS is configured to Save cross-scene references.  This is modifiable in the Preferences menu.
 
 When AMS saves a cross-scene reference, it stores some data in the "! AmsMultiSceneSetup" GameObject that allows it to hook-up the reference at export or runtime.
-It will only be able to do this if there is a unique path from the source Object and to the destination Object, and accounts for only a single possible array/list in the path.
+It will only be able to do this if there is a unique path from the source Object and to the destination Object.
 
 For instance:
 
@@ -107,6 +107,23 @@ to access them in Awake() or OnEnable()).
 Initialization order is especially problematic on mobile devices, where the first loaded scene has different initialization rules than other platforms.  To combat this issue,
 you should always have a dummy scene 0 whose job it is to load the subsequent scenes.  This first scene should not rely on any other scenes.  Unity recommends the first scene
 be a splash screen in order to hide issues with loading assets; in fact it is for this reason that the first scene does not follow the same initialization order as other scenes.
+
+Light Baking Process
+--------------------
+
+Light baking has been a bit of a gong show with Unity 5.x.  That being said, a viable solution for multi-scene light baking is now possible and indeed we have shipped a game with
+Advanced Multi-Scene using such a setup.  Here are some pointers:
+
+1.  Break-up your scenes so static lights and geometry live in as few scenes as possible.
+2.  If there is a Sunlight (i.e. the brightest light in your level, configurable in the Lighting Window), then put that Sunlight in the "main scene".
+3.  Before baking, Unload all scenes that do not contribute to lighting (this will save a huge amount of memory and prevent crashes).
+4.  Unload any scenes that are to be re-used between multiple main scenes (i.e. loaded Additively, e.g. the UI).
+	Doing this ensures the lightmap data isn't saved into those scenes, otherwise you will get errors at runtime when they're loaded.
+5.  When all of the relevant scenes are closed, and only the few that contribute to lighting are open, you can start the light bake process.
+6.  You can re-open the other scenes once the process is done.
+
+Protip:  If you're iterating quickly on lighting, drop the lightmap resolution down to 1 or 2 so you are able to see the results quickly and determine if you have overlapping UV2's as soon as possible.
+	When you're ready to do your real lighting bake, crank it back up.
 
 Differences from Advanced Additive Scenes (AAS)
 -----------------------------------------------
@@ -145,5 +162,11 @@ To Import WITHOUT Cross-Scene References:
 5.  Delete the SubScene GameObject (this will make sure the Unity-managed one is the only instance).
 6.  Create a new GameObject and put a AmsMultiSceneSetup behaviour on that GameObject (this enables AMS).
 
+Note that this manual version is recommended for small projects.  For large projects with a highly competant tech team, I recommend writing an upgrade script.
+The steps for writing such a script are product-dependent, but an outline can be found here:  http://forum.unity3d.com/threads/advanced-multi-scene-now-available.383525/#post-2560974
+
+Support
+-------
+
 Support Forum (Preferred):	http://forum.unity3d.com/threads/advanced-multi-scene-now-available.383525/
-Support E-mail:				jodon@codingjar.com (I want to discourage this because others don't get to see the posts, but it's good for code dumps)
+Support E-mail:			jodon@codingjar.com (I want to discourage this because others don't get to see the posts, but it's good for code dumps)

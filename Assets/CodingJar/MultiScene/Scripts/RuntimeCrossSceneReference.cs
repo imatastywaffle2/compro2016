@@ -171,8 +171,14 @@ namespace CodingJar.MultiScene
 					return false;
 			}
 
-			// Find the field
-			field = fromObject.GetType().GetField( fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance );
+			// Find the field.  Need to go through all base classes.
+			System.Type objectType = fromObject.GetType();
+			while ( objectType != null && field == null )
+			{
+				field = objectType.GetField( fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy );
+				objectType = objectType.BaseType;
+			}
+
 			return (field != null);
 		}
 
