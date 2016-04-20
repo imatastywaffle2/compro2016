@@ -1124,10 +1124,6 @@ Prefab:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 137274, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
-      propertyPath: m_Name
-      value: Particle System1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6665b05edb4ed1b42becc1b1210d0c7d, type: 2}
   m_IsPrefabParent: 0
