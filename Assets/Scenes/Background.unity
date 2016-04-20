@@ -784,12 +784,6 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
-    loadInEditor: 1
-    loadMethod: 1
-  - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
       name: Boosters
       _path: Assets/Scenes/Boosters.unity
@@ -820,9 +814,9 @@ MonoBehaviour:
     loadInEditor: 1
     loadMethod: 1
   - scene:
-      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
-      name: Background
-      _path: Assets/Scenes/Background.unity
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -1954,7 +1948,7 @@ Transform:
   m_Children:
   - {fileID: 1756589675}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 22
 --- !u!1001 &1280405350
 Prefab:
   m_ObjectHideFlags: 0
@@ -2530,6 +2524,7 @@ GameObject:
   - 4: {fileID: 1756589675}
   - 33: {fileID: 1756589677}
   - 23: {fileID: 1756589676}
+  - 135: {fileID: 1756589678}
   m_Layer: 0
   m_Name: Planet16128Tris
   m_TagString: Untagged
@@ -2584,6 +2579,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1756589674}
   m_Mesh: {fileID: 4300000, guid: d103ffa837233534daa68d733386bac5, type: 3}
+--- !u!135 &1756589678
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756589674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20.195038
+  m_Center: {x: 0.0000038146973, y: 0, z: 0.0000038146973}
 --- !u!1 &1807937288 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c1474ff488aace84b9301c89cdb976ff, type: 3}
