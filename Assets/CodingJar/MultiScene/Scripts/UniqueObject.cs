@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace CodingJar.MultiScene
 {
@@ -12,6 +12,13 @@ namespace CodingJar.MultiScene
 		public AmsSceneReference	scene;
 		public string				fullPath;
 		public string				componentName;
+		public int					componentIndex;
+
+		// So we can version and auto-upgrade
+		[SerializeField, HideInInspector]	private int		version;
+
+		private static int	CurrentSerializedVersion = 1;
+		private static List<Component>	_reusableComponentsList = new List<Component>();
 
 		/// <summary>
 		/// Resolve a cross-scene reference if possible.
@@ -32,12 +39,30 @@ namespace CodingJar.MultiScene
 			if ( string.IsNullOrEmpty(componentName) )
 				return gameObject;
 
-			return gameObject.GetComponent( componentName );
+			// This is the old method where we didn't store the component index (deprecated)
+			if ( version < 1 )
+			{
+				Component oldStyleComponent = gameObject.GetComponent( componentName );
+				if ( componentIndex < 0 || oldStyleComponent )
+					return oldStyleComponent;
+			}
+
+			// Get the component and index
+			System.Type type = System.Type.GetType( componentName, false, true );
+			if ( type != null )
+			{
+				gameObject.GetComponents( type, _reusableComponentsList );
+				if ( componentIndex < _reusableComponentsList.Count )
+					return _reusableComponentsList[componentIndex];
+			}
+
+			return null;
 		}
 
 		public override string ToString()
 		{
-			return string.Format( "{0}'{1}' ({2})", scene.name, fullPath, string.IsNullOrEmpty(componentName) ? "GameObject" : componentName );
+			System.Type type = string.IsNullOrEmpty(componentName) ? null : System.Type.GetType( componentName, false, true );
+			return string.Format( "{0}'{1}' ({2} #{3})", scene.name, fullPath, type != null ? type.FullName : "GameObject", componentIndex );
 		}
 
 	} // struct
