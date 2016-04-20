@@ -222,7 +222,7 @@ GameObject:
   - 198: {fileID: 19862470}
   - 199: {fileID: 19919256}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Particle System1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,8 +607,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169938}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: -161}
+  m_LocalRotation: {x: -0.3041053, y: 0.30410537, z: 0.638373, w: 0.63837284}
+  m_LocalPosition: {x: 92, y: 0, z: -310}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 404826}
@@ -1784,7 +1784,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 5.06
+      scalar: 9.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1938,7 +1938,7 @@ ParticleSystem:
     boxY: 99.51
     boxZ: 1.51
     arc: 360
-    placementMode: 2
+    placementMode: 1
     m_Mesh: {fileID: 4300000, guid: 6e73113ff0372284c95d6321893050ef, type: 2}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
