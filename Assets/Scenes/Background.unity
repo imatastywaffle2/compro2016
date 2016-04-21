@@ -784,6 +784,12 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
       name: Boosters
       _path: Assets/Scenes/Boosters.unity
@@ -814,9 +820,9 @@ MonoBehaviour:
     loadInEditor: 1
     loadMethod: 1
   - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -831,7 +837,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 38
 --- !u!1 &487273527
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +914,7 @@ Transform:
   m_Children:
   - {fileID: 1225315081}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 37
 --- !u!122 &487273532
 Halo:
   m_ObjectHideFlags: 0
@@ -1025,46 +1031,7 @@ Transform:
   m_LocalScale: {x: 9000, y: 9000, z: 9000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
---- !u!1 &567729605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 567729607}
-  - 114: {fileID: 567729606}
-  m_Layer: 0
-  m_Name: '! CodingJar.AdditiveScenes.SceneData'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &567729606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 567729605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 750558685, guid: 926951d45b63c0448bc127a39128034b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &567729607
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 567729605}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 39
 --- !u!1001 &605341765
 Prefab:
   m_ObjectHideFlags: 0
@@ -2016,7 +1983,7 @@ Transform:
   m_LocalScale: {x: 750, y: 750, z: 750}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
 --- !u!1001 &1280405350
 Prefab:
   m_ObjectHideFlags: 0
