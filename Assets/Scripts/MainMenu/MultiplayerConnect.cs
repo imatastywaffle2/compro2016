@@ -39,6 +39,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public virtual void OnConnectedToMaster()
     {
         playButton.interactable = true;
+        Debug.Log("There are this many players in Master: " + PhotonNetwork.countOfPlayersOnMaster);
     }
 
     public void JoinRoom()
@@ -49,11 +50,14 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public virtual void OnPhotonRandomJoinFailed()
     {
         Debug.Log("OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom( null, new RoomOptions() {maxPlayers = 8}, null);");
+
         PhotonNetwork.CreateRoom(null, new RoomOptions() { maxPlayers = 10 }, null);
+        
     }
 
     public void OnJoinedRoom()
     {
+        Debug.Log("There are this many rooms" + PhotonNetwork.GetRoomList().Length);
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room");
         Menu.SetActive(false);
         vehicleSpawn.SpawnPlayer();
