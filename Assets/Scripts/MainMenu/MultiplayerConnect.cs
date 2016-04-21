@@ -49,7 +49,9 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public virtual void OnPhotonRandomJoinFailed()
     {
         Debug.Log("OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom( null, new RoomOptions() {maxPlayers = 8}, null);");
+
         PhotonNetwork.CreateRoom(null, new RoomOptions() { maxPlayers = 10 }, null);
+        Debug.Log("There are this many rooms" + PhotonNetwork.GetRoomList().Length);
     }
 
     public void OnJoinedRoom()
