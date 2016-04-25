@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class VehicleSpawning : MonoBehaviour {
-    public Transform VehiclePrefab;
+public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
+{
     public int VehicleType = 0;
-    public int VehicleCount = 0;
-    public List<Transform> players = new List<Transform>();
+    public int ReadyCount = 0;
+    public bool localReady = false;
     public Transform LocalPlayers;
 
 
@@ -15,22 +16,39 @@ public class VehicleSpawning : MonoBehaviour {
     }
     void Update()
     {
-        
+       
     }
     void FixedUpdate()
     { 
+
     }
 
     public void SpawnPlayer()
     {
         GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position, Quaternion.Euler(0, 0, 0), 0);
-        //
-       // player.gameObject.layer = 8;
-        VehicleCount++;
-        //players.Add(player.transform);
-       // player.GetComponent<Player>().playerID = Time.time + players.Count;
         
-        //note to self change later to when player joins
     }
-    
+
+    public void ReadyPlayer()
+    {
+        SpawnPlayer();
+        localReady = true;
+
+        if (ReadyCount >= PhotonNetwork.playerList.Length)
+        {
+
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.Serialize(ref ReadyCount);
+        }
+        else
+        {
+            stream.Serialize(ref ReadyCount);
+        }
+    }
 }

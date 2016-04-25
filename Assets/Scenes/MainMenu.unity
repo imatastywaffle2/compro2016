@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -232,7 +232,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 305858862}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ReadyPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &305858862
@@ -1248,6 +1259,27 @@ MonoBehaviour:
         PublicKeyToken=null
       componentIndex: 0
       version: 1
+  - _fromObject:
+      scene:
+        editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+        name: MainMenu
+        _path: Assets/Scenes/MainMenu.unity
+      fullPath: /Lobby/Ready
+      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: m_OnClick.m_PersistentCalls.m_Calls,0.m_Target
+    _toObject:
+      scene:
+        editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
+        name: Player
+        _path: Assets/Scenes/Player.unity
+      fullPath: /VehicleSpawn
+      componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
   _realSceneRootsForPostBuild: []
 --- !u!114 &997043582
 MonoBehaviour:
@@ -1582,7 +1614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1402846114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,6 +2099,7 @@ MonoBehaviour:
   AutoConnect: 1
   Version: 1
   Menu: {fileID: 522475991}
+  ReadyMenu: {fileID: 0}
   vehicleSpawn: {fileID: 0}
 --- !u!4 &1702847550
 Transform:
