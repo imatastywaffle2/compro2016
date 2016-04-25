@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SpeedBoost : MonoBehaviour {
-    float Speed = 100;
+    float Speed = 300;
     float BoostTime = 3;
 
     void OnTriggerEnter(Collider col)
