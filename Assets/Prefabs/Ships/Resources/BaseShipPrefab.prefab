@@ -230,7 +230,7 @@ TrailRenderer:
       rgba: 4294963273
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 4294967295
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!96 &9680372
@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   currentGate: 0
+  place: 0
 --- !u!198 &19801774
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2233,7 +2234,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     gravityModifier: 0
     maxNumParticles: 1000
-    rotation3D: 1
+    rotation3D: 0
   ShapeModule:
     serializedVersion: 2
     enabled: 1
