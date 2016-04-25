@@ -12,28 +12,41 @@ public enum Pickups
 public class PickupBox : MonoBehaviour
 {
     public Pickups PickupType;
+    private PickupUI pickupUI;
+
+    void Start()
+    {
+        pickupUI = GameObject.FindObjectOfType<PickupUI>();
+    }
+
+
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            Vehicle player = col.gameObject.GetComponent<Vehicle>();
-            if (player.ItemPickup == null)
+            Destroy(gameObject);
+            if (col.gameObject.layer == 8)
             {
-            
-                if (this.PickupType == Pickups.Boost)
+                Vehicle player = col.gameObject.GetComponent<Vehicle>();
+                if (player.ItemPickup == null)
                 {
-                    player.ItemPickup = player.gameObject.AddComponent<PickupBoost>();
+
+                    if (this.PickupType == Pickups.Boost)
+                    {
+                        player.ItemPickup = player.gameObject.AddComponent<PickupBoost>();
+                    }
+                    else if (this.PickupType == Pickups.Shield)
+                    {
+                        player.ItemPickup = player.gameObject.AddComponent<PickupShield>();
+                    }
+                    else if (this.PickupType == Pickups.Projectile)
+                    {
+                        player.ItemPickup = player.gameObject.AddComponent<PickupProjectile>();
+                    }
+                    pickupUI.enableIcon(this.PickupType);
+
                 }
-                else if (this.PickupType == Pickups.Shield)
-                {
-                    player.ItemPickup = player.gameObject.AddComponent<PickupShield>();
-                }
-                else if (this.PickupType == Pickups.Projectile)
-                {
-                    player.ItemPickup = player.gameObject.AddComponent<PickupProjectile>();
-                }
-                Destroy(gameObject);
             }
 
         }

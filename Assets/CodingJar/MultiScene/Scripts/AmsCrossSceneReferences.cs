@@ -25,7 +25,12 @@ namespace CodingJar.MultiScene
         [SerializeField]    private List<RuntimeCrossSceneReference>	_crossSceneReferences = new List<RuntimeCrossSceneReference>();
 		[SerializeField, HideInInspector]	private List<GameObject>	_realSceneRootsForPostBuild = new List<GameObject>();
 		
-		private List<RuntimeCrossSceneReference>	_referencesToResolve;
+		private List<RuntimeCrossSceneReference>	_referencesToResolve = new List<RuntimeCrossSceneReference>();
+
+		/// <summary>
+		/// An event that you can register with in order to receive notifications that a cross-scene reference was restored.
+		/// </summary>
+		public static event System.Action<RuntimeCrossSceneReference>	CrossSceneReferenceRestored;
 
 		/// <summary>
 		/// Return the Singleton for a given scene (there is one per Scene).
@@ -74,34 +79,33 @@ namespace CodingJar.MultiScene
 
 		void Awake()
 		{
-			AmsDebug.Log( this, "{0}.Awake() Scene: {1}. Path: {2}. Frame: {3}. Root Count: {4}", GetType().Name, gameObject.scene.name, gameObject.scene.path, Time.frameCount, gameObject.scene.rootCount );
+			//AmsDebug.Log( this, "{0}.Awake() Scene: {1}. IsLoaded: {2}. Path: {3}. Frame: {4}. Root Count: {5}", GetType().Name, gameObject.scene.name, gameObject.scene.isLoaded, gameObject.scene.path, Time.frameCount, gameObject.scene.rootCount );
 
-			_referencesToResolve = new List<RuntimeCrossSceneReference>( _crossSceneReferences );
-
-			//ConditionalResolveReferences( _referencesToResolve );
-			StartCoroutine( CoWaitForSceneLoadThenResolveReferences(gameObject.scene) );
-
-			AmsMultiSceneSetup.OnAwake += HandleNewSceneLoaded;
-			AmsMultiSceneSetup.OnDestroyed += HandleSceneDestroyed;
+			// We need to queue our cross-scene references super early in case we get merged.
+			_referencesToResolve.Clear();
+			_referencesToResolve.AddRange( _crossSceneReferences );
 		}
 
 		void Start()
 		{
-			AmsDebug.Log( this, "{0}.Start() Scene: {1}. Path: {2}. Frame: {3}. Root Count: {4}", GetType().Name, gameObject.scene.name, gameObject.scene.path, Time.frameCount, gameObject.scene.rootCount );
+			AmsDebug.Log( this, "{0}.Start() Scene: {1}. IsLoaded: {2}. Path: {3}. Frame: {4}. Root Count: {5}", GetType().Name, gameObject.scene.name, gameObject.scene.isLoaded, gameObject.scene.path, Time.frameCount, gameObject.scene.rootCount );
 
 			// A build might have just been performed, in that case clean-up the leftovers.
 			PerformPostBuildCleanup();
 
-			// Give us a second chance (helps initial load of scene)
-			// For some reason in Awake(), the scene we belong to isn't considered "loaded"?!
-			// Unfortunately we can get a Start() before CoWaitForSceneLoadThenResolveReferences finishes... so we need to nuke it if it's still running.
-			StopAllCoroutines();
+			// For some reason in Awake(), the scene we belong to isn't considered "loaded"?!  We must resolve our cross-scene references here.
 			ResolvePendingCrossSceneReferences();
+
+			// Register to these callbacks only once
+			AmsMultiSceneSetup.OnStart -= HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnStart += HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnDestroyed -= HandleSceneDestroyed;
+			AmsMultiSceneSetup.OnDestroyed += HandleSceneDestroyed;
 		}
 
 		void OnDestroy()
 		{
-			AmsMultiSceneSetup.OnAwake -= HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnStart -= HandleNewSceneLoaded;
 			AmsMultiSceneSetup.OnDestroyed -= HandleSceneDestroyed;
 		}
 
@@ -111,7 +115,22 @@ namespace CodingJar.MultiScene
 		/// <param name="sceneSetup">The AmsMultiSceneSetup that was loaded</param>
 		private void HandleNewSceneLoaded( AmsMultiSceneSetup sceneSetup )
 		{
-			StartCoroutine( CoWaitForSceneLoadThenResolveReferences(sceneSetup.gameObject.scene) );
+			var loadedScene = sceneSetup.gameObject.scene;
+			if ( !loadedScene.isLoaded )
+				Debug.LogErrorFormat( this, "{0} Received HandleNewSceneLoaded from scene {1} which isn't considered loaded.  The scene MUST be considered loaded by this point", GetType().Name, loadedScene.name );
+
+			// Restore any references to this newly loaded scene
+			foreach( var xRef in _crossSceneReferences )
+			{
+				if ( !_referencesToResolve.Contains(xRef) && xRef.toScene.scene == loadedScene )
+					_referencesToResolve.Add( xRef );
+			}
+
+			if ( _referencesToResolve.Count > 0 )
+			{
+				AmsDebug.Log( this, "Scene {0} Loaded. {1} Cross-Scene References (in total) from Cross-Scene Manager in {2} are queued for resolve.", loadedScene.name, _referencesToResolve.Count, gameObject.scene.name );
+				ConditionalResolveReferences( _referencesToResolve );
+			}
 		}
 
 		/// <summary>
@@ -142,6 +161,12 @@ namespace CodingJar.MultiScene
 		/// <param name="scene">The scene to guarantee loaded</param>
 		System.Collections.IEnumerator	CoWaitForSceneLoadThenResolveReferences( Scene scene )
 		{
+			if ( !Application.isPlaying )
+			{
+				Debug.LogErrorFormat( this, "CoWaitForSceneLoadThenResolveReferences called, but we're not playing. Co-routines do not work reliably in the Editor!" );
+				yield break;
+			}
+
 			if ( !scene.IsValid() )
 				yield break;
 
@@ -160,7 +185,9 @@ namespace CodingJar.MultiScene
 		[ContextMenu("Retry ALL Resolves")]
 		private void RetryAllResolves()
 		{
-			_referencesToResolve = new List<RuntimeCrossSceneReference>( _crossSceneReferences );
+			_referencesToResolve.Clear();
+			_referencesToResolve.AddRange( _crossSceneReferences );
+			
 			ResolvePendingCrossSceneReferences();
 		}
 
@@ -185,6 +212,10 @@ namespace CodingJar.MultiScene
 
 						AmsDebug.Log( this, "Restoring Cross-Scene Reference {0}", xRef );
 						xRef.Resolve();
+
+						// Notify any listeners
+						if ( CrossSceneReferenceRestored != null )
+							CrossSceneReferenceRestored( xRef );
 					}
 				}
 				catch ( System.Exception ex )
@@ -213,8 +244,22 @@ namespace CodingJar.MultiScene
 		}
 
 #if UNITY_EDITOR
-		public void OnAfterDeserialize() {}
+		/// <summary>
+		/// Callback that this object has been deserialized which can happen on a level-load, or on a hot recompile
+		/// </summary>
+		public void OnAfterDeserialize()
+		{
+			// We should register for this callback (but only once).
+			AmsMultiSceneSetup.OnStart -= HandleNewSceneLoaded;
+			AmsMultiSceneSetup.OnStart += HandleNewSceneLoaded;
 
+			AmsMultiSceneSetup.OnDestroyed -= HandleSceneDestroyed;
+			AmsMultiSceneSetup.OnDestroyed += HandleSceneDestroyed;
+		}
+
+		/// <summary>
+		/// Callback that this object is about to be serialized which can happen when saving, or when simply inspecting the object.
+		/// </summary>
 		public void OnBeforeSerialize()
 		{
 			if ( !BuildPipeline.isBuildingPlayer )

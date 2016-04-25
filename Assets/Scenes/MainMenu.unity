@@ -1050,7 +1050,10 @@ MonoBehaviour:
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
       fullPath: /Scripts
-      componentName: MultiplayerConnect
+      componentName: MultiplayerConnect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
     _fromField: vehicleSpawn
     _toObject:
       scene:
@@ -1058,7 +1061,10 @@ MonoBehaviour:
         name: Player
         _path: Assets/Scenes/Player.unity
       fullPath: /VehicleSpawn
-      componentName: VehicleSpawning
+      componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
   _realSceneRootsForPostBuild: []
 --- !u!114 &997043582
 MonoBehaviour:

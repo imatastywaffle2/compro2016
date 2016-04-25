@@ -292,6 +292,8 @@ GameObject:
   - 65: {fileID: 6528552}
   - 65: {fileID: 6592656}
   - 65: {fileID: 6598296}
+  - 114: {fileID: 11454154}
+  - 114: {fileID: 11442360}
   m_Layer: 0
   m_Name: StartGate
   m_TagString: Untagged
@@ -1122,6 +1124,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbffd2571083747aa1c5c5fe9772a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11442360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 1
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 11454154}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &11454154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01483e37c1fbee647a8fcf61d94a122f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateManager: {fileID: 0}
 --- !u!114 &11484658
 MonoBehaviour:
   m_ObjectHideFlags: 1

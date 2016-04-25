@@ -30,8 +30,7 @@ public class GatePassScript : MonoBehaviour
                 player.currentGate++;
                 gate.PlayersPassed.Add(player);
                 if (col.gameObject.layer == 8)
-                        gate.previousGate();
-
+                        gate.previousGate(player.currentGate);
             }
           //  count = count + 1;
            // SetCountText();
