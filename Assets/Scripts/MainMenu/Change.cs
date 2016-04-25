@@ -8,4 +8,5 @@ public class Change : MonoBehaviour
     {
         SceneManager.LoadScene(sceneToChangeTo);
         Application.LoadLevel(sceneToChangeTo);
+    }
 }
