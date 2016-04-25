@@ -814,6 +814,12 @@ MonoBehaviour:
     loadInEditor: 1
     loadMethod: 1
   - scene:
+      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
+      name: Background
+      _path: Assets/Scenes/Background.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
       editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
       name: MainMenu
       _path: Assets/Scenes/MainMenu.unity
