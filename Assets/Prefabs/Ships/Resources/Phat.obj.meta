@@ -6,7 +6,12 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Default_Prototype
     400000: //RootNode
+    400002: Default_Prototype
+    2300000: Default_Prototype
+    3300000: Default_Prototype
+    4300000: Default_Prototype
   materials:
     importMaterials: 1
     materialName: 0
