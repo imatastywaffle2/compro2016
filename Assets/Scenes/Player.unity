@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1457903267}
   - 114: {fileID: 1457903266}
+  - 114: {fileID: 1457903268}
   m_Layer: 0
   m_Name: VehicleSpawn
   m_TagString: Untagged
@@ -275,10 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9e0f0d548ea6b4fb0812a67fb27133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VehiclePrefab: {fileID: 492524, guid: 9df203fea917fc04eabef0e66606a8d7, type: 2}
   VehicleType: 0
   VehicleCount: 0
-  players: []
+  ReadyCount: 0
+  localReady: 0
   LocalPlayers: {fileID: 2055794093}
 --- !u!4 &1457903267
 Transform:
@@ -292,6 +293,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1457903268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457903265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 1
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1457903266}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  isRuntimeInstantiated: 0
 --- !u!1 &1830145471
 GameObject:
   m_ObjectHideFlags: 0
