@@ -15,6 +15,8 @@ public class MultiplayerConnect : Photon.MonoBehaviour
 
     public GameObject Menu;
 
+    public GameObject ReadyMenu;
+
     public VehicleSpawning vehicleSpawn;
      
     public virtual void Start()
@@ -60,7 +62,8 @@ public class MultiplayerConnect : Photon.MonoBehaviour
         Debug.Log("There are this many rooms" + PhotonNetwork.GetRoomList().Length);
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room");
         Menu.SetActive(false);
-        vehicleSpawn.SpawnPlayer();
+        ReadyMenu.SetActive(true);
+        //vehicleSpawn.SpawnPlayer();
 
     }
 
