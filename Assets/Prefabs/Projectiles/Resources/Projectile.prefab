@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackTarget: 0
   stunDuration: 2
-  speed: 5
+  speed: 1000
   target: {fileID: 0}
 --- !u!114 &11453052
 MonoBehaviour:
