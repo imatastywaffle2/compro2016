@@ -366,6 +366,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1402846113}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &305858862
@@ -1459,7 +1470,7 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Lobby/Ready
+      fullPath: /Lobby/READY
       componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
         PublicKeyToken=null
       componentIndex: 0
@@ -2295,7 +2306,7 @@ MonoBehaviour:
   AutoConnect: 1
   Version: 1
   Menu: {fileID: 522475991}
-  ReadyMenu: {fileID: 0}
+  ReadyMenu: {fileID: 1402846113}
   vehicleSpawn: {fileID: 0}
 --- !u!4 &1702847550
 Transform:
