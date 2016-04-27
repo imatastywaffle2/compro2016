@@ -29,17 +29,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void FixedUpdate()
     {
-        if(!MatchStarted)
+        if(!MatchStarted && Players.Count >= PhotonNetwork.playerList.Length)
         {
-            for (int i = 0; i < Players.Count; i++)
-            {
-                if (!Players[i].Ready)
-                    break;
-                else if (i + 1 == Players.Count)
-                    MatchStarted = true;
-            }
+            MatchStarted = true;
         }
-        else
+        else if(MatchStarted)
         {
             if(ReadyTimer > 0)
             {
@@ -94,10 +88,12 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         if (stream.isWriting)
         {
             stream.SendNext(Players);
+            stream.Serialize(ref ReadyTimer);
         }
         else
         {
             Players = (List<Player>)stream.ReceiveNext();
+            stream.Serialize(ref ReadyTimer);
         }
     }
 }
