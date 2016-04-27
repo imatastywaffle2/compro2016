@@ -47,7 +47,7 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
     public void SpawnPlayer()
     {
-        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + new Vector3(PhotonNetwork.playerList.Length * 10, 0, 0), transform.rotation, 0);
+        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + new Vector3(ReadyCount * 150, 0, 0), transform.rotation, 0);
         
     }
 
