@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 {
     public int VehicleType = 0;
-    public int ReadyCount = 0;
+    public int ReadyCount;
     public bool localReady = false;
     public GameObject LocalPlayers;
     public GameObject RemotePlayers;
