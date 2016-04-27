@@ -284,6 +284,7 @@ MonoBehaviour:
   ReadyTimer: 5
   MatchStarted: 0
   PlayersEnabled: 0
+  StartTimer: {fileID: 0}
 --- !u!4 &1457903267
 Transform:
   m_ObjectHideFlags: 0
@@ -349,7 +350,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crossSceneReferences: []
+  _crossSceneReferences:
+  - _fromObject:
+      scene:
+        editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
+        name: Player
+        _path: Assets/Scenes/Player.unity
+      fullPath: /VehicleSpawn
+      componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: StartTimer
+    _toObject:
+      scene:
+        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
+        name: UI
+        _path: Assets/Scenes/UI.unity
+      fullPath: /Pilot HUD/StartTimer
+      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
   _realSceneRootsForPostBuild: []
 --- !u!114 &1830145473
 MonoBehaviour:
