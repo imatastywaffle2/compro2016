@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 {
     public int VehicleType = 0;
-    public int ReadyCount;
+    public int ReadyCount = 0;
     public bool localReady = false;
     public GameObject LocalPlayers;
     public GameObject RemotePlayers;
@@ -89,11 +89,12 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            stream.Serialize(ref ReadyCount);
+            if(ReadyCount !=0)
+                stream.SendNext(ReadyCount);
         }
         else
         {
-            stream.Serialize(ref ReadyCount);
+            ReadyCount = (int)stream.ReceiveNext();
         }
     }
 }
