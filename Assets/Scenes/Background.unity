@@ -784,12 +784,6 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
-    loadInEditor: 1
-    loadMethod: 1
-  - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
       name: Boosters
       _path: Assets/Scenes/Boosters.unity
@@ -820,9 +814,9 @@ MonoBehaviour:
     loadInEditor: 1
     loadMethod: 1
   - scene:
-      editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
-      name: Background
-      _path: Assets/Scenes/Background.unity
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -837,7 +831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 39
 --- !u!1 &487273527
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +908,7 @@ Transform:
   m_Children:
   - {fileID: 1225315081}
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
 --- !u!122 &487273532
 Halo:
   m_ObjectHideFlags: 0
@@ -1033,7 +1027,7 @@ Transform:
   m_LocalScale: {x: 9000, y: 9000, z: 9000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 37
 --- !u!122 &560902055
 Halo:
   m_ObjectHideFlags: 0
@@ -1056,6 +1050,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d274ded0534b4cbb9c82e3760899e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  RotationSpeed: 5
+  OrbitDegrees: 1
 --- !u!1001 &605341765
 Prefab:
   m_ObjectHideFlags: 0
