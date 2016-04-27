@@ -28,6 +28,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void FixedUpdate()
     {
+        if (ReadyCount >= PhotonNetwork.playerList.Length)
+        {
+            MatchStarted = true;
+        }
+
         if (MatchStarted)
         {
             if(ReadyTimer > 0)
@@ -57,13 +62,6 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         localReady = true;
 
         ReadyCount++;
-
-        if (ReadyCount >= PhotonNetwork.playerList.Length)
-        {
-            MatchStarted = true;
-        }
-
-
     }
     
     public void EnablePlayers()
@@ -89,12 +87,13 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            if(ReadyCount !=0)
-                stream.SendNext(ReadyCount);
+            stream.SendNext(ReadyCount);
         }
         else
         {
-            ReadyCount = (int)stream.ReceiveNext();
+            int readyTemp = (int)stream.ReceiveNext();
+            if (readyTemp > ReadyCount)
+                ReadyCount = readyTemp;
         }
     }
 }
