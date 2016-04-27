@@ -10,6 +10,5 @@ public class Rotaion : MonoBehaviour {
     void Update()
     {
         transform.Rotate(Vector3.up, RotationSpeed * Time.deltaTime);
-        transform.RotateAround(target.position, Vector3.up, OrbitDegrees);
     }
 }

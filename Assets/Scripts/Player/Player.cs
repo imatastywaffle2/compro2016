@@ -10,6 +10,8 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     GameObject localPlayers;
     GameObject remotePlayers;
 
+    public bool Ready = false;
+
 
     void Start()
     {
@@ -37,10 +39,12 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         if (stream.isWriting)
         {
             stream.Serialize(ref currentGate);
+            stream.Serialize(ref Ready);
         }
         else
         {
             stream.Serialize(ref currentGate);
+            stream.Serialize(ref Ready);
         }
     }
 }
