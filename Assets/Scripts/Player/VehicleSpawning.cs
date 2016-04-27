@@ -28,6 +28,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void FixedUpdate()
     {
+        if (ReadyCount >= PhotonNetwork.playerList.Length)
+        {
+            MatchStarted = true;
+        }
+
         if (MatchStarted)
         {
             if(ReadyTimer > 0)
@@ -47,7 +52,7 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
     public void SpawnPlayer()
     {
-        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + new Vector3(ReadyCount * 150, 0, 0), transform.rotation, 0);
+        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * (ReadyCount * -50)), transform.rotation, 0);
         
     }
 
@@ -57,13 +62,6 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         localReady = true;
 
         ReadyCount++;
-
-        if (ReadyCount >= PhotonNetwork.playerList.Length)
-        {
-            MatchStarted = true;
-        }
-
-
     }
     
     public void EnablePlayers()
@@ -89,11 +87,13 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            stream.Serialize(ref ReadyCount);
+            stream.SendNext(ReadyCount);
         }
         else
         {
-            stream.Serialize(ref ReadyCount);
+            int readyTemp = (int)stream.ReceiveNext();
+            if (readyTemp > ReadyCount)
+                ReadyCount = readyTemp;
         }
     }
 }
