@@ -95,10 +95,12 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         if (stream.isWriting)
         {
             stream.Serialize(ref ReadyTimer);
+            stream.Serialize(ref MatchStarted);
         }
         else
         {
             stream.Serialize(ref ReadyTimer);
+            stream.Serialize(ref MatchStarted);
         }
     }
 }
