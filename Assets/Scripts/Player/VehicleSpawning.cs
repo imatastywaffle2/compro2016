@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 {
@@ -14,6 +15,8 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     public float ReadyTimer = 5;
     public bool MatchStarted = false;
     public bool PlayersEnabled = false;
+
+    public Text StartTimer;
 
 
     void Start()
@@ -29,11 +32,14 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         {
             if(ReadyTimer > 0)
             {
+                StartTimer.enabled = true;
+                StartTimer.text = ((int)ReadyTimer).ToString();
                 ReadyTimer -= Time.deltaTime;
             }
             else if(!PlayersEnabled)
             {
                 PlayersEnabled = true;
+                StartTimer.enabled = false;
                 EnablePlayers();
             }
         }
