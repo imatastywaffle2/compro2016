@@ -9,8 +9,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     public int ReadyCount = 0;
     public bool localReady = false;
     public GameObject LocalPlayers;
-    public GameObject move;
     public GameObject RemotePlayers;
+
+    public float ReadyTimer = 5;
+    public bool MatchStarted = false;
+    public bool PlayersEnabled = false;
 
 
     void Start()
@@ -21,8 +24,19 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
        
     }
     void FixedUpdate()
-    { 
-
+    {
+        if (MatchStarted)
+        {
+            if(ReadyTimer > 0)
+            {
+                ReadyTimer -= Time.deltaTime;
+            }
+            else if(!PlayersEnabled)
+            {
+                PlayersEnabled = true;
+                EnablePlayers();
+            }
+        }
     }
 
     public void SpawnPlayer()
@@ -36,10 +50,33 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         SpawnPlayer();
         localReady = true;
 
+        ReadyCount++;
+
         if (ReadyCount >= PhotonNetwork.playerList.Length)
         {
-
+            MatchStarted = true;
         }
+
+
+    }
+    
+    public void EnablePlayers()
+    {
+        InputInformation[] inputs = LocalPlayers.GetComponentsInChildren<InputInformation>(true);
+        Move[] moves = LocalPlayers.GetComponentsInChildren<Move>(true);
+
+        Move[] remoteMoves = RemotePlayers.GetComponentsInChildren<Move>(true);
+
+        for (int i = 0; i < remoteMoves.Length; i++)
+        {
+            remoteMoves[i].enabled = true;
+        }
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            inputs[i].enabled = true;
+            moves[i].enabled = true;
+        }
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
