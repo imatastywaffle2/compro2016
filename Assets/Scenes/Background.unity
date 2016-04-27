@@ -825,12 +825,6 @@ MonoBehaviour:
       _path: Assets/Scenes/Background.unity
     loadInEditor: 1
     loadMethod: 1
-  - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
-    loadInEditor: 1
-    loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
 --- !u!4 &449732019
 Transform:

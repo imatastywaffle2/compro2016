@@ -10,9 +10,10 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     public bool localReady = false;
     public GameObject LocalPlayers;
     public GameObject RemotePlayers;
+    public GameObject PlayersContainer;
 
-    public List<Player> Players = new List<Player>();
-    
+    public Player[] Players;
+        
     public float ReadyTimer = 5;
     public bool MatchStarted = false;
     public bool PlayersEnabled = false;
@@ -29,7 +30,10 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void FixedUpdate()
     {
-        if(!MatchStarted && Players.Count >= PhotonNetwork.playerList.Length)
+        Players = PlayersContainer.GetComponentsInChildren<Player>();
+
+        if(Players != null)
+        if(!MatchStarted && Players.Length >= PhotonNetwork.playerList.Length)
         {
             MatchStarted = true;
         }
@@ -52,8 +56,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
     public void SpawnPlayer()
     {
-        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * (Players.Count * -50)), transform.rotation, 0);
-        Players.Add(player.GetComponent<Player>());
+        if(Players != null)
+            PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * (Players.Length * -50)), transform.rotation, 0);
+        else
+            PhotonNetwork.Instantiate("BaseShipPrefab", transform.position, transform.rotation, 0);
+
     }
 
     public void ReadyPlayer()
@@ -87,12 +94,10 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            stream.SendNext(Players);
             stream.Serialize(ref ReadyTimer);
         }
         else
         {
-            Players = (List<Player>)stream.ReceiveNext();
             stream.Serialize(ref ReadyTimer);
         }
     }
