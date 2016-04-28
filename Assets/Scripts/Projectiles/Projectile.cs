@@ -28,14 +28,6 @@ public class Projectile : MonoBehaviour
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
-            else {
-                // Otherwise destroy self
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         }
     }
 
