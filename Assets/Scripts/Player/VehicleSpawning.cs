@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 {
     public int VehicleType = 0;
-    public int ReadyCount = 0;
     public bool localReady = false;
     public GameObject LocalPlayers;
     public GameObject RemotePlayers;
+    public GameObject PlayersContainer;
 
+    public Player[] Players;
+        
     public float ReadyTimer = 5;
     public bool MatchStarted = false;
     public bool PlayersEnabled = false;
@@ -28,12 +30,14 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void FixedUpdate()
     {
-        if (ReadyCount >= PhotonNetwork.playerList.Length)
+        Players = PlayersContainer.GetComponentsInChildren<Player>();
+
+        if(Players != null)
+        if(!MatchStarted && Players.Length >= PhotonNetwork.playerList.Length)
         {
             MatchStarted = true;
         }
-
-        if (MatchStarted)
+        else if(MatchStarted)
         {
             if(ReadyTimer > 0)
             {
@@ -52,8 +56,11 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
     public void SpawnPlayer()
     {
-        GameObject player = PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * (ReadyCount * -50)), transform.rotation, 0);
-        
+        if(Players != null)
+            PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * (Players.Length * 50)), transform.rotation, 0);
+        else
+            PhotonNetwork.Instantiate("BaseShipPrefab", transform.position, transform.rotation, 0);
+
     }
 
     public void ReadyPlayer()
@@ -61,7 +68,7 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         SpawnPlayer();
         localReady = true;
 
-        ReadyCount++;
+        ((GameObject)PhotonNetwork.player.TagObject).GetComponent<Player>().Ready = true;
     }
     
     public void EnablePlayers()
@@ -87,13 +94,13 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            stream.SendNext(ReadyCount);
+            stream.Serialize(ref ReadyTimer);
+            stream.Serialize(ref MatchStarted);
         }
         else
         {
-            int readyTemp = (int)stream.ReceiveNext();
-            if (readyTemp > ReadyCount)
-                ReadyCount = readyTemp;
+            stream.Serialize(ref ReadyTimer);
+            stream.Serialize(ref MatchStarted);
         }
     }
 }
