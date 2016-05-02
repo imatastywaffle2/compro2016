@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class Vehicle : MonoBehaviour {
     private bool speedBoost;
@@ -22,8 +21,6 @@ public class Vehicle : MonoBehaviour {
     InputInformation Information;
     public Rigidbody rb;
     public GameObject projectile;
-    public GameObject UI;
-    public Slider Velocimeter;
 
 
     // Use this for initialization
@@ -31,8 +28,6 @@ public class Vehicle : MonoBehaviour {
     {
         Information = GetComponent<InputInformation>();
         rb = GetComponent<Rigidbody>();
-        UI = GameObject.Find("Pilot HUD");
-        Velocimeter = UI.GetComponentInChildren<Slider>();
     }
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -43,6 +38,11 @@ public class Vehicle : MonoBehaviour {
         if (boostTime <= 0)
         {
             boostSpeed = 0;
+        }
+        if (vehicleStun <= 0)
+        {
+            gameObject.GetComponent<InputInformation>().enabled = true;
+            gameObject.GetComponent<Move>().enabled = true;
         }
     }
 
@@ -62,6 +62,8 @@ public class Vehicle : MonoBehaviour {
         if (!shieldActivated)
         {
             vehicleStun = 2;
+            gameObject.GetComponent<InputInformation>().enabled = false;
+            gameObject.GetComponent<Move>().enabled = false;
         }
         else if (shieldActivated)
             vehicleStun = 0;       
@@ -69,7 +71,6 @@ public class Vehicle : MonoBehaviour {
     public void CalculateSpeed()
     {
         whatIsSpeed = rb.velocity.magnitude;
-        Velocimeter.value = whatIsSpeed;
     }
 
     public void Boost(float boostSpeed, float boostTime)
