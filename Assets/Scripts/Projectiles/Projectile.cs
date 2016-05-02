@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer != 8)
+        if (other.gameObject.layer == 9)
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
             Destroy(gameObject);           
