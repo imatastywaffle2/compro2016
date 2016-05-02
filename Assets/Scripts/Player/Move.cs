@@ -57,7 +57,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
                 enginesOn = InputInfo.Forward();
                 
             }
-            else
+            else if (stunDuration > 0)
             {
                 stunDuration -= Time.deltaTime;
             }
