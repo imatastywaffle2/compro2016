@@ -46,13 +46,9 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if (otherShip.gameObject.layer != 8 && otherShip.gameObject.layer != 0)
+        if (otherShip.gameObject.layer != 8 && otherShip.gameObject.layer == 9 && target == null)
         {
             target = otherShip.transform;
-        }
-        else
-        {
-            target = null;
         }
     }
 }
