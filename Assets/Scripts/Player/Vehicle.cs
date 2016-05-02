@@ -58,7 +58,7 @@ public class Vehicle : MonoBehaviour {
         {
             vehicleStun = 2;
         }
-        else
+        else if (shieldActivated)
             vehicleStun = 0;       
     }
     public void CalculateSpeed()
