@@ -768,27 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crossSceneReferences:
-  - _fromObject:
-      scene:
-        editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
-        name: Background
-        _path: Assets/Scenes/Background.unity
-      fullPath: /Sphere
-      componentName: respawn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      componentIndex: 0
-      version: 1
-    _fromField: respawnPosition
-    _toObject:
-      scene:
-        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
-        name: Track
-        _path: Assets/Scenes/Track.unity
-      fullPath: /Gates/StartGate
-      componentName: UnityEngine.Transform, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
+  _crossSceneReferences: []
   _realSceneRootsForPostBuild: []
 --- !u!114 &449732018
 MonoBehaviour:
@@ -803,12 +783,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isMainScene: 1
   _sceneSetup:
-  - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
-    loadInEditor: 1
-    loadMethod: 1
   - scene:
       editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
       name: Boosters
@@ -843,6 +817,12 @@ MonoBehaviour:
       editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
       name: Background
       _path: Assets/Scenes/Background.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -990,7 +970,6 @@ GameObject:
   - 23: {fileID: 560902051}
   - 122: {fileID: 560902055}
   - 114: {fileID: 560902056}
-  - 114: {fileID: 560902057}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1031,10 +1010,10 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 560902050}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.65
+  m_Radius: 0.59
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &560902053
 MeshFilter:
@@ -1078,20 +1057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  RotationSpeed: 3.9
+  RotationSpeed: 5
   OrbitDegrees: 1
---- !u!114 &560902057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 560902050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8929756056bd3f243917fdfc1f4bee59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPosition: {fileID: 0}
 --- !u!1001 &605341765
 Prefab:
   m_ObjectHideFlags: 0
