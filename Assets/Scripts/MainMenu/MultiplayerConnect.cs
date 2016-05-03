@@ -17,6 +17,10 @@ public class MultiplayerConnect : Photon.MonoBehaviour
 
     public GameObject ReadyMenu;
 
+    public Text UserName;
+
+    public Text UserInLobby;
+
     public VehicleSpawning vehicleSpawn;
      
     public virtual void Start()
@@ -33,7 +37,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
             ConnectInUpdate = false;
             PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex);
 
-           
+            
         }
 
     }
@@ -42,7 +46,9 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     {
         playButton.interactable = true;
         Debug.Log("There are this many players in Master: " + PhotonNetwork.countOfPlayersOnMaster);
+        
     }
+
 
     public void JoinRoom()
     {
@@ -64,7 +70,12 @@ public class MultiplayerConnect : Photon.MonoBehaviour
         Menu.SetActive(false);
         ReadyMenu.SetActive(true);
         //vehicleSpawn.SpawnPlayer();
+        if (UserName.text != "" && UserName.text != null)
+        {
+            PhotonNetwork.player.name = UserName.text;
+        }
 
+        
     }
 
     public void ChangeToScene(string sceneToChangeTo)
