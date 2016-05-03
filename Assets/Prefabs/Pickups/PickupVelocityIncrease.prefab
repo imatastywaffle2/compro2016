@@ -25,7 +25,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400282}
-  - 122: {fileID: 12231826}
   - 114: {fileID: 11482540}
   - 65: {fileID: 6563786}
   m_Layer: 0
@@ -42,8 +41,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -111.4, y: 221.7, z: -116.01524}
-  m_LocalScale: {x: 11, y: 11, z: 11}
+  m_LocalPosition: {x: 377, y: 280, z: -164}
+  m_LocalScale: {x: 13, y: 13, z: 13}
   m_Children:
   - {fileID: 483532}
   m_Father: {fileID: 0}
@@ -55,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 30.34, y: 14.52, z: -5.76}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 400282}
   m_RootOrder: 0
@@ -117,17 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupType: 1
---- !u!122 &12231826
-Halo:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174896}
-  m_Enabled: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_Size: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

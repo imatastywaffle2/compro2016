@@ -22,6 +22,8 @@ public class Vehicle : MonoBehaviour {
     public Rigidbody rb;
     public GameObject projectile;
 
+    public bool Stunned = false;
+
 
     // Use this for initialization
     void Start ()
@@ -39,10 +41,11 @@ public class Vehicle : MonoBehaviour {
         {
             boostSpeed = 0;
         }
-        if (vehicleStun <= 0)
+        if (Stunned == true && vehicleStun <= 0)
         {
             gameObject.GetComponent<InputInformation>().enabled = true;
             gameObject.GetComponent<Move>().enabled = true;
+            Stunned = false;
         }
     }
 
@@ -64,6 +67,7 @@ public class Vehicle : MonoBehaviour {
             vehicleStun = 2;
             gameObject.GetComponent<InputInformation>().enabled = false;
             gameObject.GetComponent<Move>().enabled = false;
+            Stunned = true;
         }
         else if (shieldActivated)
             vehicleStun = 0;       
