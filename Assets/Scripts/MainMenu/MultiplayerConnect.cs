@@ -65,8 +65,10 @@ public class MultiplayerConnect : Photon.MonoBehaviour
 
     public void OnJoinedRoom()
     {
+      
         Debug.Log("There are this many rooms" + PhotonNetwork.GetRoomList().Length);
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room");
+        
         Menu.SetActive(false);
         ReadyMenu.SetActive(true);
         //vehicleSpawn.SpawnPlayer();

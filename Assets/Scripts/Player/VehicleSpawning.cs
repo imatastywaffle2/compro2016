@@ -13,7 +13,7 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     public GameObject PlayersContainer;
 
     public Player[] Players;
-        
+
     public float ReadyTimer = 5;
     public bool MatchStarted = false;
     public bool PlayersEnabled = false;
@@ -26,37 +26,39 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
     }
     void Update()
     {
-       
+
     }
     void FixedUpdate()
     {
         Players = PlayersContainer.GetComponentsInChildren<Player>();
 
-        if(Players != null)
-        if(!MatchStarted && Players.Length >= PhotonNetwork.playerList.Length)
-        {
-            MatchStarted = true;
-        }
-        else if(MatchStarted)
-        {
-            if(ReadyTimer > 0)
+        if (Players != null)
+            if (!MatchStarted && Players.Length >= PhotonNetwork.playerList.Length)
             {
-                StartTimer.enabled = true;
-                StartTimer.text = ((int)ReadyTimer).ToString();
-                ReadyTimer -= Time.deltaTime;
+                MatchStarted = true;
+                PhotonNetwork.room.open = false;
+                PhotonNetwork.room.visible = false;
             }
-            else if(!PlayersEnabled)
+            else if (MatchStarted)
             {
-                PlayersEnabled = true;
-                StartTimer.enabled = false;
-                EnablePlayers();
+                if (ReadyTimer > 0)
+                {
+                    StartTimer.enabled = true;
+                    StartTimer.text = ((int)ReadyTimer).ToString();
+                    ReadyTimer -= Time.deltaTime;
+                }
+                else if (!PlayersEnabled)
+                {
+                    PlayersEnabled = true;
+                    StartTimer.enabled = false;
+                    EnablePlayers();
+                }
             }
-        }
     }
 
     public void SpawnPlayer()
     {
-        if(Players != null)
+        if (Players != null)
             PhotonNetwork.Instantiate("BaseShipPrefab", transform.position + (transform.right * ((Players.Length % 5) * 50)) + (-transform.up * ((Players.Length / 5) * 25)), transform.rotation, 0);
         else
             PhotonNetwork.Instantiate("BaseShipPrefab", transform.position, transform.rotation, 0);
@@ -70,7 +72,7 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
         ((GameObject)PhotonNetwork.player.TagObject).GetComponent<Player>().Ready = true;
     }
-    
+
     public void EnablePlayers()
     {
         InputInformation[] inputs = LocalPlayers.GetComponentsInChildren<InputInformation>(true);

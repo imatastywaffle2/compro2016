@@ -28,20 +28,12 @@ public class Projectile : MonoBehaviour
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
-            else {
-                // Otherwise destroy self
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer != 8)
+        if (other.gameObject.layer == 9)
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
             Destroy(gameObject);           
@@ -54,13 +46,9 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if (otherShip.gameObject.layer != 8 && otherShip.gameObject.layer != 0)
+        if (otherShip.gameObject.layer != 8 && otherShip.gameObject.layer == 9 && target == null)
         {
             target = otherShip.transform;
-        }
-        else
-        {
-            target = null;
         }
     }
 }
