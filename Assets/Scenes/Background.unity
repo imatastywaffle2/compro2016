@@ -804,9 +804,15 @@ MonoBehaviour:
   _isMainScene: 1
   _sceneSetup:
   - scene:
-      editorAssetGUID: f0597bdb1baca1b449fab7d434b58990
-      name: Master
-      _path: Assets/Scenes/Master.unity
+      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+      name: MainMenu
+      _path: Assets/Scenes/MainMenu.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
+      editorAssetGUID: a7ace2ea60cb5fc4b8c19d2bc611ab62
+      name: Boosters
+      _path: Assets/Scenes/Boosters.unity
     loadInEditor: 1
     loadMethod: 1
   - scene:
@@ -837,12 +843,6 @@ MonoBehaviour:
       editorAssetGUID: 5564584d6774f1f48b81ae1ad9d12b26
       name: Background
       _path: Assets/Scenes/Background.unity
-    loadInEditor: 1
-    loadMethod: 1
-  - scene:
-      editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-      name: MainMenu
-      _path: Assets/Scenes/MainMenu.unity
     loadInEditor: 1
     loadMethod: 1
   _thisScenePath: Assets/Scenes/Background.unity
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  RotationSpeed: 5
+  RotationSpeed: 3.9
   OrbitDegrees: 1
 --- !u!114 &560902057
 MonoBehaviour:
