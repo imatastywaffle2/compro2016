@@ -39,6 +39,11 @@ public class Vehicle : MonoBehaviour {
         {
             boostSpeed = 0;
         }
+        if (vehicleStun <= 0)
+        {
+            gameObject.GetComponent<InputInformation>().enabled = true;
+            gameObject.GetComponent<Move>().enabled = true;
+        }
     }
 
     public void UsePickup()
@@ -57,8 +62,10 @@ public class Vehicle : MonoBehaviour {
         if (!shieldActivated)
         {
             vehicleStun = 2;
+            gameObject.GetComponent<InputInformation>().enabled = false;
+            gameObject.GetComponent<Move>().enabled = false;
         }
-        else
+        else if (shieldActivated)
             vehicleStun = 0;       
     }
     public void CalculateSpeed()
