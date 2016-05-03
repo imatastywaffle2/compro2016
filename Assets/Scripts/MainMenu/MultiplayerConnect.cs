@@ -22,7 +22,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     public Text UserInLobby;
 
     public VehicleSpawning vehicleSpawn;
-     
+
     public virtual void Start()
     {
         PhotonNetwork.autoJoinLobby = false;
@@ -37,7 +37,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
             ConnectInUpdate = false;
             PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex);
 
-            
+
         }
 
     }
@@ -46,7 +46,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     {
         playButton.interactable = true;
         Debug.Log("There are this many players in Master: " + PhotonNetwork.countOfPlayersOnMaster);
-        
+
     }
 
 
@@ -60,29 +60,39 @@ public class MultiplayerConnect : Photon.MonoBehaviour
         Debug.Log("OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom( null, new RoomOptions() {maxPlayers = 8}, null);");
 
         PhotonNetwork.CreateRoom(null, new RoomOptions() { maxPlayers = 10 }, null);
-        
+
+    }
+
+    public void SetName(string name)
+    {
+        if (UserName.text != "" && UserName.text != null)
+        {
+            PhotonNetwork.player.name = name;
+        }
     }
 
     public void OnJoinedRoom()
     {
-      
+
         Debug.Log("There are this many rooms" + PhotonNetwork.GetRoomList().Length);
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room");
-        
+
         Menu.SetActive(false);
         ReadyMenu.SetActive(true);
         //vehicleSpawn.SpawnPlayer();
-        if (UserName.text != "" && UserName.text != null)
-        {
-            PhotonNetwork.player.name = UserName.text;
-        }
 
-        
+
+
     }
 
     public void ChangeToScene(string sceneToChangeTo)
     {
         SceneManager.LoadScene(sceneToChangeTo);
+    }
+
+    public void ListPlayers()
+    {
+
     }
 }
 
