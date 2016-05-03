@@ -45,8 +45,6 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         }
         if (Stunned == true && vehicleStun <= 0)
         {
-            gameObject.GetComponent<InputInformation>().enabled = true;
-            gameObject.GetComponent<Move>().enabled = true;
             Stunned = false;
         }
     }
