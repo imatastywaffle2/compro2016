@@ -6,6 +6,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
 {
     public float playerID;
     public int currentGate = 0;
+    public int currentLap = 1;
     public int place = 0;
     GameObject localPlayers;
     GameObject remotePlayers;
@@ -39,11 +40,13 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         if (stream.isWriting)
         {
             stream.Serialize(ref currentGate);
+                stream.Serialize(ref currentLap);
             stream.Serialize(ref Ready);
         }
         else
         {
             stream.Serialize(ref currentGate);
+            stream.Serialize(ref currentLap);
             stream.Serialize(ref Ready);
         }
     }
