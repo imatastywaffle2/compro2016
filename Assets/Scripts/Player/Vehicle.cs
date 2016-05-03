@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class Vehicle : Photon.MonoBehaviour, IPunObservable
 {
@@ -24,6 +25,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     public Rigidbody rb;
     public GameObject projectile;
 
+    public Slider Velocimeter;
+
     public bool Stunned = false;
 
 
@@ -32,6 +35,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     {
         Information = GetComponent<InputInformation>();
         rb = GetComponent<Rigidbody>();
+
+        Velocimeter = GameObject.Find("Velocimeter").GetComponent<Slider>();
     }
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -75,6 +80,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     public void CalculateSpeed()
     {
         whatIsSpeed = rb.velocity.magnitude;
+
+        Velocimeter.value = whatIsSpeed;
     }
 
     public void Boost(float boostSpeed, float boostTime)
