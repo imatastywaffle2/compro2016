@@ -25,7 +25,7 @@ public class GatePassScript : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             Player player = col.gameObject.GetComponent<Player>();
-            if (!gate.PlayersPassed.Contains(player) && gate.GateNumber == player.currentGate + 1)
+            if (gate.GateNumber == player.currentGate + 1)
                 {
                 player.currentGate++;
                 gate.PlayersPassed.Add(player);

@@ -26,7 +26,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
     {
         if (col.gameObject.tag == "Player")
         {
-            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1)
+            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1 && col.GetComponent<Player>().currentLap >= 3)
             {
                 col.GetComponent<Player>().place = places.Count + 1;
                 places.Add(col.GetComponent<Player>());
@@ -49,6 +49,13 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
                     finishText.text = "You Got " + places.Count + mod + " Place";
                     finishText.enabled = true;
                 }
+            }
+
+            else if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length)
+            {
+                col.GetComponent<Player>().currentGate = 0;
+                col.GetComponent<Player>().currentLap++;
+                gateManager.Gates[0].nextGate();
             }
         }
     }

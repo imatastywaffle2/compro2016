@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UI;
 
-public class Vehicle : MonoBehaviour {
+public class Vehicle : Photon.MonoBehaviour, IPunObservable
+{
     private bool speedBoost;
     public Pickup ItemPickup;
     public float fowardAccel;
@@ -22,6 +25,8 @@ public class Vehicle : MonoBehaviour {
     public Rigidbody rb;
     public GameObject projectile;
 
+    public Slider Velocimeter;
+
     public bool Stunned = false;
 
 
@@ -30,6 +35,8 @@ public class Vehicle : MonoBehaviour {
     {
         Information = GetComponent<InputInformation>();
         rb = GetComponent<Rigidbody>();
+
+        Velocimeter = GameObject.Find("Velocimeter").GetComponent<Slider>();
     }
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -43,8 +50,6 @@ public class Vehicle : MonoBehaviour {
         }
         if (Stunned == true && vehicleStun <= 0)
         {
-            gameObject.GetComponent<InputInformation>().enabled = true;
-            gameObject.GetComponent<Move>().enabled = true;
             Stunned = false;
         }
     }
@@ -75,6 +80,8 @@ public class Vehicle : MonoBehaviour {
     public void CalculateSpeed()
     {
         whatIsSpeed = rb.velocity.magnitude;
+
+        Velocimeter.value = whatIsSpeed;
     }
 
     public void Boost(float boostSpeed, float boostTime)
@@ -82,4 +89,19 @@ public class Vehicle : MonoBehaviour {
         this.boostTime = boostTime;
         this.boostSpeed = boostSpeed;
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.Serialize(ref Stunned);
+            stream.Serialize(ref vehicleStun);
+        }
+        else
+        {
+            stream.Serialize(ref Stunned);
+            stream.Serialize(ref vehicleStun);
+        }
+    }
+
 }
