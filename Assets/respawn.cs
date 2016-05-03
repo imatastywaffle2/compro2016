@@ -13,15 +13,10 @@ public class respawn : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Top")
-        {
-                 GetComponent<Rigidbody>().isKinematic = true;
-            bool falling = false;
-        }
 
-        if (other.gameObject.tag == "Platform")
+        if (other.gameObject.tag == "Player")
         {
-            transform.position = respawnPosition.position;
+            other.transform.position = respawnPosition.position;
         }
     }
 }
