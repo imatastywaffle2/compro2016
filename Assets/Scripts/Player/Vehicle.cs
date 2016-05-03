@@ -67,6 +67,7 @@ public class Vehicle : MonoBehaviour {
             vehicleStun = 2;
             gameObject.GetComponent<InputInformation>().enabled = false;
             gameObject.GetComponent<Move>().enabled = false;
+            Stunned = true;
         }
         else if (shieldActivated)
             vehicleStun = 0;       
