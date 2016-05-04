@@ -308,6 +308,8 @@ MonoBehaviour:
   boostOn: 0
   rb: {fileID: 0}
   projectile: {fileID: 0}
+  Velocimeter: {fileID: 0}
+  Stunned: 0
 --- !u!114 &11439190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,6 +359,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11457404}
   - {fileID: 11495922}
+  - {fileID: 11424830}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -374,7 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   currentGate: 0
+  currentLap: 1
   place: 0
+  Ready: 0
 --- !u!198 &19801774
 ParticleSystem:
   m_ObjectHideFlags: 1
