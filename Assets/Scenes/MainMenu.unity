@@ -1545,12 +1545,11 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Lobby/READY
-      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      fullPath: /Lobby
+      componentName: Lobby, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       componentIndex: 0
       version: 1
-    _fromField: m_OnClick.m_PersistentCalls.m_Calls,0.m_Target
+    _fromField: vehicleSpawn
     _toObject:
       scene:
         editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
@@ -1566,11 +1565,12 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Lobby
-      componentName: Lobby, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      fullPath: /Lobby/READY
+      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       componentIndex: 0
       version: 1
-    _fromField: vehicleSpawn
+    _fromField: m_OnClick.m_PersistentCalls.m_Calls,0.m_Target
     _toObject:
       scene:
         editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
@@ -1989,7 +1989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1402846114
 MonoBehaviour:
   m_ObjectHideFlags: 0
