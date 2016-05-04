@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  RotationSpeed: 5
+  RotationSpeed: 3.9
   OrbitDegrees: 1
 --- !u!1001 &605341765
 Prefab:
