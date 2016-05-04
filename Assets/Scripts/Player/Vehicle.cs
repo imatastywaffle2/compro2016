@@ -70,8 +70,6 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         if (!shieldActivated)
         {
             vehicleStun = 2;
-            gameObject.GetComponent<InputInformation>().enabled = false;
-            gameObject.GetComponent<Move>().enabled = false;
             Stunned = true;
         }
         else if (shieldActivated)
