@@ -44,16 +44,19 @@ public class Move : Photon.MonoBehaviour, IPunObservable
 
         if (this.photonView.isMine)
         {
-            acceleration = Vehicles.fowardAccel;
-            horizontalspeed = Vehicles.horizontalSpeed;
-            stunDuration = Vehicles.vehicleStun;
+            if (Vehicles.Stunned == false)
+            {
+                acceleration = Vehicles.fowardAccel;
+                horizontalspeed = Vehicles.horizontalSpeed;
+                stunDuration = Vehicles.vehicleStun;
 
-            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
-            GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-            transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
-            transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
-            transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-            enginesOn = InputInfo.Forward();
+                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
+                GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+                transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
+                transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
+                transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
+                enginesOn = InputInfo.Forward();
+            }
 
         }
         else
