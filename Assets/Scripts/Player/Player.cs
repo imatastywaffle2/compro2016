@@ -34,7 +34,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
             gameObject.layer = 9;
         }
 
-        playerID = PhotonNetwork.player.ID;
+        playerID = info.sender.ID;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
