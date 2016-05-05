@@ -33,17 +33,19 @@ public class Projectile : Photon.MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if(this.photonView.isMine)
+        if (this.photonView.isMine)
+        {
             if ((GameObject)PhotonNetwork.player.TagObject != other.gameObject)
             {
                 other.gameObject.GetComponent<Vehicle>().Stun();
                 Destroy(gameObject);
             }
+        }
         else
-            {
-                other.gameObject.GetComponent<Vehicle>().Stun();
-                Destroy(gameObject);
-            }
+        {
+            other.gameObject.GetComponent<Vehicle>().Stun();
+            Destroy(gameObject);
+        }
     }
     void OnTriggerEnter(Collider otherShip)
     {
