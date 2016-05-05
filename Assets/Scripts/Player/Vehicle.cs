@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class Vehicle : Photon.MonoBehaviour, IPunObservable
+public class Vehicle : MonoBehaviour
 {
     private bool speedBoost;
     public Pickup ItemPickup;
@@ -89,18 +89,18 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         this.boostSpeed = boostSpeed;
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            stream.Serialize(ref Stunned);
-            stream.Serialize(ref vehicleStun);
-        }
-        else
-        {
-            stream.Serialize(ref Stunned);
-            stream.Serialize(ref vehicleStun);
-        }
-    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.isWriting)
+    //    {
+    //        stream.Serialize(ref Stunned);
+    //        stream.Serialize(ref vehicleStun);
+    //    }
+    //    else
+    //    {
+    //        stream.Serialize(ref Stunned);
+    //        stream.Serialize(ref vehicleStun);
+    //    }
+    //}
 
 }
