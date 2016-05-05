@@ -1545,12 +1545,11 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Lobby/READY
-      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      fullPath: /Lobby
+      componentName: Lobby, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       componentIndex: 0
       version: 1
-    _fromField: m_OnClick.m_PersistentCalls.m_Calls,0.m_Target
+    _fromField: vehicleSpawn
     _toObject:
       scene:
         editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
@@ -1566,11 +1565,12 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Lobby
-      componentName: Lobby, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      fullPath: /Lobby/READY
+      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       componentIndex: 0
       version: 1
-    _fromField: vehicleSpawn
+    _fromField: m_OnClick.m_PersistentCalls.m_Calls,0.m_Target
     _toObject:
       scene:
         editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
@@ -2682,8 +2682,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 159}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 91.8}
+  m_SizeDelta: {x: 160, y: 182.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714647900
 MonoBehaviour:
@@ -2711,11 +2711,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'PlayerList:'
 --- !u!222 &1714647901
