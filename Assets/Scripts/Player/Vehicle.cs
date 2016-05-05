@@ -71,6 +71,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         {
             vehicleStun = 2;
             Stunned = true;
+            Console.WriteLine("Should be stunned");
         }
         else if (shieldActivated)
             vehicleStun = 0;       

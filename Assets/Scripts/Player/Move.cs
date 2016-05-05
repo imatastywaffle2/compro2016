@@ -57,11 +57,15 @@ public class Move : Photon.MonoBehaviour, IPunObservable
             
 
         }
-        else
+        else if(!this.photonView.isMine)
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
             transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
             speed = latestCorrectPos - onUpdatePos;
+        }
+        else
+        {
+            Console.WriteLine("Should be stunned plz");
         }
 
         foreach (ParticleSystem engine in engines)
