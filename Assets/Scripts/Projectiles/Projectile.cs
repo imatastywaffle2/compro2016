@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour
+public class Projectile : Photon.MonoBehaviour
 {
 
     public bool trackTarget;
@@ -33,15 +33,17 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == 9)
-        {
-            other.gameObject.GetComponent<Vehicle>().Stun();
-            Destroy(gameObject);           
-        }
+        if(this.photonView.isMine)
+            if (PhotonNetwork.player.TagObject != other)
+            {
+                other.gameObject.GetComponent<Vehicle>().Stun();
+                Destroy(gameObject);
+            }
         else
-        {
-            Destroy(gameObject);
-        }
+            {
+                other.gameObject.GetComponent<Vehicle>().Stun();
+                Destroy(gameObject);
+            }
     }
     void OnTriggerEnter(Collider otherShip)
     {
