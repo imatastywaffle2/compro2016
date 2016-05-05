@@ -42,21 +42,19 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     {
         Vector3 speed = Vector3.zero;
 
-        if (this.photonView.isMine)
+        if (this.photonView.isMine && !Vehicles.Stunned)
         {
-            if (Vehicles.Stunned == false)
-            {
-                acceleration = Vehicles.fowardAccel;
-                horizontalspeed = Vehicles.horizontalSpeed;
-                stunDuration = Vehicles.vehicleStun;
+            acceleration = Vehicles.fowardAccel;
+            horizontalspeed = Vehicles.horizontalSpeed;
+            stunDuration = Vehicles.vehicleStun;
 
-                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
-                GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-                transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
-                transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
-                transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-                enginesOn = InputInfo.Forward();
-            }
+            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
+            GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+            transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
+            transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
+            transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
+            enginesOn = InputInfo.Forward();
+            
 
         }
         else
@@ -75,7 +73,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         }
     }
 
-    
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
