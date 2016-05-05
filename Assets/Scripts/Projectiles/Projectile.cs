@@ -7,6 +7,8 @@ public class Projectile : Photon.MonoBehaviour
     public bool trackTarget;
     public float stunDuration = 2;
 
+    public int shooterId;
+
     // Speed
     public float speed = 700;
 
@@ -16,6 +18,11 @@ public class Projectile : Photon.MonoBehaviour
     void Start()
     {
         
+    }
+
+    void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        shooterId = info.sender.ID;
     }
 
     void FixedUpdate()
@@ -33,15 +40,7 @@ public class Projectile : Photon.MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (this.photonView.isMine)
-        {
-            if ((GameObject)PhotonNetwork.player.TagObject != other.gameObject)
-            {
-                other.gameObject.GetComponent<Vehicle>().Stun();
-                Destroy(gameObject);
-            }
-        }
-        else
+        if(other.gameObject.GetComponent<Player>().playerID != shooterId)
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
             Destroy(gameObject);

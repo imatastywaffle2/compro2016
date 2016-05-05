@@ -33,6 +33,8 @@ public class Player : Photon.MonoBehaviour, IPunObservable
             transform.SetParent(remotePlayers.gameObject.transform);
             gameObject.layer = 9;
         }
+
+        playerID = PhotonNetwork.player.ID;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
