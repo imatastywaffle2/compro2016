@@ -34,7 +34,7 @@ public class Projectile : Photon.MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if(this.photonView.isMine)
-            if (PhotonNetwork.player.TagObject != other)
+            if ((GameObject)PhotonNetwork.player.TagObject != other.gameObject)
             {
                 other.gameObject.GetComponent<Vehicle>().Stun();
                 Destroy(gameObject);
