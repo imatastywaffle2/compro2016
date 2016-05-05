@@ -90,16 +90,16 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //if (stream.isWriting)
-        //{
-        //    stream.Serialize(ref Stunned);
-        //    stream.Serialize(ref vehicleStun);
-        //}
-        //else
-        //{
-        //    stream.Serialize(ref Stunned);
-        //    stream.Serialize(ref vehicleStun);
-        //}
+        if (stream.isWriting)
+        {
+            stream.Serialize(ref Stunned);
+            stream.Serialize(ref vehicleStun);
+        }
+        else
+        {
+            stream.Serialize(ref Stunned);
+            stream.Serialize(ref vehicleStun);
+        }
     }
 
 }
