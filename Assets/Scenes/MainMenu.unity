@@ -1545,6 +1545,26 @@ MonoBehaviour:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
         name: MainMenu
         _path: Assets/Scenes/MainMenu.unity
+      fullPath: /Lobby
+      componentName: Lobby, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: vehicleSpawn
+    _toObject:
+      scene:
+        editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
+        name: Player
+        _path: Assets/Scenes/Player.unity
+      fullPath: /VehicleSpawn
+      componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+  - _fromObject:
+      scene:
+        editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+        name: MainMenu
+        _path: Assets/Scenes/MainMenu.unity
       fullPath: /Lobby/READY
       componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -1962,6 +1982,7 @@ GameObject:
   - 223: {fileID: 1402846116}
   - 114: {fileID: 1402846115}
   - 114: {fileID: 1402846114}
+  - 114: {fileID: 1402846118}
   m_Layer: 5
   m_Name: Lobby
   m_TagString: Untagged
@@ -2045,6 +2066,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1402846118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402846113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d638cb8bd2128274f9b80a78bc45d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerList: {fileID: 1714647900}
+  playerNumber: {fileID: 1833900180}
+  vehicleSpawn: {fileID: 0}
 --- !u!1 &1477777596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,7 +2662,7 @@ GameObject:
   - 222: {fileID: 1714647901}
   - 114: {fileID: 1714647900}
   m_Layer: 5
-  m_Name: Text
+  m_Name: playerList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,8 +2682,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 159}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 91.8}
+  m_SizeDelta: {x: 160, y: 182.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714647900
 MonoBehaviour:
@@ -2662,7 +2697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2672,17 +2707,17 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'PlayerList:'
 --- !u!222 &1714647901
 CanvasRenderer:
   m_ObjectHideFlags: 0
