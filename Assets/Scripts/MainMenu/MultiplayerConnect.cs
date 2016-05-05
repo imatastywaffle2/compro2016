@@ -90,10 +90,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
         SceneManager.LoadScene(sceneToChangeTo);
     }
 
-    public void ListPlayers()
-    {
-
-    }
+  
 }
 
        
