@@ -65,6 +65,7 @@ public class Projectile : Photon.MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
+        if(otherShip.gameObject.tag == "Player")
         if (target == null && otherShip.gameObject.tag == "Player" && otherShip.gameObject.GetComponent<Player>().playerID != shooterId)
         {
             target = otherShip.transform;
