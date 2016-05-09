@@ -293,11 +293,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemPickup: {fileID: 0}
   fowardAccel: 500
-  maxSpeed: 0
+  maxSpeed: 500
   recoveryTime: 0
-  horizontalSpeed: 150
-  verticalSpeed: 0
-  horizontalAccel: 0
+  horizontalSpeed: 133
+  verticalSpeed: 500
+  horizontalAccel: 133
   verticalAccel: 0
   minimumSpeed: 0
   shieldActivated: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11457404}
   - {fileID: 11495922}
+  - {fileID: 11424830}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
