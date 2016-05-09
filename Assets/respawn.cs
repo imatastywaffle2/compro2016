@@ -10,7 +10,9 @@ public class respawn : MonoBehaviour
 
     void Start()
     {
+
     }
+    
     void OnTriggerEnter(Collider other)
     {
 

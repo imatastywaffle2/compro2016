@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Projectile : Photon.MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class Projectile : Photon.MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if (otherShip.gameObject.layer != 8 && otherShip.gameObject.layer == 9 && target == null)
+        if (target == null && otherShip.gameObject.tag == "Player" &&  otherShip.gameObject.GetComponent<Player>().playerID != shooterId )
         {
             target = otherShip.transform;
         }
