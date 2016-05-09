@@ -4,7 +4,7 @@ using System;
 
 public class Player : Photon.MonoBehaviour, IPunObservable
 {
-    public float playerID;
+    public int playerID;
     public int currentGate = 0;
     public int currentLap = 1;
     public int place = 0;
