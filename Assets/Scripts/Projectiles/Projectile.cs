@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour
+public class Projectile : Photon.MonoBehaviour
 {
 
     public bool trackTarget;
     public float stunDuration = 2;
+
+    public int shooterId;
 
     // Speed
     public float speed = 700;
@@ -16,6 +18,11 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         
+    }
+
+    void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        shooterId = info.sender.ID;
     }
 
     void FixedUpdate()
@@ -33,13 +40,9 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == 9)
+        if(other.gameObject.GetComponent<Player>().playerID != shooterId)
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
-            Destroy(gameObject);           
-        }
-        else
-        {
             Destroy(gameObject);
         }
     }

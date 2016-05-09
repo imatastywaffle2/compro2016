@@ -42,28 +42,30 @@ public class Move : Photon.MonoBehaviour, IPunObservable
     {
         Vector3 speed = Vector3.zero;
 
-        if (this.photonView.isMine)
+        if (this.photonView.isMine && !Vehicles.Stunned)
         {
-            if (Vehicles.Stunned == false)
-            {
-                acceleration = Vehicles.fowardAccel;
-                horizontalspeed = Vehicles.horizontalSpeed;
-                stunDuration = Vehicles.vehicleStun;
+            acceleration = Vehicles.fowardAccel;
+            horizontalspeed = Vehicles.horizontalSpeed;
+            stunDuration = Vehicles.vehicleStun;
 
-                GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
-                GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
-                transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
-                transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
-                transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
-                enginesOn = InputInfo.Forward();
-            }
+            GetComponent<Rigidbody>().AddForce(transform.forward * (acceleration + Vehicles.boostSpeed) * InputInfo.Forward());
+            GetComponent<Rigidbody>().AddForce(transform.right * horizontalspeed * InputInfo.SideMovement());
+            transform.Rotate(Vector3.forward * InputInfo.Rotate() * rotateSpeed);
+            transform.Rotate(Vector3.right * turnSpeed * InputInfo.AxisY());
+            transform.Rotate(Vector3.up * turnSpeed * InputInfo.AxisX());
+            enginesOn = InputInfo.Forward();
+            
 
         }
-        else
+        else if(!this.photonView.isMine)
         {
             this.fraction = this.fraction + Time.deltaTime * 9;
             transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
             speed = latestCorrectPos - onUpdatePos;
+        }
+        else
+        {
+            Console.WriteLine("Should be stunned plz");
         }
 
         foreach (ParticleSystem engine in engines)
@@ -75,7 +77,7 @@ public class Move : Photon.MonoBehaviour, IPunObservable
         }
     }
 
-    
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

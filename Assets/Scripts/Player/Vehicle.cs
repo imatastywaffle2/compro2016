@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class Vehicle : Photon.MonoBehaviour, IPunObservable
+public class Vehicle : MonoBehaviour
 {
     private bool speedBoost;
     public Pickup ItemPickup;
@@ -71,6 +71,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         {
             vehicleStun = 2;
             Stunned = true;
+            Console.WriteLine("Should be stunned");
         }
         else if (shieldActivated)
             vehicleStun = 0;       
