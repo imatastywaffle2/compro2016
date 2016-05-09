@@ -292,12 +292,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemPickup: {fileID: 0}
-  fowardAccel: 1000
-  maxSpeed: 10000
+  fowardAccel: 500
+  maxSpeed: 500
   recoveryTime: 0
-  horizontalSpeed: 1000.31
-  verticalSpeed: 1000
-  horizontalAccel: 0
+  horizontalSpeed: 133
+  verticalSpeed: 500
+  horizontalAccel: 133
   verticalAccel: 0
   minimumSpeed: 0
   shieldActivated: 0
