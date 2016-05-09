@@ -53,6 +53,13 @@ public class Projectile : Photon.MonoBehaviour
         if (target == null && otherShip.gameObject.tag == "Player" &&  otherShip.gameObject.GetComponent<Player>().playerID != shooterId )
         {
             target = otherShip.transform;
+            photonView.RPC("SetTarget", PhotonTargets.All, otherShip.transform);
         }
+    }
+
+    [PunRPC]
+    void SetTarget(Transform target, PhotonMessageInfo info)
+    {
+        this.target = target;
     }
 }
