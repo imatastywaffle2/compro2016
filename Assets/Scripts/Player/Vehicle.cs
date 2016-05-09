@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class Vehicle : MonoBehaviour
+public class Vehicle : Photon.MonoBehaviour, IPunObservable
 {
     private bool speedBoost;
     public Pickup ItemPickup;
@@ -69,6 +69,7 @@ public class Vehicle : MonoBehaviour
     {
         if (!shieldActivated)
         {
+
             vehicleStun = 2;
             Stunned = true;
             Console.WriteLine("Should be stunned");
@@ -76,6 +77,9 @@ public class Vehicle : MonoBehaviour
         else if (shieldActivated)
             vehicleStun = 0;       
     }
+
+
+
     public void CalculateSpeed()
     {
         whatIsSpeed = rb.velocity.magnitude;
