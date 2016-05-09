@@ -22,6 +22,8 @@ public class Projectile : Photon.MonoBehaviour
 
     void Start()
     {
+        this.latestCorrectPos = transform.position;
+        this.onUpdatePos = transform.position;
 
     }
 
@@ -56,7 +58,7 @@ public class Projectile : Photon.MonoBehaviour
         {
             other.gameObject.GetComponent<Vehicle>().Stun();
            
-            photonView.RPC("HitTarget", PhotonTargets.All);
+            //photonView.RPC("HitTarget", PhotonTargets.All);
 
             Destroy(gameObject);
 
@@ -65,11 +67,13 @@ public class Projectile : Photon.MonoBehaviour
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if(otherShip.gameObject.tag == "Player")
-        if (target == null && otherShip.gameObject.tag == "Player" && otherShip.gameObject.GetComponent<Player>().playerID != shooterId)
-        {
-            target = otherShip.transform;
+        if(otherShip.gameObject.tag == "Player") {
+            Debug.Log("Projectile player id " + otherShip.gameObject.GetComponent<Player>().playerID + " " + shooterId);
+            if (target == null && otherShip.gameObject.tag == "Player" && otherShip.gameObject.GetComponent<Player>().playerID != shooterId)
+            {
+                target = otherShip.transform;
             
+            }
         }
     } 
 
