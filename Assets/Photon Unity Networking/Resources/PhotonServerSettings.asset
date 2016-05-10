@@ -37,4 +37,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - SetTarget
+  - HitTarget
   DisableAutoOpenWizard: 1
