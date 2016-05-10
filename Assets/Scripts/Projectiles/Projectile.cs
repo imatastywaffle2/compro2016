@@ -104,5 +104,6 @@ public class Projectile : Photon.MonoBehaviour
 
             transform.localRotation = rot;              // this sample doesn't smooth rotation
         }
+        //Make projectiles only aim for people infront of you and closest first
     }
 }
