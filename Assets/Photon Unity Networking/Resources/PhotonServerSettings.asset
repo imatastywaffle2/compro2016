@@ -38,4 +38,5 @@ MonoBehaviour:
   - TaggedPlayer
   - SetTarget
   - HitTarget
+  - StunRemote
   DisableAutoOpenWizard: 1
