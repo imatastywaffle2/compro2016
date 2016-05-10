@@ -65,6 +65,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     {
        
     }
+
+    [PunRPC]
     public void Stun()
     {
         if (!shieldActivated)
@@ -78,7 +80,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
             vehicleStun = 0;       
     }
 
-    [PunRPC]
+   
     public void StunRemote()
     {
         photonView.RPC("Stun", PhotonTargets.All);
