@@ -78,7 +78,11 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
             vehicleStun = 0;       
     }
 
-
+    [PunRPC]
+    public void StunRemote()
+    {
+        photonView.RPC("Stun", PhotonTargets.All);
+    }
 
     public void CalculateSpeed()
     {
