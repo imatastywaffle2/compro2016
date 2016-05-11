@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        if (InputInfo.UsePickup())
+        if (InputInfo.UsePickup() && !vehicle.Stunned)
         {
             Use();
             pickupUI.disableIcon();
