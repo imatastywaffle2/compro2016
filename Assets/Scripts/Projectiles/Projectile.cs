@@ -30,6 +30,7 @@ public class Projectile : Photon.MonoBehaviour
     void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         shooterId = info.sender.ID;
+
     }
 
     void FixedUpdate()

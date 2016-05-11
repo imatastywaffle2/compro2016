@@ -44,6 +44,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
        
         CalculateSpeed();
         boostTime -= Time.deltaTime;
+        vehicleStun -= Time.deltaTime;
+        
         if (boostTime <= 0)
         {
             boostSpeed = 0;
@@ -54,13 +56,6 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         }
     }
 
-    public void UsePickup()
-    {
-        if (ItemPickup)
-        {
-            
-        }
-    }
     void destroyPickup()
     {
        
@@ -77,9 +72,11 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
             Console.WriteLine("Should be stunned");
         }
         else if (shieldActivated)
-            vehicleStun = 0;       
-    }
+        {
+            shieldActivated = false;
 
+        }  
+    }
    
     public void StunRemote()
     {
@@ -105,11 +102,13 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         {
             stream.Serialize(ref Stunned);
             stream.Serialize(ref vehicleStun);
+            stream.Serialize(ref shieldActivated);
         }
         else
         {
             stream.Serialize(ref Stunned);
             stream.Serialize(ref vehicleStun);
+            stream.Serialize(ref shieldActivated);
         }
     }
 
