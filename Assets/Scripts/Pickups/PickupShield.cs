@@ -7,6 +7,7 @@ public class PickupShield : Pickup {
     public override void Use()
     {
         gameObject.GetComponent<Vehicle>().shieldActivated = true;
+        gameObject.GetComponent<Vehicle>().shield.SetActive(true);
         Destroy(this);
     }
 }

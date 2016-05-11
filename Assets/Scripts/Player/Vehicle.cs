@@ -24,6 +24,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     InputInformation Information;
     public Rigidbody rb;
     public GameObject projectile;
+    public GameObject shield;
 
     public Slider Velocimeter;
 
@@ -74,6 +75,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         else if (shieldActivated)
         {
             shieldActivated = false;
+            shield.SetActive(false);
 
         }  
     }
