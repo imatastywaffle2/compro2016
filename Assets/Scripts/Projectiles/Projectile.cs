@@ -30,7 +30,6 @@ public class Projectile : Photon.MonoBehaviour
     void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         shooterId = info.sender.ID;
-        transform.rotation = ((GameObject)info.sender.TagObject).transform.rotation;
     }
 
     void FixedUpdate()
