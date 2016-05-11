@@ -43,6 +43,11 @@ public class Projectile : Photon.MonoBehaviour
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.forward * (speed/2);
+            }
+
         }
 
         if (!this.photonView.isMine)
