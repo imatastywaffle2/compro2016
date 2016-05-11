@@ -30,6 +30,7 @@ public class Projectile : Photon.MonoBehaviour
     void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         shooterId = info.sender.ID;
+        transform.rotation = ((GameObject)info.sender.TagObject).transform.rotation;
     }
 
     void FixedUpdate()
@@ -42,6 +43,11 @@ public class Projectile : Photon.MonoBehaviour
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.forward * (speed/2);
+            }
+
         }
 
         if (!this.photonView.isMine)
