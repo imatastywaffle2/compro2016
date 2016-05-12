@@ -42,6 +42,11 @@ public class Projectile : Photon.MonoBehaviour
                 // Fly towards the target        
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.forward * (speed/2);
+            }
+
         }
 
         if (!this.photonView.isMine)
@@ -56,19 +61,15 @@ public class Projectile : Photon.MonoBehaviour
     {
         if (other.gameObject.GetComponent<Player>().playerID != shooterId)
         {
-            other.gameObject.GetComponent<Vehicle>().Stun();
+            other.gameObject.GetComponent<Vehicle>().StunRemote();
            
-            //photonView.RPC("HitTarget", PhotonTargets.All);
-
-            Destroy(gameObject);
-
+            photonView.RPC("HitTarget", PhotonTargets.All);
         }
     }
     void OnTriggerEnter(Collider otherShip)
     {
         //make a code for detecting a ship that isnt yourself.
-        if(otherShip.gameObject.tag == "Player") {
-            Debug.Log("Projectile player id " + otherShip.gameObject.GetComponent<Player>().playerID + " " + shooterId);
+        if(this.photonView.isMine) {
             if (target == null && otherShip.gameObject.tag == "Player" && otherShip.gameObject.GetComponent<Player>().playerID != shooterId)
             {
                 target = otherShip.transform;
@@ -108,5 +109,6 @@ public class Projectile : Photon.MonoBehaviour
 
             transform.localRotation = rot;              // this sample doesn't smooth rotation
         }
+        //Make projectiles only aim for people infront of you and closest first
     }
 }

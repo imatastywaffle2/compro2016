@@ -24,6 +24,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     InputInformation Information;
     public Rigidbody rb;
     public GameObject projectile;
+    public GameObject shield;
 
     public Slider Velocimeter;
 
@@ -44,6 +45,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
        
         CalculateSpeed();
         boostTime -= Time.deltaTime;
+        vehicleStun -= Time.deltaTime;
+        
         if (boostTime <= 0)
         {
             boostSpeed = 0;
@@ -54,17 +57,12 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         }
     }
 
-    public void UsePickup()
-    {
-        if (ItemPickup)
-        {
-            
-        }
-    }
     void destroyPickup()
     {
        
     }
+
+    [PunRPC]
     public void Stun()
     {
         if (!shieldActivated)
@@ -75,10 +73,17 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
             Console.WriteLine("Should be stunned");
         }
         else if (shieldActivated)
-            vehicleStun = 0;       
+        {
+            shieldActivated = false;
+            shield.SetActive(false);
+
+        }  
     }
-
-
+   
+    public void StunRemote()
+    {
+        photonView.RPC("Stun", PhotonTargets.All);
+    }
 
     public void CalculateSpeed()
     {
@@ -99,11 +104,13 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         {
             stream.Serialize(ref Stunned);
             stream.Serialize(ref vehicleStun);
+            stream.Serialize(ref shieldActivated);
         }
         else
         {
             stream.Serialize(ref Stunned);
             stream.Serialize(ref vehicleStun);
+            stream.Serialize(ref shieldActivated);
         }
     }
 
