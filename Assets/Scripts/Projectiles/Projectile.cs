@@ -19,6 +19,7 @@ public class Projectile : Photon.MonoBehaviour
     private float fraction;
     private Vector3 onUpdatePos;
     private Vector3 latestCorrectPos;
+    GameObject ExplosionEffect;
 
     void Start()
     {
@@ -62,9 +63,13 @@ public class Projectile : Photon.MonoBehaviour
         if (other.gameObject.GetComponent<Player>().playerID != shooterId)
         {
             other.gameObject.GetComponent<Vehicle>().StunRemote();
-           
+            Explosion();
             photonView.RPC("HitTarget", PhotonTargets.All);
         }
+    }
+    public void Explosion()
+    {
+        GameObject ExplosionEffect = PhotonNetwork.Instantiate("ExplosionEffect", transform.position, transform.rotation, 0);
     }
     void OnTriggerEnter(Collider otherShip)
     {
