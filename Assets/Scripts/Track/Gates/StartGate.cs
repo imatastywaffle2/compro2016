@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class StartGate : Photon.MonoBehaviour, IPunObservable
 {
     List<Player> places = new List<Player>();
+    public int AmountOfLaps = 3;
     public GateManager gateManager;
     public Text finishText;
+    public Text LapText;
 
     // Use this for initialization
     void Start ()
@@ -19,14 +21,13 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
 	// Update is called once per frame
 	void Update ()
     {
-	
-	}
+    }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1 && col.GetComponent<Player>().currentLap >= 3)
+            if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1 && col.GetComponent<Player>().currentLap >= AmountOfLaps)
             {
                 col.GetComponent<Player>().place = places.Count + 1;
                 places.Add(col.GetComponent<Player>());
@@ -48,6 +49,8 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
                     
                     finishText.text = "You Got " + places.Count + mod + " Place";
                     finishText.enabled = true;
+
+                 
                 }
             }
 
@@ -55,6 +58,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
             {
                 col.GetComponent<Player>().currentGate = 0;
                 col.GetComponent<Player>().currentLap++;
+                LapText.text = col.GetComponent<Player>().currentLap + "/" + AmountOfLaps;
                 gateManager.Gates[0].nextGate();
             }
         }

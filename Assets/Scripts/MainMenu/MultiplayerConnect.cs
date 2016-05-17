@@ -85,6 +85,11 @@ public class MultiplayerConnect : Photon.MonoBehaviour
 
     }
 
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
     public void ChangeToScene(string sceneToChangeTo)
     {
         SceneManager.LoadScene(sceneToChangeTo);
