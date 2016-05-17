@@ -12,9 +12,24 @@ public class Gate : MonoBehaviour
     void Start ()
     {
         gateManager = gameObject.GetComponentInParent<GateManager>();
+        EventManager.StartListening("FinishMatch", Reset);
 
     }
-	
+
+    void Reset()
+    {
+        PlayersPassed.Clear();
+        if (GateNumber == 1)
+        {
+            NextGateParticles.Play();
+        }
+
+        else
+        {
+            NextGateParticles.Stop();
+        }
+
+    }
 
 	void Update ()
     {

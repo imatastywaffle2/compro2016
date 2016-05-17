@@ -771,6 +771,10 @@ Prefab:
       propertyPath: finishText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11454154, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: LapText
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
   m_IsPrefabParent: 0
@@ -1082,6 +1086,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crossSceneReferences:
+  - _fromObject:
+      scene:
+        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
+        name: Track
+        _path: Assets/Scenes/Track.unity
+      fullPath: /Gates/StartGate
+      componentName: StartGate, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: LapText
+    _toObject:
+      scene:
+        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
+        name: UI
+        _path: Assets/Scenes/UI.unity
+      fullPath: /Pilot HUD/Laps
+      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
   - _fromObject:
       scene:
         editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7

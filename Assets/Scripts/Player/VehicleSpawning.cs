@@ -23,12 +23,24 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
 
     void Start()
     {
+        EventManager.StartListening("FinishMatch", Reset);
     }
     void Update()
     {
 
     }
-    void FixedUpdate()
+
+    void Reset()
+    {
+        MatchStarted = false;
+        PlayersEnabled = false;
+        ReadyTimer = 5;
+        PhotonNetwork.room.open = true;
+        PhotonNetwork.room.visible = true;
+    }
+    
+        
+        void FixedUpdate()
     {
         Players = PlayersContainer.GetComponentsInChildren<Player>();
 

@@ -7,6 +7,7 @@ public class FinishMatch : MonoBehaviour {
     public Player[] players;
 
     public GameObject Lobby;
+    public GameObject PlayerGui;
 
 	// Use this for initialization
 	void Start () {
@@ -41,11 +42,15 @@ public class FinishMatch : MonoBehaviour {
 
     public void FinishGame()
     {
+        EventManager.TriggerEvent("FinishMatch");
         for (int i = 0; i < players.Length; i++)
         {
             Destroy(players[i].gameObject);
-            Lobby.SetActive(true);
+            
 
         }
+        Lobby.SetActive(true);
+        PlayerGui.SetActive(false);
+
     }
 }

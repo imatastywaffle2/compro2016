@@ -15,8 +15,16 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
     // Use this for initialization
     void Start ()
     {
-	   
-	}
+        LapText.text = 1 + "/" + AmountOfLaps;
+        EventManager.StartListening("FinishMatch", Reset);
+    }
+
+    void Reset()
+    {
+        places.Clear();
+        LapText.text = 1 + "/" + AmountOfLaps;
+        finishText.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update ()

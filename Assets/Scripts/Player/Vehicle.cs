@@ -37,12 +37,22 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
         Information = GetComponent<InputInformation>();
         rb = GetComponent<Rigidbody>();
 
-        Velocimeter = GameObject.Find("Velocimeter").GetComponent<Slider>();
+       
+    }
+
+    void Awake()
+    {
+        
     }
 	// Update is called once per frame
 	void FixedUpdate ()
     {
        
+        if(Velocimeter == null)
+        {
+            if(GameObject.Find("Velocimeter"))
+                Velocimeter = GameObject.Find("Velocimeter").GetComponent<Slider>();
+        }
         CalculateSpeed();
         boostTime -= Time.deltaTime;
         vehicleStun -= Time.deltaTime;
