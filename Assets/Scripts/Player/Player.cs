@@ -48,7 +48,13 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     }
 
     public void SetLap()
-    {if (Splits.Count == 0 || SplitTimer - Splits[currentLap - 1] > 10)
+    {
+        photonView.RPC("LapChange", PhotonTargets.All);
+    }
+
+    private void LapChange()
+    {
+        if (Splits.Count == 0 || SplitTimer - Splits[currentLap - 1] > 10)
         {
             currentLap++;
             Splits.Add(SplitTimer);
