@@ -40,4 +40,5 @@ MonoBehaviour:
   - HitTarget
   - StunRemote
   - Stun
+  - LapChange
   DisableAutoOpenWizard: 1
