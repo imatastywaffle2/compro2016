@@ -38,9 +38,9 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         PhotonNetwork.room.open = true;
         PhotonNetwork.room.visible = true;
     }
-    
-        
-        void FixedUpdate()
+
+
+    void FixedUpdate()
     {
         Players = PlayersContainer.GetComponentsInChildren<Player>();
 
@@ -91,6 +91,8 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
         Move[] moves = LocalPlayers.GetComponentsInChildren<Move>(true);
 
         Move[] remoteMoves = RemotePlayers.GetComponentsInChildren<Move>(true);
+
+
 
         for (int i = 0; i < remoteMoves.Length; i++)
         {

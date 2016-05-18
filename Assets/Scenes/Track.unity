@@ -775,6 +775,26 @@ Prefab:
       propertyPath: LapText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6592656, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598296, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528552, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505344, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533090, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Size.z
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
   m_IsPrefabParent: 0
@@ -1085,49 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crossSceneReferences:
-  - _fromObject:
-      scene:
-        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
-        name: Track
-        _path: Assets/Scenes/Track.unity
-      fullPath: /Gates/StartGate
-      componentName: StartGate, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
-    _fromField: LapText
-    _toObject:
-      scene:
-        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
-        name: UI
-        _path: Assets/Scenes/UI.unity
-      fullPath: /Pilot HUD/Laps
-      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
-  - _fromObject:
-      scene:
-        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
-        name: Track
-        _path: Assets/Scenes/Track.unity
-      fullPath: /Gates/StartGate
-      componentName: StartGate, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
-    _fromField: finishText
-    _toObject:
-      scene:
-        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
-        name: UI
-        _path: Assets/Scenes/UI.unity
-      fullPath: /Pilot HUD/FinishText
-      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
+  _crossSceneReferences: []
   _realSceneRootsForPostBuild: []
 --- !u!114 &1830145473
 MonoBehaviour:

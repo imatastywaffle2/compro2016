@@ -11,6 +11,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
     public GateManager gateManager;
     public Text finishText;
     public Text LapText;
+    
 
     // Use this for initialization
     void Start ()
@@ -29,6 +30,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
 	// Update is called once per frame
 	void Update ()
     {
+        
     }
 
     void OnTriggerEnter(Collider col)
@@ -65,7 +67,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
             else if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length)
             {
                 col.GetComponent<Player>().currentGate = 0;
-                col.GetComponent<Player>().currentLap++;
+                col.GetComponent<Player>().SetLap();
                 LapText.text = col.GetComponent<Player>().currentLap + "/" + AmountOfLaps;
                 gateManager.Gates[0].nextGate();
             }

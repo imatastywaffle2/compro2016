@@ -63,7 +63,6 @@ public class Projectile : Photon.MonoBehaviour
         if (other.gameObject.GetComponent<Player>().playerID != shooterId)
         {
             other.gameObject.GetComponent<Vehicle>().StunRemote();
-            Explosion();
             photonView.RPC("HitTarget", PhotonTargets.All);
         }
     }
@@ -86,6 +85,7 @@ public class Projectile : Photon.MonoBehaviour
     [PunRPC]
     void HitTarget(PhotonMessageInfo info)
     {
+        Explosion();
         Destroy(gameObject);
     }
 

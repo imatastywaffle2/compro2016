@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Player : Photon.MonoBehaviour, IPunObservable
 {
@@ -11,13 +12,22 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     GameObject localPlayers;
     GameObject remotePlayers;
 
+    public float SplitTimer;
+    public List<float> Splits = new List<float>();
+
     public bool Ready = false;
+
 
 
     void Start()
     {
         
     }    
+
+    void Update()
+    {
+        SplitTimer = Time.deltaTime;
+    }
 
     void OnPhotonInstantiate(PhotonMessageInfo info)
     {
@@ -35,6 +45,14 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         }
 
         playerID = info.sender.ID;
+    }
+
+    public void SetLap()
+    {if (Splits.Count == 0 || SplitTimer - Splits[currentLap - 1] > 10)
+        {
+            currentLap++;
+            Splits.Add(SplitTimer);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
