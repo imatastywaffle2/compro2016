@@ -52,7 +52,6 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         photonView.RPC("LapChange", PhotonTargets.All);
     }
 
-    [PunRPC]
     private void LapChange()
     {
         if (Splits.Count == 0 || SplitTimer - Splits[currentLap - 1] > 10)

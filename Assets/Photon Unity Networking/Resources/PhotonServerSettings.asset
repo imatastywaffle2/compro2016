@@ -26,9 +26,7 @@ MonoBehaviour:
   - DestroyRpc
   - DoJump
   - Flash
-  - HitTarget
   - InstantiateRpc
-  - LapChange
   - Marco
   - OnAwakeRPC
   - PickupItemInit
@@ -37,6 +35,9 @@ MonoBehaviour:
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupTimes
-  - Stun
   - TaggedPlayer
+  - SetTarget
+  - HitTarget
+  - StunRemote
+  - Stun
   DisableAutoOpenWizard: 1
