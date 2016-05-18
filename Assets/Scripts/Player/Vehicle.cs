@@ -48,7 +48,7 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
 	void FixedUpdate ()
     {
        
-        if(Velocimeter == null)
+        if(Velocimeter == null && this.photonView.isMine)
         {
             if(GameObject.Find("Velocimeter"))
                 Velocimeter = GameObject.Find("Velocimeter").GetComponent<Slider>();
@@ -98,8 +98,8 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
     public void CalculateSpeed()
     {
         whatIsSpeed = rb.velocity.magnitude;
-
-        Velocimeter.value = whatIsSpeed;
+        if(this.photonView.isMine)
+            Velocimeter.value = whatIsSpeed;
     }
 
     public void Boost(float boostSpeed, float boostTime)
