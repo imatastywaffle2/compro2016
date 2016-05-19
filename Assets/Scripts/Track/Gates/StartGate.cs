@@ -39,29 +39,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
         {
             if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length && col.GetComponent<Player>().place < 1 && col.GetComponent<Player>().currentLap >= AmountOfLaps)
             {
-                col.GetComponent<Player>().place = places.Count + 1;
-                places.Add(col.GetComponent<Player>());
-
-                if(col.gameObject.layer == 8)
-                {
-                    string mod;
-                    switch (places.Count)
-                    {
-                        case 1: mod = "st";
-                            break;
-                        case 2: mod = "nd";
-                            break;
-                        case 3: mod = "rd";
-                            break;
-                        default: mod = "th";
-                            break;
-                    }
-                    
-                    finishText.text = "You Got " + places.Count + mod + " Place";
-                    finishText.enabled = true;
-
-                 
-                }
+                photonView.RPC("FinishPlayer", PhotonTargets.All, col.GetComponent<Player>().photonView.viewID);
             }
 
             else if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length)
@@ -75,6 +53,39 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
                 
                 }
             }
+        }
+    }
+
+    [PunRPC]
+    public void FinishPlayer(int id)
+    {
+        GameObject col = PhotonView.Find(id).gameObject;
+        col.GetComponent<Player>().place = places.Count + 1;
+        places.Add(col.GetComponent<Player>());
+
+        if (col.gameObject.layer == 8)
+        {
+            string mod;
+            switch (places.Count)
+            {
+                case 1:
+                    mod = "st";
+                    break;
+                case 2:
+                    mod = "nd";
+                    break;
+                case 3:
+                    mod = "rd";
+                    break;
+                default:
+                    mod = "th";
+                    break;
+            }
+
+            finishText.text = "You Got " + places.Count + mod + " Place";
+            finishText.enabled = true;
+
+
         }
     }
 
