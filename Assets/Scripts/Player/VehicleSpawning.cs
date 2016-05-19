@@ -63,7 +63,10 @@ public class VehicleSpawning : Photon.MonoBehaviour, IPunObservable
                 {
                     PlayersEnabled = true;
                     StartTimer.enabled = false;
-                    EnablePlayers();
+                    foreach (Player player in Players)
+                    {
+                        player.EnablePlayer();
+                    }
                 }
             }
     }

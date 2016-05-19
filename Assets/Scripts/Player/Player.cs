@@ -26,7 +26,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
 
     void Update()
     {
-        SplitTimer = Time.deltaTime;
+        SplitTimer += Time.deltaTime;
     }
 
     void OnPhotonInstantiate(PhotonMessageInfo info)
@@ -61,6 +61,14 @@ public class Player : Photon.MonoBehaviour, IPunObservable
             currentLap++;
             Splits.Add(SplitTimer);
         }
+    }
+
+    public void EnablePlayer()
+    {
+        if (photonView.isMine)
+            gameObject.GetComponent<InputInformation>().enabled = true;
+        gameObject.GetComponent<Move>().enabled = true;
+        Splits.Add(SplitTimer);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
