@@ -67,8 +67,13 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
             else if (col.GetComponent<Player>().currentGate >= gateManager.Gates.Length)
             {
                 col.GetComponent<Player>().SetLap();
-                LapText.text = col.GetComponent<Player>().currentLap + "/" + AmountOfLaps;
-                gateManager.Gates[0].nextGate();
+                if (col.GetComponent<Player>().photonView.isMine)
+                {
+
+                    LapText.text = col.GetComponent<Player>().currentLap + "/" + AmountOfLaps;
+                    gateManager.Gates[0].nextGate(); 
+                
+                }
             }
         }
     }

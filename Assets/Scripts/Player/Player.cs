@@ -57,6 +57,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     {
         if (Splits.Count == 0 || SplitTimer - Splits[currentLap - 1] > 10)
         {
+            currentGate = 0;
             currentLap++;
             Splits.Add(SplitTimer);
         }
