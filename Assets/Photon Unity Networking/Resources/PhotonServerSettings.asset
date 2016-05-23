@@ -42,4 +42,5 @@ MonoBehaviour:
   - Stun
   - LapChange
   - FinishPlayer
+  - FinishGame
   DisableAutoOpenWizard: 1

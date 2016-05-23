@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FinishMatch : MonoBehaviour {
+public class FinishMatch : Photon.MonoBehaviour 
+{
     public float CheckTime = 4;
     public float ElapsTimer= 0;
     public Player[] players;
@@ -30,7 +31,7 @@ public class FinishMatch : MonoBehaviour {
                 }
                 else if (i == players.Length -1)
                 {
-                    FinishGame();
+                    photonView.RPC("FinishGame", PhotonTargets.All);
                 }
             }
           
@@ -40,6 +41,7 @@ public class FinishMatch : MonoBehaviour {
 
 	}
 
+    [PunRPC]
     public void FinishGame()
     {
         EventManager.TriggerEvent("FinishMatch");
