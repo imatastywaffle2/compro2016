@@ -41,4 +41,5 @@ MonoBehaviour:
   - StunRemote
   - Stun
   - LapChange
+  - FinishPlayer
   DisableAutoOpenWizard: 1
