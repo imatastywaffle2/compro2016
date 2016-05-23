@@ -378,7 +378,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: ReadyPlayer
+        m_MethodName: SpawnPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1655,27 +1655,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crossSceneReferences:
-  - _fromObject:
-      scene:
-        editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
-        name: MainMenu
-        _path: Assets/Scenes/MainMenu.unity
-      fullPath: /Scripts
-      componentName: MultiplayerConnect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
-    _fromField: vehicleSpawn
-    _toObject:
-      scene:
-        editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
-        name: Player
-        _path: Assets/Scenes/Player.unity
-      fullPath: /VehicleSpawn
-      componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      componentIndex: 0
-      version: 1
   - _fromObject:
       scene:
         editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
