@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Player : Photon.MonoBehaviour, IPunObservable
 {
+    public string playerName;
     public int playerID;
     public int currentGate = 0;
     public int currentLap = 1;
@@ -45,6 +46,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         }
 
         playerID = info.sender.ID;
+        playerName = info.sender.name;
     }
 
     public void SetLap()
