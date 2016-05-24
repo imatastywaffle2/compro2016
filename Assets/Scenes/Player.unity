@@ -295,6 +295,7 @@ MonoBehaviour:
   players: []
   Lobby: {fileID: 0}
   PlayerGui: {fileID: 0}
+  PlaceList: {fileID: 0}
 --- !u!114 &712520386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +442,27 @@ MonoBehaviour:
         name: UI
         _path: Assets/Scenes/UI.unity
       fullPath: /Pilot HUD/StartTimer
+      componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+  - _fromObject:
+      scene:
+        editorAssetGUID: b0daaa161a78cbd4fa12ec5da82557bf
+        name: Player
+        _path: Assets/Scenes/Player.unity
+      fullPath: /Players
+      componentName: FinishMatch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: PlaceList
+    _toObject:
+      scene:
+        editorAssetGUID: 09946cafaacd674489afff344d91d2cd
+        name: UI
+        _path: Assets/Scenes/UI.unity
+      fullPath: /Pilot HUD/Placements
       componentName: UnityEngine.UI.Text, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
         PublicKeyToken=null
       componentIndex: 0

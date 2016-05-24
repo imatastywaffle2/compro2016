@@ -30,9 +30,9 @@ public class FinishMatch : Photon.MonoBehaviour
             Array.Sort(players,
                delegate (Player x, Player y) {
                    if (x.currentLap != y.currentLap)
-                       return x.currentLap.CompareTo(y.currentLap);
+                       return -x.currentLap.CompareTo(y.currentLap);
                    else
-                       return x.currentGate.CompareTo(y.currentGate);
+                       return -x.currentGate.CompareTo(y.currentGate);
 
                });
             PlaceList.text = "";
@@ -43,13 +43,13 @@ public class FinishMatch : Photon.MonoBehaviour
                     string mod;
                     switch (i)
                     {
-                        case 1:
+                        case 0:
                             mod = "st";
                             break;
-                        case 2:
+                        case 1:
                             mod = "nd";
                             break;
-                        case 3:
+                        case 2:
                             mod = "rd";
                             break;
                         default:
