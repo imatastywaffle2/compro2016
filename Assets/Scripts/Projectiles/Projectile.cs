@@ -60,11 +60,12 @@ public class Projectile : Photon.MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<Player>().playerID != shooterId)
-        {
-            other.gameObject.GetComponent<Vehicle>().StunRemote();
-            photonView.RPC("HitTarget", PhotonTargets.All);
-        }
+        if(other.gameObject.tag == "Player")
+            if (other.gameObject.GetComponent<Player>().playerID != shooterId)
+            {
+                other.gameObject.GetComponent<Vehicle>().StunRemote();
+                photonView.RPC("HitTarget", PhotonTargets.All);
+            }
     }
     public void Explosion()
     {
