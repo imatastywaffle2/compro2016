@@ -444,14 +444,14 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 2
+  synchronization: 1
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 11457404}
   - {fileID: 11495922}
   - {fileID: 11424830}
+  - {fileID: 11457404}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -471,6 +471,8 @@ MonoBehaviour:
   currentGate: 0
   currentLap: 1
   place: 0
+  SplitTimer: 0
+  Splits: []
   Ready: 0
 --- !u!198 &19801774
 ParticleSystem:
