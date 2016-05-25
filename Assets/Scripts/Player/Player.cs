@@ -9,6 +9,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     public int playerID;
     public int currentGate = 0;
     public int currentLap = 1;
+    public int maxLaps = 3;
     public int place = 0;
     GameObject localPlayers;
     GameObject remotePlayers;
