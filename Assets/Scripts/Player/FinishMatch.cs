@@ -41,19 +41,17 @@ public class FinishMatch : Photon.MonoBehaviour
             int numberFinished = 0;
             for (int i = 0; i < players.Length; i++)
             {
-                int place = i + 1;
+                int place = 0;
 
                 for (int f = 0; f < finishedPlayers.Count; f++)
                 {
                     int playerFinished = finishedPlayers.IndexOf(players[i].playerID);
                     if (playerFinished >= 0)
                         place = playerFinished + 1;
-                    else
-                        place = i + finishedPlayers.Count;
                 }
 
                 string mod;
-
+               
                 switch (place)
                 {
                     case 1:
@@ -71,8 +69,10 @@ public class FinishMatch : Photon.MonoBehaviour
                 }
 
                     
-
-                PlaceList.text += players[i].playerName + " - " + place + mod + "\n";
+                if(place > 0)
+                    PlaceList.text += players[i].playerName + " - " + place + mod + "\n";
+                else
+                    PlaceList.text += players[i].playerName + "\n";
 
                 if (players[i].place >= 1)
                 {
