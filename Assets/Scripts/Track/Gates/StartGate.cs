@@ -46,6 +46,7 @@ public class StartGate : Photon.MonoBehaviour, IPunObservable
             {
                 if (col.GetComponent<Player>().photonView.isMine)
                 {
+                    col.GetComponent<Player>().SetLap();
                     if (col.GetComponent<Player>().currentLap > AmountOfLaps)
                         col.GetComponent<Player>().currentLap = AmountOfLaps;
                     LapText.text = col.GetComponent<Player>().currentLap + "/" + AmountOfLaps;
