@@ -2,12 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using System.Collections.Generic;
 
 public class FinishMatch : Photon.MonoBehaviour 
 {
     public float CheckTime = 4;
     public float ElapsTimer= 0;
     public Player[] players;
+    public List<int> finishedPlayers = new List<int>();
 
     public GameObject Lobby;
     public GameObject PlayerGui;
@@ -36,32 +38,57 @@ public class FinishMatch : Photon.MonoBehaviour
 
                });
             PlaceList.text = "";
+            int numberFinished = 0;
             for (int i = 0; i < players.Length; i++)
             {
-                if(players[i].place < 1)
+                int place = 0;
+
+                for (int f = 0; f < finishedPlayers.Count; f++)
                 {
-                    string mod;
-                    switch (i)
-                    {
-                        case 0:
-                            mod = "st";
-                            break;
-                        case 1:
-                            mod = "nd";
-                            break;
-                        case 2:
-                            mod = "rd";
-                            break;
-                        default:
-                            mod = "th";
-                            break;
-                    }
-                    PlaceList.text += players[i].playerName + " - " + (i+1) + mod + "\n";
+                    int playerFinished = finishedPlayers.IndexOf(players[i].playerID);
+                    if (playerFinished >= 0)
+                        place = playerFinished + 1;
                 }
-                else if (i == players.Length -1)
+
+                string mod;
+               
+                switch (place)
+                {
+                    case 1:
+                        mod = "st";
+                        break;
+                    case 2:
+                        mod = "nd";
+                        break;
+                    case 3:
+                        mod = "rd";
+                        break;
+                    default:
+                        mod = "th";
+                        break;
+                }
+
+                    
+                if(place > 0)
+                    PlaceList.text += players[i].playerName + " - " + place + mod + "\n";
+                else
+                    PlaceList.text += players[i].playerName + "\n";
+
+                if (players[i].place >= 1)
+                {
+                    numberFinished++;
+                    if (finishedPlayers.Count < players[i].place)
+                    {
+                        finishedPlayers.Add(players[i].playerID);
+                    }
+                }
+
+                if (numberFinished >= players.Length)
                 {
                     photonView.RPC("FinishGame", PhotonTargets.All);
                 }
+                  
+                
             }
        
 
@@ -74,6 +101,7 @@ public class FinishMatch : Photon.MonoBehaviour
     [PunRPC]
     public void FinishGame()
     {
+        finishedPlayers.Clear();
         EventManager.TriggerEvent("FinishMatch");
         for (int i = 0; i < players.Length; i++)
         {
