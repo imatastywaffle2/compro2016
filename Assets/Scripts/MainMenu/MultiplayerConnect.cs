@@ -67,7 +67,12 @@ public class MultiplayerConnect : Photon.MonoBehaviour
     {
         if (UserName.text != "" && UserName.text != null)
         {
+            PlayerPrefs.SetString("Username", name);
             PhotonNetwork.player.name = name;
+        }
+        else
+        {
+            PhotonNetwork.player.name = "Guest" + PhotonNetwork.player.ID;
         }
     }
 
