@@ -475,7 +475,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 127ff2316f000c74da703017164df2dc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.534
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -868,6 +868,78 @@ Prefab:
     - target: {fileID: 6533090, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
       propertyPath: m_Size.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 474028, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -39
+      objectReference: {fileID: 0}
+    - target: {fileID: 474028, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -194.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 493008, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -39.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 493008, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 72.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 463414, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 463414, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -194.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 470360, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 115.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 470360, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 72.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 10853888, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10888420, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10825864, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10817218, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10853888, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Intensity
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 10888420, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Intensity
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 10825864, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Intensity
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 10817218, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_Intensity
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313040, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313040, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8554fb23dcc3bfa40adce48b39d05f10, type: 2}

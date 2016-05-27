@@ -49,9 +49,9 @@ public class InputInformation : MonoBehaviour
     public float AxisY()
     {
         if(invertVert)
-            return -Input.GetAxis("Mouse Y");
+            return Input.GetAxis("Mouse Y");
         else
-            return Input.GetAxis("Mouse Y"); //Get invert setting
+            return -Input.GetAxis("Mouse Y"); //Get invert setting
     }
     public bool UsePickup()
     {

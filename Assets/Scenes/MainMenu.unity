@@ -467,6 +467,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 784039992}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &157341876
@@ -705,6 +727,28 @@ MonoBehaviour:
       - m_Target: {fileID: 142085969}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 784039992}
+        m_MethodName: Stop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1592,7 +1636,7 @@ GameObject:
   - 4: {fileID: 784039991}
   - 82: {fileID: 784039992}
   m_Layer: 5
-  m_Name: Audio Source
+  m_Name: MenuMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1621,7 +1665,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7ca22b2364b05a4b861de3aa50dff78, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.701
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1786,6 +1830,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 875241305}
   - 114: {fileID: 875241306}
+  - 114: {fileID: 875241307}
   m_Layer: 5
   m_Name: Invert Axis?
   m_TagString: Untagged
@@ -1853,10 +1898,33 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 875241307}
+        m_MethodName: Invert
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!114 &875241307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875241304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7cf09c8521f594ea6d50e4c078bef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvertToggle: {fileID: 875241306}
 --- !u!1 &884257891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2077,27 @@ MonoBehaviour:
         PublicKeyToken=null
       componentIndex: 0
       version: 1
+    _fromField: m_OnClick.m_PersistentCalls.m_Calls,4.m_Target
+    _toObject:
+      scene:
+        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
+        name: Track
+        _path: Assets/Scenes/Track.unity
+      fullPath: /GameMusic
+      componentName: UnityEngine.AudioSource, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+  - _fromObject:
+      scene:
+        editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+        name: MainMenu
+        _path: Assets/Scenes/MainMenu.unity
+      fullPath: /Lobby/READY
+      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
     _fromField: m_OnClick.m_PersistentCalls.m_Calls,2.m_Target
     _toObject:
       scene:
@@ -2037,6 +2126,27 @@ MonoBehaviour:
         _path: Assets/Scenes/Player.unity
       fullPath: /VehicleSpawn
       componentName: VehicleSpawning, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+  - _fromObject:
+      scene:
+        editorAssetGUID: c3107ff131c41a445b5ec7253b2513e5
+        name: MainMenu
+        _path: Assets/Scenes/MainMenu.unity
+      fullPath: /EscapeMenu/LEAVE
+      componentName: UnityEngine.UI.Button, UnityEngine.UI, Version=1.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      version: 1
+    _fromField: m_OnClick.m_PersistentCalls.m_Calls,8.m_Target
+    _toObject:
+      scene:
+        editorAssetGUID: 256a6faa3eebba84ea755a39637e1be7
+        name: Track
+        _path: Assets/Scenes/Track.unity
+      fullPath: /GameMusic
+      componentName: UnityEngine.AudioSource, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       componentIndex: 0
       version: 1

@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 	    if(PlayerPrefs.GetString("Username") != null && PlayerPrefs.GetString("Username") != "")
         {
-            Name.text = PlayerPrefs.GetString("Username");
+            PhotonNetwork.playerName = Name.text = PlayerPrefs.GetString("Username");
         }
 	}
 }
