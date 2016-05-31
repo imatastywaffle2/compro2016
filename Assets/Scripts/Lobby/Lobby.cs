@@ -15,14 +15,18 @@ public class Lobby : MonoBehaviour {
 
     void Awake()
     {
-        wantedMode = CursorLockMode.Confined;
-        Cursor.lockState = wantedMode;
-        // Hide cursor when locking
-        Cursor.visible = true;
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (gameObject.activeInHierarchy)
+        {
+            wantedMode = CursorLockMode.Confined;
+            Cursor.lockState = wantedMode;
+            // Hide cursor when locking
+            Cursor.visible = true;
+        }
 
         playerList.text = "";
 	    foreach(PhotonPlayer player in PhotonNetwork.playerList)
