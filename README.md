@@ -1,3 +1,8 @@
 # compro2016
+Play the game here!
+http://programming.santiam.org/2016/
 
-The link to the finished game will be here
+Controls:
+Move with W A S D
+You the mouse to change direction
+Left click and space will use items you pick up
