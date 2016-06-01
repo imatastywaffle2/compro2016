@@ -72,7 +72,7 @@ public class MultiplayerConnect : Photon.MonoBehaviour
         }
         else
         {
-            PhotonNetwork.player.name = "Guest" + PhotonNetwork.player.ID;
+            PhotonNetwork.player.name = "Guest";
         }
     }
 

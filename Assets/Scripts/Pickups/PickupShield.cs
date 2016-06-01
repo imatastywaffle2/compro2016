@@ -6,8 +6,7 @@ public class PickupShield : Pickup {
     // Use this for initialization
     public override void Use()
     {
-        gameObject.GetComponent<Vehicle>().shieldActivated = true;
-        gameObject.GetComponent<Vehicle>().shield.SetActive(true);
+        gameObject.GetComponent<Vehicle>().photonView.RPC("ActivateShield", PhotonTargets.All);
         Destroy(this);
     }
 }

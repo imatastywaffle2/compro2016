@@ -37,20 +37,24 @@ public class Player : Photon.MonoBehaviour, IPunObservable
     {
         localPlayers = GameObject.Find("LocalPlayers");
         remotePlayers = GameObject.Find("RemotePlayers");
+
+        playerID = info.sender.ID;
+        playerName = info.sender.name;
+
         if (info.sender.isLocal) {
             transform.SetParent(localPlayers.gameObject.transform);
             PhotonNetwork.player.TagObject = this.gameObject;
             gameObject.layer = 8;
+            playerNameText.text = "";
         }
         else
         {
             transform.SetParent(remotePlayers.gameObject.transform);
             gameObject.layer = 9;
+            playerNameText.text = playerName;
         }
 
-        playerID = info.sender.ID;
-        playerName = info.sender.name;
-        playerNameText.text = playerName;
+        
     }
 
     public void SetLap()

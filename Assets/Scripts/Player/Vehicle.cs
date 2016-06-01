@@ -89,6 +89,13 @@ public class Vehicle : Photon.MonoBehaviour, IPunObservable
 
         }  
     }
+
+    [PunRPC]
+    public void ActivateShield()
+    {
+        shield.SetActive(true);
+        shieldActivated = true;
+    }
    
     public void StunRemote()
     {
