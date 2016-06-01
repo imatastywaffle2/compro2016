@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Player : Photon.MonoBehaviour, IPunObservable
 {
@@ -19,6 +20,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
 
     public bool Ready = false;
 
+    public Text playerNameText;
 
 
     void Start()
@@ -48,6 +50,7 @@ public class Player : Photon.MonoBehaviour, IPunObservable
 
         playerID = info.sender.ID;
         playerName = info.sender.name;
+        playerNameText.text = playerName;
     }
 
     public void SetLap()
